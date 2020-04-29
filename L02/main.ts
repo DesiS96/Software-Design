@@ -1,1 +1,1 @@
-console.log('%c Hello Word!', 'font-family: Arial; font-weight: bold; font-size: 30px; color:blue');
+console.log("%c Hello World!", "font-family: Arial; font-weight: bold; font-size: 30px; color:blue");
