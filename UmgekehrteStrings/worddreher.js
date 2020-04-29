@@ -4,24 +4,27 @@ var worddreher;
     let scentence = "this scentence is twisted"; //müsste eigentlich selber eigegeben werden
     console.log(scentence);
     function twistCharacters(scentence) {
-        let twistedString = scentence.split(" "); //String als einzelne Wörter
+        let twistedString = scentence.split("");
+        twistedString.reverse();
         let i;
+        let twistedWords;
         for (i = 0; i <= twistedString.length; i++) {
-            let twistedStringWords;
-            twistedStringWords += twistedString[i].split; //String als einzelne Buchstaben
+            twistedWords += twistedString[i];
         }
-        return twistedString; //detsiwt si ecnetnecs siht (unfertig)
+        let twistedStringArr = twistedWords.split(" ");
+        twistedStringArr.reverse().join();
+        return twistedStringArr;
     }
     function twistWords(scentence) {
-        let twistedString = scentence.split(" ");
-        twistedString.reverse; //twisted is scentence this
-        return twistedString;
+        let twistedString = scentence.split(" "); //String als einzelne Wörter
+        twistedString.reverse().join();
+        return twistedString; //detsiwt si ecnetnecs siht (unfertig)
     }
     function twistCharacterAndWords(scentence) {
-        let irgendwas = undefined;
-        irgendwas = twistWords(scentence);
-        twistCharacters(scentence);
-        return scentence;
+        let twistedString = scentence;
+        twistCharacters(twistedString);
+        twistWords(twistedString);
+        return twistedString;
     }
     console.log(twistCharacters(scentence));
     console.log(twistWords(scentence));
