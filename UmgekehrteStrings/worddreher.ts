@@ -4,16 +4,16 @@ namespace worddreher {
     console.log(scentence);
 
 
-    function twistCharacters(scentence: string): string[] {
+    function twistCharacters(scentence: string): string {
 
         let twistedString: string[] = scentence.split("");
         twistedString.reverse();
 
         let i: number;
 
-        let twistedWords: string;
+        let twistedWords: string = "";
 
-        for (i = 0; i <= twistedString.length; i++){
+        for (i = 0; i <= twistedString.length; i++) {
             
             twistedWords += twistedString[i];
 
@@ -21,29 +21,32 @@ namespace worddreher {
 
         let twistedStringArr: string[] = twistedWords.split(" ");
 
-        twistedStringArr.reverse().join();
+        twistedStringArr.reverse();
         
-        return twistedStringArr;
+        let twistedString2: string = twistedStringArr.join(" ");
+
+        return twistedString2;
 
     }
 
-    function twistWords(scentence: string): string[] {
+    function twistWords(scentence: string): string {
 
-        let twistedString: string[] = scentence.split(" "); //String als einzelne Wörter
+        let twistedArray: string[] = scentence.split(" "); //String als einzelne Wörter
         
-        twistedString.reverse().join();
+        twistedArray.reverse();
+
+        let twistedString: string = twistedArray.join(" ");
 
         return twistedString; //detsiwt si ecnetnecs siht (unfertig)
     }
 
     function twistCharacterAndWords(scentence: string): string {
 
-        let twistedString: string = scentence;
+        let twistedString: string = twistCharacters(scentence);
 
-        twistCharacters(twistedString);
-        twistWords(twistedString);
+        let twistedString2: string = twistWords(twistedString);
 
-        return twistedString;
+        return twistedString2;
        
     }
 

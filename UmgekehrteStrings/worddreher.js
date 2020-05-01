@@ -7,24 +7,25 @@ var worddreher;
         let twistedString = scentence.split("");
         twistedString.reverse();
         let i;
-        let twistedWords;
+        let twistedWords = "";
         for (i = 0; i <= twistedString.length; i++) {
             twistedWords += twistedString[i];
         }
         let twistedStringArr = twistedWords.split(" ");
-        twistedStringArr.reverse().join();
-        return twistedStringArr;
+        twistedStringArr.reverse();
+        let twistedString2 = twistedStringArr.join(" ");
+        return twistedString2;
     }
     function twistWords(scentence) {
-        let twistedString = scentence.split(" "); //String als einzelne Wörter
-        twistedString.reverse().join();
+        let twistedArray = scentence.split(" "); //String als einzelne Wörter
+        twistedArray.reverse();
+        let twistedString = twistedArray.join(" ");
         return twistedString; //detsiwt si ecnetnecs siht (unfertig)
     }
     function twistCharacterAndWords(scentence) {
-        let twistedString = scentence;
-        twistCharacters(twistedString);
-        twistWords(twistedString);
-        return twistedString;
+        let twistedString = twistCharacters(scentence);
+        let twistedString2 = twistWords(twistedString);
+        return twistedString2;
     }
     console.log(twistCharacters(scentence));
     console.log(twistWords(scentence));
