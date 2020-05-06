@@ -6,7 +6,6 @@ let objects: string[] = ["das Death Note", "L", "Light", "Äpfel", "Kira", "die 
 
 function getShortestLength (subjects: string[], verbs: String[], objects: string[]): number {
 
-
     if (subjects.length <= verbs.length) {
         if (objects.length < subjects.length) {
              return objects.length;
@@ -38,9 +37,8 @@ function getShortestLength (subjects: string[], verbs: String[], objects: string
 
 let length: number = getShortestLength(subjects, verbs, objects);
 let index: number[][];
-let i: number = 0;
 
-for (i = 0; i < 3; i++) {
+for (let i: number = 0; i < 3; i++) {
     let j: number = 0;
 
     for (; j < length; j++) {
@@ -74,7 +72,7 @@ for (i = 0; i < 3; i++) {
 
 }
 
-i = 0;
+let i: number = 0;
 
 while (i < length) {
 

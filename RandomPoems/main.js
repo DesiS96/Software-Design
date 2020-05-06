@@ -29,8 +29,7 @@ var randompoem;
     }
     let length = getShortestLength(subjects, verbs, objects);
     let index;
-    let i = 0;
-    for (i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
         let j = 0;
         for (; j < length; j++) {
             let indexTemp;
@@ -52,7 +51,7 @@ var randompoem;
             indexTemp = index[i][j];
         }
     }
-    i = 0;
+    let i = 0;
     while (i < length) {
         console.log(subjects[index[1][i]] + "" + verbs[index[2][i]] + "" + objects[index[3][i]]);
         i = i + 1;
