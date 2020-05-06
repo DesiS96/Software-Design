@@ -32,12 +32,21 @@ var randompoem;
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < length; j++) {
             let indexTemp;
+            //indexTemp = Math.floor(Math.random() * index[i].length);
             while (true) {
-                indexTemp = Math.floor(Math.random() * index[i].length);
+                switch (i) {
+                    case 0:
+                        indexTemp = Math.floor(Math.random() * subjects.length);
+                        break;
+                    case 1:
+                        indexTemp = Math.floor(Math.random() * verbs.length);
+                        break;
+                    case 2:
+                        indexTemp = Math.floor(Math.random() * objects.length);
+                        break;
+                }
                 let contain = false;
-                console.log(length);
                 for (let k = 0; k < length; k++) {
-                    console.log(k);
                     if (index[i][k] == indexTemp) {
                         contain = true;
                     }

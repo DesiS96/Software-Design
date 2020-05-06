@@ -43,19 +43,27 @@ for (let i: number = 0; i < 3; i++) {
     for (let j: number = 0; j < length; j++) {
         let indexTemp: number;
 
-        while (true) {
+        //indexTemp = Math.floor(Math.random() * index[i].length);
 
-            indexTemp = Math.floor(Math.random() * index[i].length);
+        while (true) {
+            switch (i) {
+            case 0:
+                indexTemp = Math.floor(Math.random() * subjects.length);
+                break;
+
+            case 1: 
+                indexTemp = Math.floor(Math.random() * verbs.length);
+                break;
+
+            case 2: 
+                indexTemp = Math.floor(Math.random() * objects.length);
+                break;
+            }
 
             let contain: boolean = false;
 
-            console.log(length);
-
             for (let k: number = 0; k < length; k++) {
-
-                console.log(k);
                
-
                 if (index[i][k] == indexTemp) {
                     contain = true;
 
