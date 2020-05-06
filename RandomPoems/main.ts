@@ -49,15 +49,20 @@ for (let i: number = 0; i < 3; i++) {
 
             let contain: boolean = false;
 
+            console.log(length);
+
             for (let k: number = 0; k < length; k++) {
 
-                    if (index[i][k] == indexTemp) {
-                        contain = true;
+                console.log(k);
+               
+
+                if (index[i][k] == indexTemp) {
+                    contain = true;
+
                     }
-                    else {
-                        contain = false;
-                    } 
-                }   
+                        
+                } 
+                    
 
             if (contain == false) {
                     break;
@@ -73,7 +78,7 @@ console.log(index);
 
 for (let i: number = 0; i < length; i++) {
 
-    console.log(subjects[index[1][i]] + "" + verbs[index[2][i]] + "" + objects[index[3][i]]);
+    console.log(subjects[index[0][i]] + " " + verbs[index[1][i]] + " " + objects[index[2][i]]);
 
 }
 

@@ -35,12 +35,11 @@ var randompoem;
             while (true) {
                 indexTemp = Math.floor(Math.random() * index[i].length);
                 let contain = false;
+                console.log(length);
                 for (let k = 0; k < length; k++) {
+                    console.log(k);
                     if (index[i][k] == indexTemp) {
                         contain = true;
-                    }
-                    else {
-                        contain = false;
                     }
                 }
                 if (contain == false) {
@@ -52,7 +51,7 @@ var randompoem;
     }
     console.log(index);
     for (let i = 0; i < length; i++) {
-        console.log(subjects[index[1][i]] + "" + verbs[index[2][i]] + "" + objects[index[3][i]]);
+        console.log(subjects[index[0][i]] + " " + verbs[index[1][i]] + " " + objects[index[2][i]]);
     }
 })(randompoem || (randompoem = {}));
 //# sourceMappingURL=main.js.map
