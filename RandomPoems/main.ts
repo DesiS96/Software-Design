@@ -36,12 +36,12 @@ function getShortestLength (subjects: string[], verbs: String[], objects: string
 }
 
 let length: number = getShortestLength(subjects, verbs, objects);
-let index: number[][];
+let index: number[][] = [[-1, -1], [-1, -1]];
 
 for (let i: number = 0; i < 3; i++) {
-    let j: number = 0;
+    
 
-    for (; j < length; j++) {
+    for (let j: number = 0; j < length; j++) {
         let indexTemp: number;
 
         while (true) {

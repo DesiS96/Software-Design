@@ -28,10 +28,9 @@ var randompoem;
         }
     }
     let length = getShortestLength(subjects, verbs, objects);
-    let index;
+    let index = [[-1, -1], [-1, -1]];
     for (let i = 0; i < 3; i++) {
-        let j = 0;
-        for (; j < length; j++) {
+        for (let j = 0; j < length; j++) {
             let indexTemp;
             while (true) {
                 indexTemp = Math.floor(Math.random() * index[i].length);
