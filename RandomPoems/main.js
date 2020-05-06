@@ -28,14 +28,14 @@ var randompoem;
         }
     }
     let length = getShortestLength(subjects, verbs, objects);
-    let index = [[-1, -1], [-1, -1]];
+    let index = [[-1], [-1], [-1]];
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < length; j++) {
             let indexTemp;
             while (true) {
                 indexTemp = Math.floor(Math.random() * index[i].length);
                 let contain = false;
-                for (let k = 0; k < index[i].length; k++) {
+                for (let k = 0; k < length; k++) {
                     if (index[i][k] == indexTemp) {
                         contain = true;
                     }
@@ -47,13 +47,12 @@ var randompoem;
                     break;
                 }
             }
-            indexTemp = index[i][j];
+            index[i][j] = indexTemp;
         }
     }
-    let i = 0;
-    while (i < length) {
+    console.log(index);
+    for (let i = 0; i < length; i++) {
         console.log(subjects[index[1][i]] + "" + verbs[index[2][i]] + "" + objects[index[3][i]]);
-        i = i + 1;
     }
 })(randompoem || (randompoem = {}));
 //# sourceMappingURL=main.js.map

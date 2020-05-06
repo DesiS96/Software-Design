@@ -36,11 +36,10 @@ function getShortestLength (subjects: string[], verbs: String[], objects: string
 }
 
 let length: number = getShortestLength(subjects, verbs, objects);
-let index: number[][] = [[-1, -1], [-1, -1]];
+let index: number[][] = [[-1], [-1], [-1]];
 
 for (let i: number = 0; i < 3; i++) {
     
-
     for (let j: number = 0; j < length; j++) {
         let indexTemp: number;
 
@@ -50,7 +49,7 @@ for (let i: number = 0; i < 3; i++) {
 
             let contain: boolean = false;
 
-            for (let k: number = 0; k < index[i].length; k++) {
+            for (let k: number = 0; k < length; k++) {
 
                     if (index[i][k] == indexTemp) {
                         contain = true;
@@ -65,21 +64,16 @@ for (let i: number = 0; i < 3; i++) {
             }
         }
 
-        indexTemp = index[i][j];
-
+        index[i][j] = indexTemp;
           
     }
-
 }
 
-let i: number = 0;
+console.log(index);
 
-while (i < length) {
+for (let i: number = 0; i < length; i++) {
 
     console.log(subjects[index[1][i]] + "" + verbs[index[2][i]] + "" + objects[index[3][i]]);
-
-    i = i + 1;
-
 
 }
 
