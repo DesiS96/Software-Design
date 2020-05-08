@@ -89,6 +89,39 @@ namespace l03 {
 
     }
 
+    function getAgeGap(i: Person, j: Person): number {
+
+        if (i.age < j.age) {
+
+            let gap: number = j.age - i.age;
+
+            return gap;
+
+        }
+        else {
+
+            let gap: number = i.age - j.age;
+            return gap;
+        }
+    }
+
+    function compareAge(i: Person, j: Person): string {
+
+        if (i.age == j.age) {
+
+            return i.firstname + " ist genauso alt wie " + j.firstname + ".";
+        }
+        else {
+
+            let gap: number = getAgeGap(i, j);
+            return i.firstname + " und " + j.firstname + " haben einen Altersunterschied von " + gap + " Jahren."; 
+        }
+    }
+
+    console.log(compareAge(piet, caroline));
+
+
+
 
 
 }

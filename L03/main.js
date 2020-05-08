@@ -63,5 +63,25 @@ var l03;
             console.log("Person ist unter 20");
         }
     }
+    function getAgeGap(i, j) {
+        if (i.age < j.age) {
+            let gap = j.age - i.age;
+            return gap;
+        }
+        else {
+            let gap = i.age - j.age;
+            return gap;
+        }
+    }
+    function compareAge(i, j) {
+        if (i.age == j.age) {
+            return i.firstname + " ist genauso alt wie " + j.firstname + ".";
+        }
+        else {
+            let gap = getAgeGap(i, j);
+            return i.firstname + " und " + j.firstname + " haben einen Altersunterschied von " + gap + " Jahren.";
+        }
+    }
+    console.log(compareAge(piet, caroline));
 })(l03 || (l03 = {}));
 //# sourceMappingURL=main.js.map
