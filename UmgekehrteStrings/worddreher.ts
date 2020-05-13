@@ -35,8 +35,8 @@ namespace worddreher {
         and is better readable.*/
         let twistedArray: string[] = scentence.split(" "); //String als einzelne Wörter
         
-      /*  twistedArray.reverse();
-        directly return the value*/
+        twistedArray.reverse();
+       // directly return the value*/
         let twistedString: string = twistedArray.join(" ");
 
         return twistedString; //detsiwt si ecnetnecs siht (unfertig)

@@ -27,8 +27,8 @@ var worddreher;
         /* you can conclude line 22 and line 23 so the naming makes more sense (name says string but is initialized as array)
          and is better readable.*/
         let twistedArray = scentence.split(" "); //String als einzelne Wörter
-        /*  twistedArray.reverse();
-          directly return the value*/
+        twistedArray.reverse();
+        // directly return the value*/
         let twistedString = twistedArray.join(" ");
         return twistedString; //detsiwt si ecnetnecs siht (unfertig)
     }
