@@ -1,12 +1,12 @@
 namespace worddreher {
 
-    let scentence: string = "this scentence is twisted"; //müsste eigentlich selber eigegeben werden
-    console.log(scentence);
+    let sentence: string = "this scentence is twisted"; //müsste eigentlich selber eigegeben werden
+    console.log(sentence);
 
     //there is an typo in the parameter(sentence), use for parameters "_" at the begining.
-    function twistCharacters(scentence: string): string {
+    function twistCharacters(_sentence: string): string {
        // you can conclude line 9 and line 10 so the naming makes more sense and is better readable.
-        let twistedString: string[] = scentence.split("");
+        let twistedString: string[] = _sentence.split("");
         twistedString.reverse();
        //  -> move initialization of the index to the loop
         let i: number;
@@ -30,10 +30,10 @@ namespace worddreher {
 
     }
 
-    function twistWords(scentence: string): string {
+    function twistWords(_sentence: string): string {
        /* you can conclude line 22 and line 23 so the naming makes more sense (name says string but is initialized as array)
         and is better readable.*/
-        let twistedArray: string[] = scentence.split(" "); //String als einzelne Wörter
+        let twistedArray: string[] = _sentence.split(" "); //String als einzelne Wörter
         
         twistedArray.reverse();
        // directly return the value*/
@@ -42,11 +42,12 @@ namespace worddreher {
         return twistedString; //detsiwt si ecnetnecs siht (unfertig)
     }
 
-    function twistCharacterAndWords(scentence: string): string {
-      /*  you dont need to initialize the func calls into an variable
+    function twistCharacterAndWords(_sentence: string): string {
+        /*you dont need to initialize the func calls into an variable
         you could just do something like --> return twistWords(twistCharacters(scentence))
         then line 49, 51 and 53 is obsolete*/
-        let twistedString: string = twistCharacters(scentence);
+        //Doch ohne "Zwischenspeichern" funktionierts nicht...
+        let twistedString: string = twistCharacters(_sentence);
 
         let twistedString2: string = twistWords(twistedString);
 
@@ -54,7 +55,7 @@ namespace worddreher {
        
     }
 
-    console.log(twistCharacters(scentence));
-    console.log(twistWords(scentence));
-    console.log(twistCharacterAndWords(scentence));
+    console.log(twistCharacters(sentence));
+    console.log(twistWords(sentence));
+    console.log(twistCharacterAndWords(sentence));
 }
