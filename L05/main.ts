@@ -122,17 +122,43 @@ namespace L05 {
     console.log(revali);
     console.log(zelda);*/
 
-    /*class MyContainer{
+/*    public class MyContainer {
 
-        private _theObjects: object[] ;
-        private _n: number;
+        private _theObjects: Object[] ;
+        private n: number;
 
-        public MyContainer(){
+        MyContainer(): void {
 
-            _theObjects: object[] = new object[2];
-            _n: number = 0;
+            this._theObjects = new Object[];
+            this._theObjects.length = 2;
+            this.n = 0;
+
         }
 
+        public Add(o: object[]): void {
+
+            // If necessary, grow the array
+            if (this.n == this._theObjects.length) {
+
+                let oldArray: Object[]  = this._theObjects;
+                this._theObjects = new Object < 2 * oldArray.length > ;
+                Array.Copy(oldArray, this._theObjects, this.n);
+
+            }
+
+            this._theObjects[this.n] = o;
+            this.n++;
+        }
+
+            public GetAt(i: number): object {
+                return this._theObjects[i];
+            }
+
+            public Count(n: number): number {
+                return n;
+            }
+
+        
     }*/
 
 
