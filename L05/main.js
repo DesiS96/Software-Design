@@ -1,8 +1,8 @@
 "use strict";
-//import { Person } from "./person";
 var L05;
-//import { Person } from "./person";
 (function (L05) {
+    //import { Person } from "./person";
+    //abstact
     class Person {
         constructor(name, age) {
             this.name = name;
@@ -63,5 +63,21 @@ var L05;
     for (let i = 0; i < morePeople.length; i++) {
         console.log(morePeople[i].GetTitleAdress(morePeople[i].name));
     }
+    /*let revali: Person = new Person("Revali", 17);
+
+    console.log(revali);
+    console.log(zelda);*/
+    /*class MyContainer{
+
+        private _theObjects: object[] ;
+        private _n: number;
+
+        public MyContainer(){
+
+            _theObjects: object[] = new object[2];
+            _n: number = 0;
+        }
+
+    }*/
 })(L05 || (L05 = {}));
 //# sourceMappingURL=main.js.map

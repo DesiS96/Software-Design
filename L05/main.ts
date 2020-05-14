@@ -1,7 +1,7 @@
-//import { Person } from "./person";
-
 namespace L05 {
 
+    //import { Person } from "./person";
+    //abstact
     class Person {
 
             public name: string;
@@ -116,6 +116,25 @@ namespace L05 {
         console.log(morePeople[i].GetTitleAdress(morePeople[i].name));
 
     }
+
+    /*let revali: Person = new Person("Revali", 17);
+
+    console.log(revali);
+    console.log(zelda);*/
+
+    /*class MyContainer{
+
+        private _theObjects: object[] ;
+        private _n: number;
+
+        public MyContainer(){
+
+            _theObjects: object[] = new object[2];
+            _n: number = 0;
+        }
+
+    }*/
+
 
 
 }
