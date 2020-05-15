@@ -117,6 +117,46 @@ namespace L05 {
 
     }
 
+    abstract class Enemy {
+
+        name: string;
+
+        constructor(name: string) {
+
+            this.name = name;
+
+        }
+
+    }
+
+    class Endboss extends Enemy {
+
+        game: string;
+
+        constructor(name: string, game: string) {
+
+            super(name);
+            this.game = game;
+
+        }
+
+        Evil_laugh(name: string): void {
+
+            console.log(name + ": Hahaha");
+
+        }
+
+    }
+
+    //let ghoma: Enemy = new Enemy("Ghoma"); Es lässt sich keine Instanz von Enemy erzeugen, da Enemy eine abstrakte Klasse ist
+
+    let vaati: Endboss = new Endboss("Vaati", "The Minish-Cap, Four Swords, Four Swords adventures");
+
+    console.log(vaati);
+    vaati.Evil_laugh("Vaati");
+
+
+
     /*let revali: Person = new Person("Revali", 17);
 
     console.log(revali);
@@ -124,12 +164,12 @@ namespace L05 {
 
 /*    public class MyContainer {
 
-        private _theObjects: Object[] ;
+        private _theObjects: object[] ;
         private n: number;
 
         MyContainer(): void {
 
-            this._theObjects = new Object[];
+            this._theObjects = new object[];
             this._theObjects.length = 2;
             this.n = 0;
 
@@ -141,7 +181,7 @@ namespace L05 {
             if (this.n == this._theObjects.length) {
 
                 let oldArray: Object[]  = this._theObjects;
-                this._theObjects = new Object < 2 * oldArray.length > ;
+                this._theObjects = new Object[ 2 * oldArray.length];
                 Array.Copy(oldArray, this._theObjects, this.n);
 
             }
@@ -160,8 +200,6 @@ namespace L05 {
 
         
     }*/
-
-
 
 }
 
