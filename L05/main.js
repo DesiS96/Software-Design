@@ -1,20 +1,16 @@
 "use strict";
 var L05;
 (function (L05) {
-    //import { Person } from "./person";
-    //abstact
     class Person {
-        constructor(name, age) {
-            this.name = name;
-            this.age = age;
+        constructor(_name, _age) {
+            this.name = _name;
+            this.age = _age;
         }
-        GetTitleAdress(name) {
-            if (this.age < 18) {
-                return "Hi " + name;
-            }
-            else {
-                return "Sehr geehrte(r) " + name;
-            }
+        getTitleAdress() {
+            if (this.age < 18)
+                return "Hi " + this.name;
+            else
+                return "Sehr geehrte(r) " + this.name;
         }
     }
     let zelda = new Person("Zelda", 17);
@@ -28,20 +24,22 @@ var L05;
     people[4] = new Person("Ghirahim", 18);
     console.log(people);
     class Employee extends Person {
-        constructor(name, age, idNumber) {
-            super(name, age);
-            this.idNumber = idNumber;
+        constructor(_name, _age, _idNumber) {
+            super(_name, _age);
+            this.idNumber = _idNumber;
         }
     }
+    let john = new Employee("John", 20);
+    john.getTitleAdress();
     people[1] = new Employee("Impa", 30, 1223);
     people[4] = new Employee("Ravio", 17, 3456);
     console.log(people);
     class Female extends Person {
-        constructor(name, age) {
-            super(name, age);
+        constructor(_name, _age) {
+            super(_name, _age);
         }
-        GetTitleAdress(name) {
-            super.GetTitleAdress(name);
+        getTitleAdress() {
+            super.getTitleAdress();
             return "Sehr geehrte Frau " + name;
         }
     }
@@ -49,8 +47,8 @@ var L05;
         constructor(name, age) {
             super(name, age);
         }
-        GetTitleAdress(name) {
-            super.GetTitleAdress(name);
+        getTitleAdress() {
+            super.getTitleAdress();
             return "Sehr geehrter Herr " + name;
         }
     }
@@ -61,7 +59,7 @@ var L05;
     //console.log(morePeople[2].name);
     console.log(morePeople);
     for (let i = 0; i < morePeople.length; i++) {
-        console.log(morePeople[i].GetTitleAdress(morePeople[i].name));
+        console.log(morePeople[i].getTitleAdress());
     }
     class Enemy {
         constructor(name) {
