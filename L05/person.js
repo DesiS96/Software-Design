@@ -1,28 +1,18 @@
 "use strict";
-/*export class Person {
-
-        public name: string;
-        age: number;
-
-        constructor(name: string, age: number) {
-
-            this.name = name;
-            this.age = age;
-
+var L05;
+(function (L05) {
+    class Person {
+        constructor(_name, _age) {
+            this.name = _name;
+            this.age = _age;
         }
-
-        public GetTitleAdress(name: string): string {
-
-            if (this.age < 18) {
-
-                return "Hi " + name;            }
-            else {
-
+        getTitleAdress() {
+            if (this.age < 18)
+                return "Hi " + this.name;
+            else
                 return "Sehr geehrte(r) " + this.name;
-
-            }
-
         }
-
-    }*/
-//# sourceMappingURL=person.js.map
+    }
+    L05.Person = Person;
+})(L05 || (L05 = {}));
+//# sourceMappingURL=Person.js.map
