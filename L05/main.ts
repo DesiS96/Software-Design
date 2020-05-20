@@ -1,29 +1,5 @@
 namespace L05 {
 
-    class Person {
-
-        public name: string;
-        public age: number;
-
-        constructor(_name: string, _age: number) {
-
-            this.name = _name;
-            this.age = _age;
-
-        }
-
-        public getTitleAdress(): string {
-
-            if (this.age < 18)
-                return "Hi " + this.name;
-            
-            else 
-                return "Sehr geehrte(r) " + this.name;
-
-        }
-
-    }
-
     let zelda: Person = new Person("Zelda", 17);
 
     zelda.age = 18;
@@ -51,7 +27,6 @@ namespace L05 {
 
         }
 
-
     }
 
     let john: Employee = new Employee("John", 20);
@@ -62,42 +37,6 @@ namespace L05 {
     people[4] = new Employee("Ravio", 17, 3456);
 
     console.log(people);
-
-
-
-    class Female extends Person {
-
-        constructor(_name: string, _age: number) {
-
-            super(_name, _age);
-
-        }
-
-        getTitleAdress(): string {
-
-            super.getTitleAdress();
-            return "Sehr geehrte Frau " + name;
-
-        }
-
-    }
-
-    class Male extends Person {
-
-        constructor(name: string, age: number) {
-
-            super(name, age);
-
-        }
-
-        getTitleAdress(): string {
-
-            super.getTitleAdress();
-            return "Sehr geehrter Herr " + name;
-
-        }
-
-    }
 
     let morePeople: Person[] = [];
 
