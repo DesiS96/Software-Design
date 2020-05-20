@@ -8,7 +8,7 @@ var L05;
     people[0] = zelda;
     people[1] = new L05.Person("Link", 17);
     people[2] = new L05.Person("Ganondorf", 40);
-    people[3] = new L05.Person("Midna", 25);
+    people[3] = new L05.Person("Midna ", 25);
     people[4] = new L05.Person("Ghirahim", 18);
     console.log(people);
     class Employee extends L05.Person {
@@ -92,4 +92,4 @@ var L05;
             
         }*/
 })(L05 || (L05 = {}));
-//# sourceMappingURL=Main.js.map
+//# sourceMappingURL=main.js.map

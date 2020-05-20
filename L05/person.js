@@ -15,4 +15,4 @@ var L05;
     }
     L05.Person = Person;
 })(L05 || (L05 = {}));
-//# sourceMappingURL=Person.js.map
+//# sourceMappingURL=person.js.map

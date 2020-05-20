@@ -11,7 +11,7 @@ namespace L05 {
     people[0] = zelda;
     people[1] = new Person("Link", 17);
     people[2] = new Person("Ganondorf", 40);
-    people[3] = new Person("Midna", 25);
+    people[3] = new Person("Midna ", 25);
     people[4] = new Person("Ghirahim", 18);
 
     console.log(people);
