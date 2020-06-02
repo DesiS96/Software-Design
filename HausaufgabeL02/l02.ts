@@ -47,7 +47,7 @@ if (e == true) {
     console.log("a hat den gleichen Wert wie c");
 
 }
-else{
+else {
 
     console.log("a hat nicht den gleichen Wert wie c");
 
@@ -62,7 +62,7 @@ if (x > 3 && y == 6) {
     console.log("Du hast gewonnen");
 
 }
-else{
+else {
 
     console.log("Leider verloren");
 
