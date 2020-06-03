@@ -2,53 +2,125 @@
 var Quiz;
 (function (Quiz) {
     class Question {
-        constructor(_text, _answers) {
+        constructor(_text) {
             this.text = _text;
-            this.answers = _answers;
         }
         toString() {
-            return "";
+            let s = "Frage: " + this.text;
+            return s;
         }
-        check(_input) {
-            if (_input == this.text) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-        shuffleAnswers() {
-            this.answers.sort(() => Math.random() - 0.5);
-            //erste Idee Antworten randomizen         
+        check(_input, _isTrue) {
+            return true;
         }
     }
     Quiz.Question = Question;
     class TrueFalseQuestion extends Question {
-        constructor(_text, _answers, _isTrue) {
-            super(_text, _answers);
+        constructor(_text, _isTrue) {
+            super(_text);
             this.isTrue = _isTrue;
-            _answers.length = 2; //true und false
+        }
+        check(_input, _isTrue) {
+            super.check(_input, _isTrue);
+            let answer;
+            if (this.isTrue == true) {
+                answer = "ja";
+            }
+            else {
+                answer = "nein";
+            }
+            if (_input == answer) {
+                _isTrue = true;
+                return _isTrue;
+            }
+            else {
+                _isTrue = false;
+                return _isTrue;
+            }
         }
     }
     Quiz.TrueFalseQuestion = TrueFalseQuestion;
     class MultipleChoiceQuestion extends Question {
         constructor(_text, _answers) {
-            super(_text, _answers);
+            super(_text);
+            this.answers = _answers;
+        }
+        check(_input, _isTrue) {
+            super.check(_input, _isTrue);
+            let i = 0;
+            //let input: number = parseInt(_input);
+            while (i < this.answers.length) {
+                if (this.answers[i].text == _input) {
+                    _isTrue = true;
+                    return _isTrue;
+                }
+                else {
+                    _isTrue = false;
+                    return _isTrue;
+                }
+            }
+            _isTrue = false;
+            return _isTrue;
         }
     }
     Quiz.MultipleChoiceQuestion = MultipleChoiceQuestion;
     class GuessQuestion extends Question {
-        constructor(_text, _answers, _answer, _tolerance) {
-            super(_text, _answers);
+        constructor(_text, _answer, _tolerance) {
+            super(_text);
             this.answer = _answer;
-            this.tolernace = _tolerance;
+            this.tolerance = _tolerance;
+        }
+        check(_input, _isTrue) {
+            super.check(_input, _isTrue);
+            let input = parseInt(_input);
+            let newAnswer = parseFloat(this.answer);
+            if (input == newAnswer) {
+                _isTrue = true;
+                return _isTrue;
+            }
+            else {
+                if (this.tolerance < newAnswer) {
+                    if (input > this.tolerance && input < newAnswer) {
+                        _isTrue = true;
+                        return _isTrue;
+                    }
+                    else {
+                        _isTrue = false;
+                        return _isTrue;
+                    }
+                }
+                else {
+                    if (this.tolerance > newAnswer) {
+                        if (input < this.tolerance && input > newAnswer) {
+                            _isTrue = true;
+                            return _isTrue;
+                        }
+                        else {
+                            _isTrue = false;
+                            return _isTrue;
+                        }
+                    }
+                    _isTrue = false;
+                    return _isTrue;
+                }
+            }
         }
     }
     Quiz.GuessQuestion = GuessQuestion;
     class TextQuestion extends Question {
-        constructor(_text, _answers, _answer) {
-            super(_text, _answers);
+        constructor(_text, _answer) {
+            super(_text);
             this.answer = _answer;
+        }
+        check(_input, _isTrue) {
+            super.check(_input, _isTrue);
+            if (_input == this.answer) {
+                _isTrue = true;
+                return _isTrue;
+            }
+            else {
+                _isTrue = false;
+                return _isTrue;
+            }
         }
     }
     Quiz.TextQuestion = TextQuestion;

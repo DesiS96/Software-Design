@@ -9,6 +9,7 @@ var Quiz;
             this.questions.push(_question);
         }
         getCurrentQuestion() {
+            this.currentQuestion = this.questions[this.answerCount];
             return this.currentQuestion;
         }
         changeCurrentQuestion() {

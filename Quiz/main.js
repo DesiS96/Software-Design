@@ -2,10 +2,10 @@
 var Quiz;
 (function (Quiz) {
     let quiz = new Quiz.Quiz([]);
-    let q1 = new Quiz.TrueFalseQuestion("Ist 1+1=2?", [new Quiz.Answer("yes", true), new Quiz.Answer("no", false)], true);
+    let q1 = new Quiz.TrueFalseQuestion("Ist 1+1=2?", true);
     let q2 = new Quiz.MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", [new Quiz.Answer("blau", true), new Quiz.Answer("lila", false), new Quiz.Answer("gelb", true)]);
-    let q3 = new Quiz.GuessQuestion("Wie hoch ist der Mount Everest?", [new Quiz.Answer("8848", true)], "8848", 8000);
-    let q4 = new Quiz.TextQuestion("Wie heißt unsere Hochschule?", [new Quiz.Answer("HFU", true), new Quiz.Answer("HFH", false)], "HFU");
+    let q3 = new Quiz.GuessQuestion("Wie hoch ist der Mount Everest?", "8848", 8000);
+    let q4 = new Quiz.TextQuestion("Wie heißt unsere Hochschule?", "HFU");
     //let answer: Answer = new Answer("blau", true);
     quiz.questions[0] = q1;
     quiz.questions[1] = q2;
@@ -38,23 +38,63 @@ var Quiz;
                             console.log("Bitte ja oder nein eingeben");
                         }
                     }
-                    let question = new Quiz.TrueFalseQuestion(text, [new Quiz.Answer("Warum existiert dieser Parameter?", true)], isTrue);
+                    let question = new Quiz.TrueFalseQuestion(text, isTrue);
                     quiz.addQuestion(question);
                     break;
                 }
                 case "MultipleChoice-Frage": {
                     let answers = [];
                     let text = prompt("Gib eine Frage ein: ");
-                    let answerText = prompt("Gib eine Antwort ein: ");
-                    let isRight;
+                    let answerText;
+                    while (answers.length < 2 && (answerText === "") || answers.length < 6 && !(answerText === "")) {
+                        answerText = prompt("Gib eine Antwort ein: ");
+                        let isRight;
+                        if (answerText === "") {
+                            console.log("Ist diese Antwort richtig? Wähle 1 für ja oder 2 für nein: ");
+                            let inputOfUser = Number(window.prompt("Bitte 1 oder 2 eingeben ", ""));
+                            if (inputOfUser == 1) {
+                                isRight = true;
+                            }
+                            else {
+                                if (inputOfUser == 2) {
+                                    isRight = false;
+                                }
+                                else {
+                                    console.log("Diese Zahl kenne ich nicht");
+                                }
+                            }
+                            let answer = new Quiz.Answer(answerText, isRight);
+                            answers.push(answer);
+                        }
+                        else {
+                            console.log("Antwort wurde nicht eingegeben");
+                        }
+                    }
+                    let question = new Quiz.MultipleChoiceQuestion(text, answers);
+                    quiz.addQuestion(question);
                     break;
                 }
                 case "Guess": {
-                    //Guess
+                    let text = prompt("Gib eine Frage ein: ");
+                    let answer;
+                    while (!(answer === "")) {
+                        answer = prompt("Gib eine Antwort ein: ");
+                    }
+                    while (Number.isNaN(Number.parseFloat(answer))) {
+                        let tolerance = Number(window.prompt("Gib einen Toleranzbereich ein: "));
+                        if (Number.isNaN(Number.parseFloat(answer))) {
+                            let question = new Quiz.GuessQuestion(text, answer, tolerance);
+                            quiz.addQuestion(question);
+                            break;
+                        }
+                    }
                     break;
                 }
                 case "Text": {
-                    //Text
+                    let text = prompt("Gib eine Frage ein: ");
+                    let answer = prompt("Gib eine Antwort ein: ");
+                    let question = new Quiz.TextQuestion(text, answer);
+                    quiz.addQuestion(question);
                     break;
                 }
                 default: {
@@ -64,10 +104,21 @@ var Quiz;
             }
         }
         case 2: {
-            //answer
+            let isRight;
+            let question = quiz.getCurrentQuestion();
+            console.log(question.toString());
+            let answer = prompt("Gib eine Antwort ein: ");
+            let gaveCorrectAnswer = question.check(answer, isRight);
+            if (gaveCorrectAnswer == true) {
+                console.log("Yay! Du hast die Frage richtig beantwortet.");
+            }
+            else {
+                console.log("Deine Antwort war leider falsch.");
+            }
             break;
         }
         case 3: {
+            console.log("Sie haben das Programm beendet");
             break;
         }
     }
