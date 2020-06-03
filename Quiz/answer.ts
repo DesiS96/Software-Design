@@ -12,15 +12,6 @@ namespace Quiz {
 
     }
 
-    /*toString(): string {
-
-
-    }*/
-
-    /*check(): boolean{
-
-    }*/
-
 }
 
 }

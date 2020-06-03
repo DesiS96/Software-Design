@@ -119,41 +119,62 @@ namespace Quiz {
                         answer = prompt("Gib eine Antwort ein: ");
                     }
 
-                    while (Number.isNaN(Number.parseFloat(answer))){
+                    while (Number.isNaN(Number.parseFloat(answer))) {
 
-                        let tolerance = prompt("Gib einen Toleranzbereich ein: ");
-
-
-                    }
-
+                        let tolerance: number = Number(window.prompt("Gib einen Toleranzbereich ein: "));
+                        
+                        if (Number.isNaN(Number.parseFloat(answer))) {
+                            let question: GuessQuestion = new GuessQuestion(text, answer, tolerance);
+                            quiz.addQuestion(question);
+                            break;
+                        }
+                    }      
                     break;
-    
                 }
     
                 case "Text": {
     
-                    //Text
+                    let text: string = prompt("Gib eine Frage ein: ");
+                    let answer: string = prompt("Gib eine Antwort ein: ");
+                    let question: TextQuestion = new TextQuestion(text, answer);
+
+                    quiz.addQuestion(question);
+
                     break;
-    
                 }
-    
+
                 default: {
     
                     console.log("Diese Frage kenne ich nicht");
                     break;
                 }
-    
             }
         }
 
         case 2 : {
 
-            //answer
+            let isRight: boolean;
+            let question: Question = quiz.getCurrentQuestion();
+
+            console.log(question.toString());
+
+            let answer: string = prompt("Gib eine Antwort ein: ");
+            let gaveCorrectAnswer: boolean = question.check(answer, isRight);
+
+            if (gaveCorrectAnswer == true) {
+
+                console.log("Yay! Du hast die Frage richtig beantwortet.");
+            }
+            else {
+
+                console.log("Deine Antwort war leider falsch.");
+            }
             break;
         }
 
         case 3 : {
 
+            console.log("Sie haben das Programm beendet");
             break;
         }
     }

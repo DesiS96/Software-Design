@@ -21,6 +21,8 @@ export class Quiz {
 
     getCurrentQuestion(): Question {
 
+        this.currentQuestion = this.questions[this.answerCount];
+
         return this.currentQuestion;
 
     }

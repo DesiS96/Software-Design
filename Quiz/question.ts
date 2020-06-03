@@ -3,7 +3,6 @@ namespace Quiz {
     export abstract class Question {
 
         public text: string;
-        
 
         constructor(_text: string) {
 
@@ -11,19 +10,15 @@ namespace Quiz {
         }
         toString(): string {
 
-            return "";
+            let s: string = "Frage: " + this.text;
+            return s;
+        }
+        check(_input: string, _isTrue: boolean): boolean {
+
+            return true;
+
         }
 
-        check(_input: string): boolean {
-        
-            if (_input == this.text) {   
-                return true;
-            }
-            else {
-
-                return false;
-            }  
-        }
     }
 
     export class TrueFalseQuestion extends Question {
@@ -36,41 +31,121 @@ namespace Quiz {
             this.isTrue = _isTrue;
 
         }
-        /*toString(): string {          
-            super.toString();
-            return "";
-        }
-        check()
-        kann es das automatisch oder wie?*/
+        check(_input: string, _isTrue: boolean): boolean {
+
+            super.check(_input, _isTrue);
+            let answer: string;
+
+            if (this.isTrue == true) {
+
+                answer = "ja";
+
+            }
+            else {
+
+                answer = "nein";
+            }
+            if (_input == answer) {
+
+                _isTrue = true;
+                return _isTrue;
+            }
+            else {
+
+                _isTrue = false;
+                return _isTrue;
+            }
+        }  
     }
 
     export class MultipleChoiceQuestion extends Question {
 
         public answers: Answer[];
 
-
         constructor(_text: string, _answers: Answer[]) {      
 
             super(_text);
             this.answers = _answers;
         }
+
+        check(_input: string, _isTrue: boolean): boolean {
+
+            super.check(_input, _isTrue);
+            let i: number = 0;
+            //let input: number = parseInt(_input);
+
+            while (i < this.answers.length) {
+
+                if (this.answers[i].text == _input) {
+
+                    _isTrue = true;
+                    return _isTrue;
+                }
+                else {
+
+                    _isTrue = false;
+                    return _isTrue;
+                }
+            }
+            _isTrue = false;
+            return _isTrue;
+        }
+
         //toString und Check einbauen
     }
 
     export class GuessQuestion extends Question {
 
         public answer: string;
-        public tolernace: number;
+        public tolerance: number;
 
         constructor(_text: string, _answer: string, _tolerance: number) {
 
             super(_text);
             this.answer = _answer;
-            this.tolernace = _tolerance;
+            this.tolerance = _tolerance;
         }
 
-        //toString, check
+        check(_input: string, _isTrue: boolean): boolean {
 
+            super.check(_input, _isTrue);
+
+            let input: number = parseInt(_input);
+            let newAnswer: number = parseFloat(this.answer);
+
+            if (input == newAnswer) {
+
+                _isTrue = true;
+                return _isTrue;
+            }
+            else {
+                if (this.tolerance < newAnswer) {
+                    if (input > this.tolerance && input < newAnswer) {
+
+                        _isTrue = true;
+                        return _isTrue;
+                    }
+                    else {
+                        _isTrue = false;
+                        return _isTrue;
+                    }
+                }
+                else {
+                    if (this.tolerance > newAnswer) {
+                        if (input < this.tolerance && input > newAnswer) {
+                            _isTrue = true;
+                            return _isTrue;
+                        }
+                        else {
+                            _isTrue = false;
+                            return _isTrue;
+                        }
+                    }
+                    _isTrue = false;
+                    return _isTrue;
+                }
+            }
+        }
     }
 
     export class TextQuestion extends Question {
@@ -84,7 +159,22 @@ namespace Quiz {
 
         }
 
-        //toString, check
+        check(_input: string, _isTrue: boolean): boolean {
+
+            super.check(_input, _isTrue);
+
+            if (_input == this.answer) {
+
+                _isTrue = true;
+                return _isTrue;
+            }
+            else {
+
+                _isTrue = false;
+                return _isTrue;
+
+            }
+        }
     }
 
 }
