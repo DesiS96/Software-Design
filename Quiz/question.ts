@@ -3,12 +3,11 @@ namespace Quiz {
     export abstract class Question {
 
         public text: string;
-        public answers: Answer[];
+        
 
-        constructor(_text: string, _answers: Answer[]) {
+        constructor(_text: string) {
 
             this.text = _text;
-            this.answers = _answers;
         }
         toString(): string {
 
@@ -25,24 +24,17 @@ namespace Quiz {
                 return false;
             }  
         }
-
-        shuffleAnswers(): void {
-
-            this.answers.sort(() => Math.random() - 0.5);
-            //erste Idee Antworten randomizen         
-        }
     }
 
     export class TrueFalseQuestion extends Question {
 
         public isTrue: boolean;
 
-        constructor(_text: string, _answers: Answer[], _isTrue: boolean) {
+        constructor(_text: string, _isTrue: boolean) {
 
-            super(_text, _answers);
+            super(_text);
             this.isTrue = _isTrue;
 
-            _answers.length = 2; //true und false
         }
         /*toString(): string {          
             super.toString();
@@ -54,10 +46,13 @@ namespace Quiz {
 
     export class MultipleChoiceQuestion extends Question {
 
+        public answers: Answer[];
+
 
         constructor(_text: string, _answers: Answer[]) {      
 
-            super(_text, _answers);
+            super(_text);
+            this.answers = _answers;
         }
         //toString und Check einbauen
     }
@@ -67,9 +62,9 @@ namespace Quiz {
         public answer: string;
         public tolernace: number;
 
-        constructor(_text: string, _answers: Answer[], _answer: string, _tolerance: number) {
+        constructor(_text: string, _answer: string, _tolerance: number) {
 
-            super(_text, _answers);
+            super(_text);
             this.answer = _answer;
             this.tolernace = _tolerance;
         }
@@ -82,9 +77,9 @@ namespace Quiz {
 
         public answer: string;
 
-        constructor(_text: string, _answers: Answer[], _answer: string) {
+        constructor(_text: string, _answer: string) {
 
-            super(_text, _answers);
+            super(_text);
             this.answer = _answer;
 
         }
