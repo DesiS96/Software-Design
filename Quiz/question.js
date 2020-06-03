@@ -19,6 +19,11 @@ var Quiz;
             super(_text);
             this.isTrue = _isTrue;
         }
+        toString() {
+            super.toString();
+            let s = "Frage: " + this.text;
+            return s;
+        }
         check(_input, _isTrue) {
             super.check(_input, _isTrue);
             let answer;
@@ -44,6 +49,11 @@ var Quiz;
             super(_text);
             this.answers = _answers;
         }
+        toString() {
+            super.toString();
+            let s = "Frage: " + this.text;
+            return s;
+        }
         check(_input, _isTrue) {
             super.check(_input, _isTrue);
             let i = 0;
@@ -68,6 +78,11 @@ var Quiz;
             super(_text);
             this.answer = _answer;
             this.tolerance = _tolerance;
+        }
+        toString() {
+            super.toString();
+            let s = "Frage: " + this.text;
+            return s;
         }
         check(_input, _isTrue) {
             super.check(_input, _isTrue);
@@ -110,6 +125,11 @@ var Quiz;
         constructor(_text, _answer) {
             super(_text);
             this.answer = _answer;
+        }
+        toString() {
+            super.toString();
+            let s = "Frage: " + this.text;
+            return s;
         }
         check(_input, _isTrue) {
             super.check(_input, _isTrue);

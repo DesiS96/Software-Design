@@ -31,6 +31,14 @@ namespace Quiz {
             this.isTrue = _isTrue;
 
         }
+
+        toString(): string {
+
+            super.toString();
+            let s: string = "Frage: " + this.text;
+            return s;
+        }
+
         check(_input: string, _isTrue: boolean): boolean {
 
             super.check(_input, _isTrue);
@@ -66,6 +74,12 @@ namespace Quiz {
 
             super(_text);
             this.answers = _answers;
+        }
+        toString(): string {
+
+            super.toString();
+            let s: string = "Frage: " + this.text;
+            return s;
         }
 
         check(_input: string, _isTrue: boolean): boolean {
@@ -104,6 +118,12 @@ namespace Quiz {
             super(_text);
             this.answer = _answer;
             this.tolerance = _tolerance;
+        }
+        toString(): string {
+
+            super.toString();
+            let s: string = "Frage: " + this.text;
+            return s;
         }
 
         check(_input: string, _isTrue: boolean): boolean {
@@ -157,6 +177,12 @@ namespace Quiz {
             super(_text);
             this.answer = _answer;
 
+        }
+        toString(): string {
+
+            super.toString();
+            let s: string = "Frage: " + this.text;
+            return s;
         }
 
         check(_input: string, _isTrue: boolean): boolean {

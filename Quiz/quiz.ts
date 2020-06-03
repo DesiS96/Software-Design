@@ -1,61 +1,61 @@
 namespace Quiz {
 
-export class Quiz {
+    export class Quiz {
 
-    public questions: Question[];
-    public currentQuestion: Question;
-    public answerCount: number;
-    public correctCount: number;
+        public questions: Question[];
+        public currentQuestion: Question;
+        public answerCount: number;
+        public correctCount: number;
 
-    constructor(_questions: Question[]) {
+        constructor(_questions: Question[]) {
 
-        this.questions = _questions;
+            this.questions = _questions;
+
+        }
+
+        addQuestion(_question: Question): void {
+
+            this.questions.push(_question);
+
+        }
+
+        getCurrentQuestion(): Question {
+
+            this.currentQuestion = this.questions[this.answerCount];
+
+            return this.currentQuestion;
+
+        }
+
+        changeCurrentQuestion(): Question {
+
+            let q: Question = this.questions[Math.random() * this.questions.length];
+
+            return q;
+
+
+        }
+
+        getAnswerCount(): number {
+
+            return this.answerCount;
+
+        }
+
+        getCorrectCount(): number {
+
+            return this.correctCount;
+
+        }
+
+        /*answerCurrentQuestion(_choice): string{
+
+
+            answerQuestion Methode auf currentQuestion anwenden
+
+        }*/
+
+
 
     }
-
-    addQuestion(_question: Question): void {
-
-        this.questions.push(_question);
-
-    }
-
-    getCurrentQuestion(): Question {
-
-        this.currentQuestion = this.questions[this.answerCount];
-
-        return this.currentQuestion;
-
-    }
-
-    changeCurrentQuestion(): Question {
-
-        this.currentQuestion = this.questions[Math.random() * this.questions.length];
-
-        return this.currentQuestion;
-
-
-    }
-
-    getAnswerCount(): number {
-
-        return this.answerCount;
-
-    }
-
-    getCorrectCount(): number {
-
-        return this.correctCount;
-
-    }
-
-    /*answerCurrentQuestion(_choice): string{
-
-
-        answerQuestion Methode auf currentQuestion anwenden
-
-    }*/
-
-
-
-}
 }

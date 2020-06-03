@@ -1,16 +1,13 @@
 "use strict";
 var Quiz;
 (function (Quiz) {
-    let quiz = new Quiz.Quiz([]);
+    //let quiz: Quiz = new Quiz([]);
     let q1 = new Quiz.TrueFalseQuestion("Ist 1+1=2?", true);
     let q2 = new Quiz.MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", [new Quiz.Answer("blau", true), new Quiz.Answer("lila", false), new Quiz.Answer("gelb", true)]);
     let q3 = new Quiz.GuessQuestion("Wie hoch ist der Mount Everest?", "8848", 8000);
     let q4 = new Quiz.TextQuestion("Wie heißt unsere Hochschule?", "HFU");
     //let answer: Answer = new Answer("blau", true);
-    quiz.questions[0] = q1;
-    quiz.questions[1] = q2;
-    quiz.questions[2] = q3;
-    quiz.questions[3] = q4;
+    let quiz = new Quiz.Quiz([q1, q2, q3, q4]);
     console.log("Beantwortete Fragen " + quiz.getAnswerCount() + " Richtig beantwortet: " + quiz.getCorrectCount());
     console.log("Bitte wähle: ");
     console.log("1 um eine Frage zum Quiz hinzu zu fügen");
@@ -49,7 +46,7 @@ var Quiz;
                     while (answers.length < 2 && (answerText === "") || answers.length < 6 && !(answerText === "")) {
                         answerText = prompt("Gib eine Antwort ein: ");
                         let isRight;
-                        if (answerText === "") {
+                        if (answerText === "") { //Funktioniert nicht da vom Programm leerer String erwartet wird
                             console.log("Ist diese Antwort richtig? Wähle 1 für ja oder 2 für nein: ");
                             let inputOfUser = Number(window.prompt("Bitte 1 oder 2 eingeben ", ""));
                             if (inputOfUser == 1) {
@@ -106,7 +103,8 @@ var Quiz;
         case 2: {
             let isRight;
             let question = quiz.getCurrentQuestion();
-            console.log(question.toString());
+            let text = question.toString();
+            console.log(text);
             let answer = prompt("Gib eine Antwort ein: ");
             let gaveCorrectAnswer = question.check(answer, isRight);
             if (gaveCorrectAnswer == true) {

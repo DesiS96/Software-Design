@@ -1,6 +1,6 @@
 namespace Quiz {
 
-    let quiz: Quiz = new Quiz([]);
+    //let quiz: Quiz = new Quiz([]);
 
     let q1: TrueFalseQuestion = new TrueFalseQuestion("Ist 1+1=2?", true);
     let q2: MultipleChoiceQuestion = new MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", [new Answer("blau", true), new Answer("lila", false), new Answer("gelb", true)]);
@@ -9,10 +9,7 @@ namespace Quiz {
 
     //let answer: Answer = new Answer("blau", true);
 
-    quiz.questions[0] = q1;
-    quiz.questions[1] = q2;
-    quiz.questions[2] = q3;
-    quiz.questions[3] = q4;
+    let quiz: Quiz = new Quiz([q1, q2, q3, q4]);
 
     console.log("Beantwortete Fragen " + quiz.getAnswerCount() + " Richtig beantwortet: " + quiz.getCorrectCount());
 
@@ -74,7 +71,7 @@ namespace Quiz {
                     answerText = prompt("Gib eine Antwort ein: ");
                     let isRight: boolean;
 
-                    if (answerText === "") {
+                    if (answerText === "") {//Funktioniert nicht da vom Programm leerer String erwartet wird
 
                         console.log("Ist diese Antwort richtig? Wähle 1 für ja oder 2 für nein: ");
 
@@ -156,7 +153,9 @@ namespace Quiz {
             let isRight: boolean;
             let question: Question = quiz.getCurrentQuestion();
 
-            console.log(question.toString());
+            let text: string = question.toString();
+
+            console.log(text);
 
             let answer: string = prompt("Gib eine Antwort ein: ");
             let gaveCorrectAnswer: boolean = question.check(answer, isRight);
