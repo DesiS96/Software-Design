@@ -110,10 +110,12 @@ namespace Quiz {
                         let answer: Answer = new Answer(answerText, isRight);
 
                         answers.push(answer);
+                        break;
                     }
                     else {
 
                         console.log("Antwort wurde nicht eingegeben");
+                        break;
                     }
                 }
                     let question: MultipleChoiceQuestion = new MultipleChoiceQuestion(text, answers);
