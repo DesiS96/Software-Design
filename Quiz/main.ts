@@ -11,6 +11,8 @@ namespace Quiz {
 
     let quiz: Quiz = new Quiz([q1, q2, q3, q4]);
 
+    console.log(quiz.questions[1]);
+
     console.log("Beantwortete Fragen " + quiz.getAnswerCount() + " Richtig beantwortet: " + quiz.getCorrectCount());
 
     console.log("Bitte wähle: ");
@@ -21,6 +23,8 @@ namespace Quiz {
     //gibts einen Weg innerhalb eines Conole.logs einen Zeilenumbruch durchzuführen?
 
     let userInput: number =  Number(window.prompt("Gib eine Zahl ein", ""));
+
+    //Schleife fehlt
 
     switch (userInput) {
 
@@ -71,7 +75,7 @@ namespace Quiz {
                     answerText = prompt("Gib eine Antwort ein: ");
                     let isRight: boolean;
 
-                    if (answerText === "") {//Funktioniert nicht da vom Programm leerer String erwartet wird
+                    if (!(answerText === "")) {
 
                         console.log("Ist diese Antwort richtig? Wähle 1 für ja oder 2 für nein: ");
 
@@ -177,6 +181,7 @@ namespace Quiz {
             break;
         }
     }
+
 
 
 

@@ -13,8 +13,8 @@ var Quiz;
             return this.currentQuestion;
         }
         changeCurrentQuestion() {
-            let q = this.questions[Math.random() * this.questions.length];
-            return q;
+            this.currentQuestion = this.questions[Math.random() * this.questions.length];
+            return this.currentQuestion;
         }
         getAnswerCount() {
             return this.answerCount;

@@ -29,9 +29,9 @@ namespace Quiz {
 
         changeCurrentQuestion(): Question {
 
-            let q: Question = this.questions[Math.random() * this.questions.length];
+            this.currentQuestion = this.questions[Math.random() * this.questions.length];
 
-            return q;
+            return this.currentQuestion;
 
 
         }
