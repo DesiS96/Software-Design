@@ -9,9 +9,21 @@ namespace Quiz {
 
     //let answer: Answer = new Answer("blau", true);
 
-    let quiz: Quiz = new Quiz([q1, q2, q3, q4]);
+    let quiz: Quiz = new Quiz([]);
+
+    quiz.questions.push(q1);
+    quiz.questions.push(q2);
+    quiz.questions.push(q3);
+    quiz.questions.push(q4);
 
     console.log(quiz.questions[1]);
+
+    quiz.answerCount = 0;
+    quiz.correctCount = 0;
+
+    let goOn: boolean = true;
+
+    while (goOn == true) {
 
     console.log("Beantwortete Fragen " + quiz.getAnswerCount() + " Richtig beantwortet: " + quiz.getCorrectCount());
 
@@ -155,9 +167,13 @@ namespace Quiz {
         case 2 : {
 
             let isRight: boolean;
-            let question: Question = quiz.getCurrentQuestion();
+            let question: Question = quiz.getCurrentQuestion(); //bekommt die currentQuestion nicht warum auch immer
+
+            //let question: Question = quiz.questions[Math.random() * quiz.questions.length];
 
             let text: string = question.toString();
+
+            //console.log(question.text);
 
             console.log(text);
 
@@ -167,10 +183,13 @@ namespace Quiz {
             if (gaveCorrectAnswer == true) {
 
                 console.log("Yay! Du hast die Frage richtig beantwortet.");
+                quiz.answerCount++;
+                quiz.correctCount++;
             }
             else {
 
                 console.log("Deine Antwort war leider falsch.");
+                quiz.answerCount++;
             }
             break;
         }
@@ -178,18 +197,9 @@ namespace Quiz {
         case 3 : {
 
             console.log("Sie haben das Programm beendet");
+            goOn = false;
             break;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
+}
 }

@@ -7,17 +7,24 @@ var Quiz;
     let q3 = new Quiz.GuessQuestion("Wie hoch ist der Mount Everest?", "8848", 8000);
     let q4 = new Quiz.TextQuestion("Wie heißt unsere Hochschule?", "HFU");
     //let answer: Answer = new Answer("blau", true);
-    let quiz = new Quiz.Quiz([q1, q2, q3, q4]);
+    let quiz = new Quiz.Quiz([]);
+    quiz.questions.push(q1);
+    quiz.questions.push(q2);
+    quiz.questions.push(q3);
+    quiz.questions.push(q4);
     console.log(quiz.questions[1]);
-    console.log("Beantwortete Fragen " + quiz.getAnswerCount() + " Richtig beantwortet: " + quiz.getCorrectCount());
-    console.log("Bitte wähle: ");
-    console.log("1 um eine Frage zum Quiz hinzu zu fügen");
-    console.log("2 um eine Frage zu beantworten");
-    console.log("3 um das Quiz zu beenden");
-    //gibts einen Weg innerhalb eines Conole.logs einen Zeilenumbruch durchzuführen?
-    let userInput = Number(window.prompt("Gib eine Zahl ein", ""));
-    //Schleife fehlt
-    for (let i; i < 6; i++) {
+    quiz.answerCount = 0;
+    quiz.correctCount = 0;
+    let goOn = true;
+    while (goOn == true) {
+        console.log("Beantwortete Fragen " + quiz.getAnswerCount() + " Richtig beantwortet: " + quiz.getCorrectCount());
+        console.log("Bitte wähle: ");
+        console.log("1 um eine Frage zum Quiz hinzu zu fügen");
+        console.log("2 um eine Frage zu beantworten");
+        console.log("3 um das Quiz zu beenden");
+        //gibts einen Weg innerhalb eines Conole.logs einen Zeilenumbruch durchzuführen?
+        let userInput = Number(window.prompt("Gib eine Zahl ein", ""));
+        //Schleife fehlt
         switch (userInput) {
             case 1: {
                 console.log("Willst du eine TrueFalse-Frage, eine MultipleChoice-Frage, eine Guess- oder eine Text-Frage hinzufügen?");
@@ -49,7 +56,7 @@ var Quiz;
                         while (answers.length < 2 && (answerText === "") || answers.length < 6 && !(answerText === "")) {
                             answerText = prompt("Gib eine Antwort ein: ");
                             let isRight;
-                            if (!(answerText === "")) { //Funktioniert nicht da vom Programm leerer String erwartet wird
+                            if (!(answerText === "")) {
                                 console.log("Ist diese Antwort richtig? Wähle 1 für ja oder 2 für nein: ");
                                 let inputOfUser = Number(window.prompt("Bitte 1 oder 2 eingeben ", ""));
                                 if (inputOfUser == 1) {
@@ -105,21 +112,27 @@ var Quiz;
             }
             case 2: {
                 let isRight;
-                let question = quiz.getCurrentQuestion();
+                let question = quiz.getCurrentQuestion(); //bekommt die currentQuestion nicht warum auch immer
+                //let question: Question = quiz.questions[Math.random() * quiz.questions.length];
                 let text = question.toString();
+                //console.log(question.text);
                 console.log(text);
                 let answer = prompt("Gib eine Antwort ein: ");
                 let gaveCorrectAnswer = question.check(answer, isRight);
                 if (gaveCorrectAnswer == true) {
                     console.log("Yay! Du hast die Frage richtig beantwortet.");
+                    quiz.answerCount++;
+                    quiz.correctCount++;
                 }
                 else {
                     console.log("Deine Antwort war leider falsch.");
+                    quiz.answerCount++;
                 }
                 break;
             }
             case 3: {
                 console.log("Sie haben das Programm beendet");
+                goOn = false;
                 break;
             }
         }
