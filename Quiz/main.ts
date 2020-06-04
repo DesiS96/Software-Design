@@ -202,6 +202,12 @@ namespace Quiz {
             goOn = false;
             break;
         }
+
+        default: {
+
+            console.log("Diese Nummer kenne ich nicht");
+            break;
+        }
     }
 }
 }
