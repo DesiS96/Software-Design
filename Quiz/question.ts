@@ -35,7 +35,7 @@ namespace Quiz {
         toString(): string {
 
             super.toString();
-            let s: string = "Frage: " + this.text;
+            let s: string = "Frage: " + this.text + ". Antworte mit ja oder nein";
             return s;
         }
 
@@ -78,7 +78,9 @@ namespace Quiz {
         toString(): string {
 
             super.toString();
-            let s: string = "Frage: " + this.text;
+            console.log("Frage: " + this.text);
+            let s: string = this.answers.join( );
+
             return s;
         }
 
@@ -86,7 +88,6 @@ namespace Quiz {
 
             super.check(_input, _isTrue);
             let i: number = 0;
-            //let input: number = parseInt(_input);
 
             while (i < this.answers.length) {
 
@@ -104,8 +105,6 @@ namespace Quiz {
             _isTrue = false;
             return _isTrue;
         }
-
-        //toString und Check einbauen
     }
 
     export class GuessQuestion extends Question {
@@ -123,6 +122,8 @@ namespace Quiz {
 
             super.toString();
             let s: string = "Frage: " + this.text;
+            console.log("Gib als Antwort eine Zahl ein");
+
             return s;
         }
 
@@ -182,6 +183,8 @@ namespace Quiz {
 
             super.toString();
             let s: string = "Frage: " + this.text;
+            console.log("Gib deine Antwort als Satz ein");
+
             return s;
         }
 

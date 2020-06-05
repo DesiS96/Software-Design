@@ -21,7 +21,7 @@ var Quiz;
         }
         toString() {
             super.toString();
-            let s = "Frage: " + this.text;
+            let s = "Frage: " + this.text + ". Antworte mit ja oder nein";
             return s;
         }
         check(_input, _isTrue) {
@@ -51,13 +51,13 @@ var Quiz;
         }
         toString() {
             super.toString();
-            let s = "Frage: " + this.text;
+            console.log("Frage: " + this.text);
+            let s = this.answers.join();
             return s;
         }
         check(_input, _isTrue) {
             super.check(_input, _isTrue);
             let i = 0;
-            //let input: number = parseInt(_input);
             while (i < this.answers.length) {
                 if (this.answers[i].text == _input) {
                     _isTrue = true;
@@ -82,6 +82,7 @@ var Quiz;
         toString() {
             super.toString();
             let s = "Frage: " + this.text;
+            console.log("Gib als Antwort eine Zahl ein");
             return s;
         }
         check(_input, _isTrue) {
@@ -129,6 +130,7 @@ var Quiz;
         toString() {
             super.toString();
             let s = "Frage: " + this.text;
+            console.log("Gib deine Antwort als Satz ein");
             return s;
         }
         check(_input, _isTrue) {

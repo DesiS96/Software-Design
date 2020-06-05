@@ -23,191 +23,199 @@ namespace Quiz {
 
     let goOn: boolean = true;
 
+    window.alert("Bitte gib die Zahl 3 ein, öffne die Entwicklerkonsole und lade die Seite neu. Sonst kannst du Konsole leider nicht lesen.");
+
     while (goOn == true) {
 
-    console.log("Beantwortete Fragen " + quiz.getAnswerCount() + " Richtig beantwortet: " + quiz.getCorrectCount());
+        console.log("Beantwortete Fragen " + quiz.getAnswerCount() + " Richtig beantwortet: " + quiz.getCorrectCount());
 
-    console.log("Bitte wähle: ");
-    console.log("1 um eine Frage zum Quiz hinzu zu fügen");
-    console.log("2 um eine Frage zu beantworten");
-    console.log("3 um das Quiz zu beenden");
+        console.log("Bitte wähle: ");
+        console.log("1 um eine Frage zum Quiz hinzu zu fügen");
+        console.log("2 um eine Frage zu beantworten");
+        console.log("3 um das Quiz zu beenden");
 
-    //gibts einen Weg innerhalb eines Conole.logs einen Zeilenumbruch durchzuführen?
+        //gibts einen Weg innerhalb eines Conole.logs einen Zeilenumbruch durchzuführen?
 
-    let userInput: number =  Number(window.prompt("Gib eine Zahl ein", ""));
+        let userInput: number =  Number(window.prompt("Gib, je nach dem was du tun willst, die entsprechende Zahl ein", ""));
 
-    //Schleife fehlt
+        switch (userInput) {
 
-    switch (userInput) {
-
-        case 1: { 
-            
-            console.log("Willst du eine TrueFalse-Frage, eine MultipleChoice-Frage, eine Guess- oder eine Text-Frage hinzufügen?");
-
-            let userInput: string =  prompt("Bitte gib den Namen der Frage ein: ");
-    
-            switch (userInput) {
-    
-                case "TrueFalse-Frage": {
-    
-                    let text: string = prompt("Gib eine Behauptung ein: ");
-    
-                    let isTrue: boolean;
+            case 1: { 
                 
-                    let input: string = prompt("Stimmt diese Behauptung? Schreibe etweder ja oder nein: ");
-    
-                    if (input == "ja") {
-    
-                        isTrue = true;
-                    }
-                    else {
-    
-                        if (input == "nein") {
-    
-                            isTrue = false;
-                        }
-                        else {
-                            console.log("Bitte ja oder nein eingeben");
-                        }
-                    }
-                    let question: TrueFalseQuestion = new TrueFalseQuestion(text, isTrue);
+                console.log("Willst du eine TrueFalse-Frage, eine MultipleChoice-Frage, eine Guess- oder eine Text-Frage hinzufügen?");
 
-                    quiz.addQuestion(question);
-    
-                    break;
-                }
-    
-                case "MultipleChoice-Frage": {
-    
-                    let answers: Answer[] = [];
-                    let text: string = prompt("Gib eine Frage ein: ");
-                    let answerText: string;
-
-                    while (answers.length < 2 && (answerText === "") || answers.length < 6 && !(answerText === "")) {
-                    answerText = prompt("Gib eine Antwort ein: ");
-                    let isRight: boolean;
-
-                    if (!(answerText === "")) {
-
-                        console.log("Ist diese Antwort richtig? Wähle 1 für ja oder 2 für nein: ");
-
-                        let inputOfUser: number = Number(window.prompt("Bitte 1 oder 2 eingeben ", ""));
+                let userInput: string =  prompt("Bitte gib entweder TrueFalse, Multiple-Choice, Guess oder Text ein: ");
+        
+                switch (userInput) {
+        
+                    case "TrueFalse": {
+            
+                        let text: string = prompt("Gib eine Behauptung ein: ");
+            
+                        let isTrue: boolean;
                         
-                        if (inputOfUser == 1) {
-                            isRight = true;
+                        let input: string = prompt("Stimmt diese Behauptung? Schreibe etweder ja oder nein: ");
+            
+                        if (input == "ja") {
+            
+                                isTrue = true;
 
+                                let question: TrueFalseQuestion = new TrueFalseQuestion(text, isTrue);
+                                quiz.addQuestion(question);
+                                break;
                         }
                         else {
+        
+                            if (input == "nein") {
+        
+                                isTrue = false;
 
-                            if (inputOfUser == 2) {
-                                isRight = false;
+                                let question: TrueFalseQuestion = new TrueFalseQuestion(text, isTrue);
+                                quiz.addQuestion(question);
+                                break;
+
                             }
                             else {
-                                console.log("Diese Zahl kenne ich nicht");
+                                console.log("Bitte ja oder nein eingeben");
+                                break;
+                            }
+                        }  
+                    }
+        
+                    case "Multiple-Choice": {
+        
+                        let answers: Answer[] = [];
+                        let text: string = prompt("Gib eine Fragestellung ein: ");
+                        let answerText: string;
+
+                        while (answers.length < 2 && (answerText === "") || answers.length < 6 && !(answerText === "")) {
+
+                            answerText = prompt("Gib eine Antwort ein: ");
+                            let isRight: boolean;
+
+                            if (!(answerText === "")) {
+
+                                console.log("Ist diese Antwort richtig? Wähle 1 für ja oder 2 für nein: ");
+
+                                let inputOfUser: number = Number(window.prompt("Bitte 1 oder 2 eingeben ", ""));
+                                
+                                if (inputOfUser == 1) {
+                                    isRight = true;
+
+                                }
+                                else {
+
+                                if (inputOfUser == 2) {
+                                    isRight = false;
+                                }
+                                else {
+                                    console.log("Diese Zahl kenne ich nicht");
+                                    }
+                                }
+                                let answer: Answer = new Answer(answerText, isRight);
+
+                                answers.push(answer);
+
+                            }
+                            else {
+
+                                console.log("Antwort wurde nicht eingegeben");
+                                break;
                             }
                         }
-
-                        let answer: Answer = new Answer(answerText, isRight);
-
-                        answers.push(answer);
+                        let question: MultipleChoiceQuestion = new MultipleChoiceQuestion(text, answers);
+                        quiz.addQuestion(question);
+                       
                         break;
                     }
-                    else {
 
-                        console.log("Antwort wurde nicht eingegeben");
-                        break;
-                    }
-                }
-                    let question: MultipleChoiceQuestion = new MultipleChoiceQuestion(text, answers);
-                    quiz.addQuestion(question);
-                    break;
-                }
+                    case "Guess": {
+        
+                        let text: string = prompt("Gib eine Fragestellung ein: ");
 
-                case "Guess": {
-    
-                    let text: string = prompt("Gib eine Frage ein: ");
+                        let answer: string;
 
-                    let answer: string;
-
-                    while (!(answer === "")) {
+                        //while ((answer === "")) { Programm kam komischerweise nicht in die Schleife, deshalb habe ich sie entfernt
 
                         answer = prompt("Gib eine Antwort ein: ");
-                    }
+                        //}
 
-                    while (Number.isNaN(Number.parseFloat(answer))) {
+                        //while (Number.isNaN(Number.parseFloat(answer))) {
 
                         let tolerance: number = Number(window.prompt("Gib einen Toleranzbereich ein: "));
-                        
-                        if (Number.isNaN(Number.parseFloat(answer))) {
-                            let question: GuessQuestion = new GuessQuestion(text, answer, tolerance);
-                            quiz.addQuestion(question);
-                            break;
-                        }
-                    }      
-                    break;
+                        let question: GuessQuestion = new GuessQuestion(text, answer, tolerance);
+                        quiz.addQuestion(question);
+                        break;
+                            /*if (Number.isNaN(Number.parseFloat(answer))) {
+                                
+                                break;
+                            }
+                        }*/     
+                        //break;
+                    }
+        
+                    case "Text": {
+        
+                        let text: string = prompt("Gib eine Fragestellung ein: ");
+                        let answer: string = prompt("Gib eine Antwort ein: ");
+                        let question: TextQuestion = new TextQuestion(text, answer);
+
+                        quiz.addQuestion(question);
+
+                        break;
+                    }
+
+                    default: {
+        
+                        console.log("Diese Frage kenne ich nicht");
+                        break;
+                    }
                 }
-    
-                case "Text": {
-    
-                    let text: string = prompt("Gib eine Frage ein: ");
-                    let answer: string = prompt("Gib eine Antwort ein: ");
-                    let question: TextQuestion = new TextQuestion(text, answer);
+                break;
+            }
 
-                    quiz.addQuestion(question);
+            case 2 : {
 
-                    break;
+                let isRight: boolean;
+                let question: Question = quiz.getCurrentQuestion(); //bekommt die currentQuestion nicht warum auch immer
+
+                //let question: Question = quiz.questions[Math.random() * quiz.questions.length];
+
+                let text: string = question.toString();
+
+                //console.log(question.text);
+
+                console.log(text);
+
+                let answer: string = prompt("Gib eine Antwort ein: ");
+                let gaveCorrectAnswer: boolean = question.check(answer, isRight);
+
+                if (gaveCorrectAnswer == true) {
+
+                    console.log("Yay! Du hast die Frage richtig beantwortet.");
+                    quiz.answerCount++;
+                    quiz.correctCount++;
                 }
+                else {
 
-                default: {
-    
-                    console.log("Diese Frage kenne ich nicht");
-                    break;
+                    console.log("Deine Antwort war leider falsch.");
+                    quiz.answerCount++;
                 }
+                break;
             }
-        }
 
-        case 2 : {
+            case 3 : {
 
-            let isRight: boolean;
-            let question: Question = quiz.getCurrentQuestion(); //bekommt die currentQuestion nicht warum auch immer
-
-            //let question: Question = quiz.questions[Math.random() * quiz.questions.length];
-
-            let text: string = question.toString();
-
-            //console.log(question.text);
-
-            console.log(text);
-
-            let answer: string = prompt("Gib eine Antwort ein: ");
-            let gaveCorrectAnswer: boolean = question.check(answer, isRight);
-
-            if (gaveCorrectAnswer == true) {
-
-                console.log("Yay! Du hast die Frage richtig beantwortet.");
-                quiz.answerCount++;
-                quiz.correctCount++;
+                console.log("Sie haben das Programm beendet");
+                goOn = false;
+                break;
             }
-            else {
 
-                console.log("Deine Antwort war leider falsch.");
-                quiz.answerCount++;
+            default: {
+
+                console.log("Diese Nummer kenne ich nicht");
+                break;
             }
-            break;
-        }
-
-        case 3 : {
-
-            console.log("Sie haben das Programm beendet");
-            goOn = false;
-            break;
-        }
-
-        default: {
-
-            console.log("Diese Nummer kenne ich nicht");
-            break;
         }
     }
-}
 }

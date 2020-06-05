@@ -16,6 +16,7 @@ var Quiz;
     quiz.answerCount = 0;
     quiz.correctCount = 0;
     let goOn = true;
+    window.alert("Bitte gib die Zahl 3 ein, öffne die Entwicklerkonsole und lade die Seite neu. Sonst kannst du Konsole leider nicht lesen.");
     while (goOn == true) {
         console.log("Beantwortete Fragen " + quiz.getAnswerCount() + " Richtig beantwortet: " + quiz.getCorrectCount());
         console.log("Bitte wähle: ");
@@ -23,35 +24,38 @@ var Quiz;
         console.log("2 um eine Frage zu beantworten");
         console.log("3 um das Quiz zu beenden");
         //gibts einen Weg innerhalb eines Conole.logs einen Zeilenumbruch durchzuführen?
-        let userInput = Number(window.prompt("Gib eine Zahl ein", ""));
-        //Schleife fehlt
+        let userInput = Number(window.prompt("Gib, je nach dem was du tun willst, die entsprechende Zahl ein", ""));
         switch (userInput) {
             case 1: {
                 console.log("Willst du eine TrueFalse-Frage, eine MultipleChoice-Frage, eine Guess- oder eine Text-Frage hinzufügen?");
-                let userInput = prompt("Bitte gib den Namen der Frage ein: ");
+                let userInput = prompt("Bitte gib entweder TrueFalse, Multiple-Choice, Guess oder Text ein: ");
                 switch (userInput) {
-                    case "TrueFalse-Frage": {
+                    case "TrueFalse": {
                         let text = prompt("Gib eine Behauptung ein: ");
                         let isTrue;
                         let input = prompt("Stimmt diese Behauptung? Schreibe etweder ja oder nein: ");
                         if (input == "ja") {
                             isTrue = true;
+                            let question = new Quiz.TrueFalseQuestion(text, isTrue);
+                            quiz.addQuestion(question);
+                            break;
                         }
                         else {
                             if (input == "nein") {
                                 isTrue = false;
+                                let question = new Quiz.TrueFalseQuestion(text, isTrue);
+                                quiz.addQuestion(question);
+                                break;
                             }
                             else {
                                 console.log("Bitte ja oder nein eingeben");
+                                break;
                             }
                         }
-                        let question = new Quiz.TrueFalseQuestion(text, isTrue);
-                        quiz.addQuestion(question);
-                        break;
                     }
-                    case "MultipleChoice-Frage": {
+                    case "Multiple-Choice": {
                         let answers = [];
-                        let text = prompt("Gib eine Frage ein: ");
+                        let text = prompt("Gib eine Fragestellung ein: ");
                         let answerText;
                         while (answers.length < 2 && (answerText === "") || answers.length < 6 && !(answerText === "")) {
                             answerText = prompt("Gib eine Antwort ein: ");
@@ -72,7 +76,6 @@ var Quiz;
                                 }
                                 let answer = new Quiz.Answer(answerText, isRight);
                                 answers.push(answer);
-                                break;
                             }
                             else {
                                 console.log("Antwort wurde nicht eingegeben");
@@ -84,23 +87,25 @@ var Quiz;
                         break;
                     }
                     case "Guess": {
-                        let text = prompt("Gib eine Frage ein: ");
+                        let text = prompt("Gib eine Fragestellung ein: ");
                         let answer;
-                        while (!(answer === "")) {
-                            answer = prompt("Gib eine Antwort ein: ");
-                        }
-                        while (Number.isNaN(Number.parseFloat(answer))) {
-                            let tolerance = Number(window.prompt("Gib einen Toleranzbereich ein: "));
-                            if (Number.isNaN(Number.parseFloat(answer))) {
-                                let question = new Quiz.GuessQuestion(text, answer, tolerance);
-                                quiz.addQuestion(question);
-                                break;
-                            }
-                        }
+                        //while ((answer === "")) { Programm kam komischerweise nicht in die Schleife, deshalb habe ich sie entfernt
+                        answer = prompt("Gib eine Antwort ein: ");
+                        //}
+                        //while (Number.isNaN(Number.parseFloat(answer))) {
+                        let tolerance = Number(window.prompt("Gib einen Toleranzbereich ein: "));
+                        let question = new Quiz.GuessQuestion(text, answer, tolerance);
+                        quiz.addQuestion(question);
                         break;
+                        /*if (Number.isNaN(Number.parseFloat(answer))) {
+                            
+                            break;
+                        }
+                    }*/
+                        //break;
                     }
                     case "Text": {
-                        let text = prompt("Gib eine Frage ein: ");
+                        let text = prompt("Gib eine Fragestellung ein: ");
                         let answer = prompt("Gib eine Antwort ein: ");
                         let question = new Quiz.TextQuestion(text, answer);
                         quiz.addQuestion(question);
@@ -111,6 +116,7 @@ var Quiz;
                         break;
                     }
                 }
+                break;
             }
             case 2: {
                 let isRight;

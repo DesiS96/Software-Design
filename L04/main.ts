@@ -5,6 +5,8 @@ namespace l04 {
     console.info("Dies ist eine Info-Ausgabe");
     console.warn("Das ist eine Warnung!");
 
+    window.alert("Hi");
+
     let x: number = 0;
 
     console.log(x);

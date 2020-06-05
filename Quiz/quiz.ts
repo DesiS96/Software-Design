@@ -33,7 +33,6 @@ namespace Quiz {
 
             return this.currentQuestion;
 
-
         }
 
         getAnswerCount(): number {
@@ -47,15 +46,5 @@ namespace Quiz {
             return this.correctCount;
 
         }
-
-        /*answerCurrentQuestion(_choice): string{
-
-
-            answerQuestion Methode auf currentQuestion anwenden
-
-        }*/
-
-
-
     }
 }
