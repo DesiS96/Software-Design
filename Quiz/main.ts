@@ -1,4 +1,4 @@
-namespace Quiz {
+ namespace Quiz {
 
     //let quiz: Quiz = new Quiz([]);
 
@@ -102,6 +102,7 @@ namespace Quiz {
                                 if (inputOfUser == 1) {
                                     isRight = true;
 
+
                                 }
                                 else {
 
@@ -112,6 +113,8 @@ namespace Quiz {
                                     console.log("Diese Zahl kenne ich nicht");
                                     }
                                 }
+
+
                                 let answer: Answer = new Answer(answerText, isRight);
 
                                 answers.push(answer);
