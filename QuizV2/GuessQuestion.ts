@@ -6,13 +6,13 @@ namespace QuizV2 {
         toleranceMin: number;
         toleranceMax: number;
 
-        constructor(_question: string, _rightAnswer: number, _toleranceMin: number, _toleranceMax: number){
+        constructor(_question: string, _rightAnswer: number, _toleranceMin: number, _toleranceMax: number) {
 
             super(_question);
             this.rightAnswer = _rightAnswer;
             this.toleranceMin = _toleranceMin;
             this.toleranceMax = _toleranceMax;
-            
+
         }
     }
 }
