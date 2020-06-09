@@ -1,0 +1,7 @@
+{
+    "question":{
+
+        "questionText": "Wie hieß mein erstes Haustier?", "rightAnswer": 4,
+        "answers": ["Kara", "Cincia", "Gigi", "Hanna"]
+    }
+}
