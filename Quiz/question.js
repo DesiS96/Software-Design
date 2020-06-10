@@ -9,7 +9,7 @@ var Quiz;
             let s = "Frage: " + this.text;
             return s;
         }
-        check(_input, _isTrue) {
+        check(_isTrue) {
             return true;
         }
     }
@@ -24,16 +24,17 @@ var Quiz;
             let s = "Frage: " + this.text + ". Antworte mit ja oder nein";
             return s;
         }
-        check(_input, _isTrue) {
-            super.check(_input, _isTrue);
+        check(_isTrue) {
+            super.check(_isTrue);
             let answer;
+            let input = prompt("Gib eine Antwort ein: ");
             if (this.isTrue == true) {
                 answer = "ja";
             }
             else {
                 answer = "nein";
             }
-            if (_input == answer) {
+            if (input == answer) {
                 _isTrue = true;
                 return _isTrue;
             }
@@ -45,9 +46,10 @@ var Quiz;
     }
     Quiz.TrueFalseQuestion = TrueFalseQuestion;
     class MultipleChoiceQuestion extends Question {
-        constructor(_text, _answers) {
+        constructor(_text, _answers, _rightAnswers) {
             super(_text);
             this.answers = _answers;
+            this.rightAnswers = _rightAnswers;
         }
         toString() {
             super.toString();
@@ -55,11 +57,13 @@ var Quiz;
             let s = this.answers.join();
             return s;
         }
-        check(_input, _isTrue) {
-            super.check(_input, _isTrue);
+        //Frage darin beantworten
+        check(_isTrue) {
+            let input = prompt("Gib eine Antwort ein: ");
+            super.check(_isTrue);
             let i = 0;
             while (i < this.answers.length) {
-                if (this.answers[i].text == _input) {
+                if (this.answers[i] == input) {
                     _isTrue = true;
                     return _isTrue;
                 }
@@ -85,9 +89,10 @@ var Quiz;
             console.log("Gib als Antwort eine Zahl ein");
             return s;
         }
-        check(_input, _isTrue) {
-            super.check(_input, _isTrue);
-            let input = parseInt(_input);
+        check(_isTrue) {
+            super.check(_isTrue);
+            let userInput = prompt("Gib eine Antwort ein: ");
+            let input = parseInt(userInput);
             let newAnswer = parseFloat(this.answer);
             if (input == newAnswer) {
                 _isTrue = true;
@@ -133,9 +138,10 @@ var Quiz;
             console.log("Gib deine Antwort als Satz ein");
             return s;
         }
-        check(_input, _isTrue) {
-            super.check(_input, _isTrue);
-            if (_input == this.answer) {
+        check(_isTrue) {
+            super.check(_isTrue);
+            let input = prompt("Gib eine Antwort ein: ");
+            if (input == this.answer) {
                 _isTrue = true;
                 return _isTrue;
             }

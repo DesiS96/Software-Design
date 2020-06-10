@@ -3,7 +3,7 @@ var Quiz;
 (function (Quiz) {
     //let quiz: Quiz = new Quiz([]);
     let q1 = new Quiz.TrueFalseQuestion("Ist 1+1=2?", true);
-    let q2 = new Quiz.MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", [new Quiz.Answer("blau", true), new Quiz.Answer("lila", false), new Quiz.Answer("gelb", true)]);
+    let q2 = new Quiz.MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", ["blau", "lila", "gelb"], [1, 3]);
     let q3 = new Quiz.GuessQuestion("Wie hoch ist der Mount Everest?", "8848", 8000);
     let q4 = new Quiz.TextQuestion("Wie heißt unsere Hochschule?", "HFU");
     //let answer: Answer = new Answer("blau", true);
@@ -56,33 +56,36 @@ var Quiz;
                     case "Multiple-Choice": {
                         let answers = [];
                         let text = prompt("Gib eine Fragestellung ein: ");
+                        let rightAnswers;
                         let answerText;
-                        while (answers.length < 2 && (answerText === "") || answers.length < 6 && !(answerText === "")) {
+                        let i = 0;
+                        //while (answers.length < 2 && (answerText === "") || answers.length < 6 && !(answerText === "")) {
+                        while (answers.length < 6 && !(answerText === "")) {
                             answerText = prompt("Gib eine Antwort ein: ");
-                            let isRight;
                             if (!(answerText === "")) {
                                 console.log("Ist diese Antwort richtig? Wähle 1 für ja oder 2 für nein: ");
                                 let inputOfUser = Number(window.prompt("Bitte 1 oder 2 eingeben ", ""));
                                 if (inputOfUser == 1) {
-                                    isRight = true;
+                                    rightAnswers.push(i);
+                                    i++;
                                 }
                                 else {
                                     if (inputOfUser == 2) {
-                                        isRight = false;
+                                        i++;
                                     }
                                     else {
                                         console.log("Diese Zahl kenne ich nicht");
                                     }
                                 }
-                                let answer = new Quiz.Answer(answerText, isRight);
-                                answers.push(answer);
+                                //let answer: Answer = new Answer(answerText, isRight);
+                                answers.push(answerText);
                             }
                             else {
                                 console.log("Antwort wurde nicht eingegeben");
                                 break;
                             }
                         }
-                        let question = new Quiz.MultipleChoiceQuestion(text, answers);
+                        let question = new Quiz.MultipleChoiceQuestion(text, answers, rightAnswers);
                         quiz.addQuestion(question);
                         break;
                     }
@@ -120,13 +123,10 @@ var Quiz;
             }
             case 2: {
                 let isRight;
-                let question = quiz.getCurrentQuestion(); //bekommt die currentQuestion nicht warum auch immer
-                //let question: Question = quiz.questions[Math.random() * quiz.questions.length];
+                let question = quiz.getCurrentQuestion();
                 let text = question.toString();
-                //console.log(question.text);
                 console.log(text);
-                let answer = prompt("Gib eine Antwort ein: ");
-                let gaveCorrectAnswer = question.check(answer, isRight);
+                let gaveCorrectAnswer = question.check(isRight);
                 if (gaveCorrectAnswer == true) {
                     console.log("Yay! Du hast die Frage richtig beantwortet.");
                     quiz.answerCount++;

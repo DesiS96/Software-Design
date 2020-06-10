@@ -13,7 +13,7 @@ namespace Quiz {
             let s: string = "Frage: " + this.text;
             return s;
         }
-        check(_input: string, _isTrue: boolean): boolean {
+        check(_isTrue: boolean): boolean {
 
             return true;
 
@@ -39,10 +39,12 @@ namespace Quiz {
             return s;
         }
 
-        check(_input: string, _isTrue: boolean): boolean {
+        check(_isTrue: boolean): boolean {
 
-            super.check(_input, _isTrue);
+            super.check(_isTrue);
             let answer: string;
+
+            let input: string = prompt("Gib eine Antwort ein: ");
 
             if (this.isTrue == true) {
 
@@ -53,7 +55,7 @@ namespace Quiz {
 
                 answer = "nein";
             }
-            if (_input == answer) {
+            if (input == answer) {
 
                 _isTrue = true;
                 return _isTrue;
@@ -68,12 +70,15 @@ namespace Quiz {
 
     export class MultipleChoiceQuestion extends Question {
 
-        public answers: Answer[];
+        public answers: string[];
+        public rightAnswers: number[];
 
-        constructor(_text: string, _answers: Answer[]) {      
+        constructor(_text: string, _answers: string[], _rightAnswers: number[]) {      
 
             super(_text);
             this.answers = _answers;
+            this.rightAnswers = _rightAnswers;
+
         }
         toString(): string {
 
@@ -84,14 +89,17 @@ namespace Quiz {
             return s;
         }
 
-        check(_input: string, _isTrue: boolean): boolean {
+        //Frage darin beantworten
+        check(_isTrue: boolean): boolean {
 
-            super.check(_input, _isTrue);
+            let input: string = prompt("Gib eine Antwort ein: ");
+
+            super.check(_isTrue);
             let i: number = 0;
 
             while (i < this.answers.length) {
 
-                if (this.answers[i].text == _input) {
+                if (this.answers[i] == input) {
 
                     _isTrue = true;
                     return _isTrue;
@@ -127,11 +135,13 @@ namespace Quiz {
             return s;
         }
 
-        check(_input: string, _isTrue: boolean): boolean {
+        check(_isTrue: boolean): boolean {
 
-            super.check(_input, _isTrue);
+            super.check(_isTrue);
 
-            let input: number = parseInt(_input);
+            let userInput: string = prompt("Gib eine Antwort ein: ");
+
+            let input: number = parseInt(userInput);
             let newAnswer: number = parseFloat(this.answer);
 
             if (input == newAnswer) {
@@ -188,11 +198,12 @@ namespace Quiz {
             return s;
         }
 
-        check(_input: string, _isTrue: boolean): boolean {
+        check(_isTrue: boolean): boolean {
 
-            super.check(_input, _isTrue);
+            super.check(_isTrue);
+            let input: string = prompt("Gib eine Antwort ein: ");
 
-            if (_input == this.answer) {
+            if (input == this.answer) {
 
                 _isTrue = true;
                 return _isTrue;
