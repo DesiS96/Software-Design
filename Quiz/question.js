@@ -57,23 +57,50 @@ var Quiz;
             let s = this.answers.join();
             return s;
         }
-        //Frage darin beantworten
         check(_isTrue) {
-            let input = prompt("Gib eine Antwort ein: ");
+            let inputArray = [];
             super.check(_isTrue);
             let i = 0;
             while (i < this.answers.length) {
-                if (this.answers[i] == input) {
-                    _isTrue = true;
-                    return _isTrue;
+                let input = Number(window.prompt("Gib die Nummer der Antwort ein, von welcher du denkst sie sei richtig", ""));
+                inputArray.push(input);
+                let moreNumbers = prompt("Willst du eine weitere Nummber eingeben? Antworte mit ja oder nein: ");
+                if (moreNumbers == "ja") {
+                    i++;
                 }
                 else {
-                    _isTrue = false;
-                    return _isTrue;
+                    if (moreNumbers == "nein")
+                        break;
                 }
             }
+            if (inputArray.length == this.rightAnswers.length) {
+                for (let i = 0; i < this.rightAnswers.length; i++) {
+                    if (inputArray[i] == this.rightAnswers[i]) {
+                        _isTrue = true;
+                        return _isTrue;
+                    }
+                    else {
+                        _isTrue = false;
+                        return _isTrue;
+                    }
+                }
+            }
+            else {
+                _isTrue = false;
+                return _isTrue;
+            }
+            return _isTrue;
+            //Antworten-Array mit dem Nutzereingegebenen-Array vergleichen
+            /*if (inputArray == this.rightAnswers) {
+
+                _isTrue = true;
+                return _isTrue;
+
+            }
+            else {
             _isTrue = false;
             return _isTrue;
+            }*/
         }
     }
     Quiz.MultipleChoiceQuestion = MultipleChoiceQuestion;

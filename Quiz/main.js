@@ -2,6 +2,7 @@
 var Quiz;
 (function (Quiz) {
     //let quiz: Quiz = new Quiz([]);
+    //load("defaultQuestion.json");
     let q1 = new Quiz.TrueFalseQuestion("Ist 1+1=2?", true);
     let q2 = new Quiz.MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", ["blau", "lila", "gelb"], [1, 3]);
     let q3 = new Quiz.GuessQuestion("Wie hoch ist der Mount Everest?", "8848", 8000);
@@ -56,22 +57,24 @@ var Quiz;
                     case "Multiple-Choice": {
                         let answers = [];
                         let text = prompt("Gib eine Fragestellung ein: ");
-                        let rightAnswers;
+                        let rightAnswers = [];
                         let answerText;
-                        let i = 0;
+                        /*rightAnswers.push(1);
+                        console.log(rightAnswers);*/
+                        //let i: number = 0;
                         //while (answers.length < 2 && (answerText === "") || answers.length < 6 && !(answerText === "")) {
-                        while (answers.length < 6 && !(answerText === "")) {
+                        for (let i = 0; answers.length < 6 && !(answerText === ""); i++) {
                             answerText = prompt("Gib eine Antwort ein: ");
                             if (!(answerText === "")) {
                                 console.log("Ist diese Antwort richtig? Wähle 1 für ja oder 2 für nein: ");
-                                let inputOfUser = Number(window.prompt("Bitte 1 oder 2 eingeben ", ""));
+                                let inputOfUser = Number(window.prompt("Bitte 1 für ja oder 2 für nein eingeben ", ""));
                                 if (inputOfUser == 1) {
                                     rightAnswers.push(i);
-                                    i++;
+                                    //i++;
                                 }
                                 else {
                                     if (inputOfUser == 2) {
-                                        i++;
+                                        //i++;
                                     }
                                     else {
                                         console.log("Diese Zahl kenne ich nicht");

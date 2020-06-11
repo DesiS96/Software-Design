@@ -89,29 +89,61 @@ namespace Quiz {
             return s;
         }
 
-        //Frage darin beantworten
         check(_isTrue: boolean): boolean {
 
-            let input: string = prompt("Gib eine Antwort ein: ");
+            let inputArray: number[] = [];
 
             super.check(_isTrue);
             let i: number = 0;
 
             while (i < this.answers.length) {
 
-                if (this.answers[i] == input) {
+                let input: number = Number(window.prompt("Gib die Nummer der Antwort ein, von welcher du denkst sie sei richtig", ""));
+                inputArray.push(input);
 
-                    _isTrue = true;
-                    return _isTrue;
+                let moreNumbers: string = prompt("Willst du eine weitere Nummber eingeben? Antworte mit ja oder nein: ");
+                
+                if (moreNumbers == "ja") {
+                    i++;
                 }
                 else {
 
-                    _isTrue = false;
-                    return _isTrue;
+                    if (moreNumbers == "nein")
+                    break;         
                 }
             }
+            if ( inputArray.length == this.rightAnswers.length) {
+
+                for (let i: number = 0; i < this.rightAnswers.length; i++) {
+
+                    if (inputArray[i] == this.rightAnswers[i]) {
+
+                    _isTrue = true;
+                    return _isTrue;
+                    }
+                    else {
+                    _isTrue = false;
+                    return _isTrue;
+                    }
+                }
+            }
+            else {
+                _isTrue = false;
+                return _isTrue;
+            }
+
+            return _isTrue;
+            //Antworten-Array mit dem Nutzereingegebenen-Array vergleichen
+            /*if (inputArray == this.rightAnswers) {
+
+                _isTrue = true;
+                return _isTrue;
+
+            }
+            else {
             _isTrue = false;
             return _isTrue;
+            }*/
         }
     }
 
