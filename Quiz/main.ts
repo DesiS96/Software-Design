@@ -1,15 +1,11 @@
 namespace Quiz {
 
-    //let quiz: Quiz = new Quiz([]);
-
     //load("defaultQuestion.json");
 
     let q1: TrueFalseQuestion = new TrueFalseQuestion("Ist 1+1=2?", true);
     let q2: MultipleChoiceQuestion = new MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", ["blau", "lila", "gelb"], [1 , 3]);
     let q3: GuessQuestion = new GuessQuestion("Wie hoch ist der Mount Everest?", "8848", 8000);
     let q4: TextQuestion = new TextQuestion("Wie heißt unsere Hochschule?", "HFU");
-
-    //let answer: Answer = new Answer("blau", true);
 
     let quiz: Quiz = new Quiz([]);
 
@@ -90,11 +86,6 @@ namespace Quiz {
                         let text: string = prompt("Gib eine Fragestellung ein: ");
                         let rightAnswers: number[] = [];
                         let answerText: string;
-
-                        /*rightAnswers.push(1);
-                        console.log(rightAnswers);*/
-
-                        //let i: number = 0;
 
                         //while (answers.length < 2 && (answerText === "") || answers.length < 6 && !(answerText === "")) {
                         for (let i: number = 0; answers.length < 6 && !(answerText === ""); i++) {

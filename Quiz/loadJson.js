@@ -8,6 +8,7 @@ var Quiz;
         console.log("Start fetch");
         let response = await fetch(_filename);
         let text = await response.text();
+        //let json: Data = JSON.parse(text);
         console.log(text);
         console.log("Done fetch");
     }

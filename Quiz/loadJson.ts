@@ -8,6 +8,7 @@ namespace Quiz {
         console.log("Start fetch");
         let response: Response = await fetch(_filename);
         let text: string = await response.text();
+        //let json: Data = JSON.parse(text);
         console.log(text);
         console.log("Done fetch");
     }

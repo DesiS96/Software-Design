@@ -11,6 +11,4 @@ namespace L07 {
         console.log(text);
         console.log("Done fetch");
     }
-
-
 }
