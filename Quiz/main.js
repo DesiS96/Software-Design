@@ -1,10 +1,11 @@
 "use strict";
 var Quiz;
 (function (Quiz) {
-    //load("defaultQuestion.json");
-    let q1 = new Quiz.TrueFalseQuestion("Ist 1+1=2?", true);
+    //load("defaultQuestions.json");
+    //let q1: TrueFalseQuestion = new TrueFalseQuestion(defautltQuestions.textQuestion.questionText, defaultQuestions.textQuestion.rightAnswer);
+    let q1 = new Quiz.TrueFalseQuestion("Ergibt 1+1 2?", true);
     let q2 = new Quiz.MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", ["blau", "lila", "gelb"], [1, 3]);
-    let q3 = new Quiz.GuessQuestion("Wie hoch ist der Mount Everest?", "8848", 8000);
+    let q3 = new Quiz.GuessQuestion("Wie hoch ist der Eiffelturm?", "324", 300);
     let q4 = new Quiz.TextQuestion("Wie heißt unsere Hochschule?", "HFU");
     let quiz = new Quiz.Quiz([]);
     quiz.questions.push(q1);

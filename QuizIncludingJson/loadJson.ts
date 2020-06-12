@@ -1,4 +1,4 @@
-namespace Quiz {
+namespace QuizIncludingJson {
 
     /*console.log("Start load");
     load("test.json"); Json-file-name reinschreiben

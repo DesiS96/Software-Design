@@ -1,6 +1,6 @@
 "use strict";
-var Quiz;
-(function (Quiz) {
+var QuizIncludingJson;
+(function (QuizIncludingJson) {
     /*console.log("Start load");
     load("test.json"); Json-file-name reinschreiben
     console.log("Done load");*/
@@ -12,6 +12,6 @@ var Quiz;
         console.log(text);
         console.log("Done fetch");
     }
-    Quiz.load = load;
-})(Quiz || (Quiz = {}));
+    QuizIncludingJson.load = load;
+})(QuizIncludingJson || (QuizIncludingJson = {}));
 //# sourceMappingURL=loadJson.js.map
