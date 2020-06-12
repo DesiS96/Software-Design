@@ -1,7 +1,8 @@
 "use strict";
 var QuizIncludingJson;
 (function (QuizIncludingJson) {
-    //load("defaultQuestion.json");
+    let myJson = QuizIncludingJson.load("defaultQuestions.json");
+    console.log(myJson);
     let q1 = new QuizIncludingJson.TrueFalseQuestion("Ist 1+1=2?", true);
     let q2 = new QuizIncludingJson.MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", ["blau", "lila", "gelb"], [1, 3]);
     let q3 = new QuizIncludingJson.GuessQuestion("Wie hoch ist der Mount Everest?", "8848", 8000);

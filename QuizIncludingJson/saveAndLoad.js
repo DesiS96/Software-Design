@@ -3,6 +3,7 @@ var QuizIncludingJson;
 (function (QuizIncludingJson) {
     class Data {
     }
+    QuizIncludingJson.Data = Data;
     test();
     async function test() {
         console.log("Start load");
@@ -13,6 +14,7 @@ var QuizIncludingJson;
         save(JSON.stringify(content), "test.json");
         console.log("Done load");
     }
+    QuizIncludingJson.test = test;
     async function load(_filename) {
         console.log("Start fetch");
         let response = await fetch(_filename);
@@ -22,6 +24,7 @@ var QuizIncludingJson;
         console.log("Done fetch");
         return (json);
     }
+    QuizIncludingJson.load = load;
     function save(_content, _filename) {
         let blob = new Blob([_content], { type: "text/plain" });
         let url = window.URL.createObjectURL(blob);
@@ -35,5 +38,6 @@ var QuizIncludingJson;
         document.body.removeChild(downloader);
         window.URL.revokeObjectURL(url);
     }
+    QuizIncludingJson.save = save;
 })(QuizIncludingJson || (QuizIncludingJson = {}));
 //# sourceMappingURL=saveAndLoad.js.map

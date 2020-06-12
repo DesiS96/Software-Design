@@ -1,6 +1,7 @@
 namespace QuizIncludingJson {
 
-    //load("defaultQuestion.json");
+    let myJson: Promise<Data> = load("defaultQuestions.json");
+    console.log(myJson);
 
     let q1: TrueFalseQuestion = new TrueFalseQuestion("Ist 1+1=2?", true);
     let q2: MultipleChoiceQuestion = new MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", ["blau", "lila", "gelb"], [1 , 3]);

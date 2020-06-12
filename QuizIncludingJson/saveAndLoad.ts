@@ -1,12 +1,12 @@
 namespace QuizIncludingJson {
 
-    class Data {
+    export class Data {
       array: { text: string }[];
     }
   
     test();
   
-    async function test(): Promise<void> {
+    export async function test(): Promise<void> {
       console.log("Start load");
       let content: Data = await load("test.json");
       console.log("Done load");
@@ -18,7 +18,7 @@ namespace QuizIncludingJson {
       console.log("Done load");
     }
   
-    async function load(_filename: string): Promise<Data> {
+    export async function load(_filename: string): Promise<Data> {
       console.log("Start fetch");
   
       let response: Response = await fetch(_filename);
@@ -31,7 +31,7 @@ namespace QuizIncludingJson {
       return (json);
     }
   
-    function save(_content: string, _filename: string): void {
+    export function save(_content: string, _filename: string): void {
       let blob: Blob = new Blob([_content], { type: "text/plain" });
       let url: string = window.URL.createObjectURL(blob);
       //*/ using anchor element for download
