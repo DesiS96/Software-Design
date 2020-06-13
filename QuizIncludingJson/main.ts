@@ -1,9 +1,10 @@
 namespace QuizIncludingJson {
 
-    let myJson: Promise<Data> = load("defaultQuestions.json");
+    let myJson: Promise<Data> = load("./defaultQuestions.json");
     console.log(myJson);
 
     let q1: TrueFalseQuestion = new TrueFalseQuestion("Ist 1+1=2?", true);
+    //let q1: TrueFalseQuestion = new TrueFalseQuestion(myJson.textQuestion.questiontext, true);
     let q2: MultipleChoiceQuestion = new MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", ["blau", "lila", "gelb"], [1 , 3]);
     let q3: GuessQuestion = new GuessQuestion("Wie hoch ist der Mount Everest?", "8848", 8000);
     let q4: TextQuestion = new TextQuestion("Wie heißt unsere Hochschule?", "HFU");
@@ -201,6 +202,7 @@ namespace QuizIncludingJson {
             case 3 : {
 
                 console.log("Sie haben das Programm beendet");
+                //Fragen speichern Questionsarray/filename
                 goOn = false;
                 break;
             }

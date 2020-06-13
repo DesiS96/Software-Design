@@ -4,17 +4,19 @@ var QuizIncludingJson;
     class Data {
     }
     QuizIncludingJson.Data = Data;
-    test();
-    async function test() {
-        console.log("Start load");
-        let content = await load("test.json");
-        console.log("Done load");
-        console.log(content);
-        console.log("Start load");
-        save(JSON.stringify(content), "test.json");
-        console.log("Done load");
-    }
-    QuizIncludingJson.test = test;
+    /*test();
+  
+    export async function test(): Promise<void> {
+      console.log("Start load");
+      let content: Data = await load("test.json");
+      console.log("Done load");
+  
+      console.log(content);
+  
+      console.log("Start load");
+      save(JSON.stringify(content), "test.json");
+      console.log("Done load");
+    }*/
     async function load(_filename) {
         console.log("Start fetch");
         let response = await fetch(_filename);

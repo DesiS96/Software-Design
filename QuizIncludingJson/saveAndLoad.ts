@@ -4,7 +4,7 @@ namespace QuizIncludingJson {
       array: { text: string }[];
     }
   
-    test();
+    /*test();
   
     export async function test(): Promise<void> {
       console.log("Start load");
@@ -16,7 +16,7 @@ namespace QuizIncludingJson {
       console.log("Start load");
       save(JSON.stringify(content), "test.json");
       console.log("Done load");
-    }
+    }*/
   
     export async function load(_filename: string): Promise<Data> {
       console.log("Start fetch");
@@ -44,4 +44,4 @@ namespace QuizIncludingJson {
       document.body.removeChild(downloader);
       window.URL.revokeObjectURL(url);
     }
-  }
+}
