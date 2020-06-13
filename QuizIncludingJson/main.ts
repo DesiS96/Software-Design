@@ -202,7 +202,11 @@ namespace QuizIncludingJson {
             case 3 : {
 
                 console.log("Sie haben das Programm beendet");
-                //Fragen speichern Questionsarray/filename
+
+                //Fragen speichern Questionsarray/filename savemethode funktioniert nicht ganz
+                /*let questionsArray: string = quiz.questions.join();
+                save(questionsArray, "myquestions.json");*/
+
                 goOn = false;
                 break;
             }

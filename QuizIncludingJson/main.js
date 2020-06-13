@@ -4,6 +4,7 @@ var QuizIncludingJson;
     let myJson = QuizIncludingJson.load("./defaultQuestions.json");
     console.log(myJson);
     let q1 = new QuizIncludingJson.TrueFalseQuestion("Ist 1+1=2?", true);
+    //let q1: TrueFalseQuestion = new TrueFalseQuestion(myJson.textQuestion.questiontext, true);
     let q2 = new QuizIncludingJson.MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", ["blau", "lila", "gelb"], [1, 3]);
     let q3 = new QuizIncludingJson.GuessQuestion("Wie hoch ist der Mount Everest?", "8848", 8000);
     let q4 = new QuizIncludingJson.TextQuestion("Wie heißt unsere Hochschule?", "HFU");
@@ -139,6 +140,9 @@ var QuizIncludingJson;
             }
             case 3: {
                 console.log("Sie haben das Programm beendet");
+                //Fragen speichern Questionsarray/filename savemethode funktioniert nicht ganz
+                /*let questionsArray: string = quiz.questions.join();
+                save(questionsArray, "myquestions.json");*/
                 goOn = false;
                 break;
             }
