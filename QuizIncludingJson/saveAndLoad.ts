@@ -18,7 +18,7 @@ namespace QuizIncludingJson {
       console.log("Done load");
     }*/
   
-    export async function load(_filename: string): Promise<Data> {
+    export async function load(_filename: string): Promise<Data> { //warum Promise und async? Das stört total
       console.log("Start fetch");
   
       let response: Response = await fetch(_filename);
