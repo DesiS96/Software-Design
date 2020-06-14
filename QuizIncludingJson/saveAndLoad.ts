@@ -18,7 +18,21 @@ namespace QuizIncludingJson {
       console.log("Done load");
     }*/
   
-    export async function load(_filename: string): Promise<Data> { //warum Promise und async? Das stört total
+    export async function load(_filename: string): Promise<any> { //warum Promise und async? Das stört total
+      console.log("Start fetch");
+  
+      let response: Response = await fetch(_filename);
+  
+      let text: string = await response.text();
+      let json: any = JSON.parse(text);
+      // alternative: json = await response.json();
+  
+      console.log("Done fetch");
+      return (json);
+    }
+
+    
+    /*export async function load(_filename: string): Promise<Data> { //warum Promise und async? Das stört total
       console.log("Start fetch");
   
       let response: Response = await fetch(_filename);
@@ -29,7 +43,7 @@ namespace QuizIncludingJson {
   
       console.log("Done fetch");
       return (json);
-    }
+    }*/
   
     export function save(_content: string, _filename: string): void {
       let blob: Blob = new Blob([_content], { type: "text/plain" });

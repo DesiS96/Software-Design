@@ -1,22 +1,25 @@
-
-[
 {
-    "textQuestion": {
-        "questionText":"Wie heißt mein Lieblingstier?", "rightAnswer":"Katze"
-    },  
-    "yesNoQuestion":{
-            "questionText:":"Esse ich gerne Sushi?", "yesNoAnswer": "Ja"
-    },
-    "guessQuestion":{
-            "questionText:":"Wie alt bin ich?", "answerNumber": 23, "answerTolerance": 20
-    },
-    "singleQuestion":{
-        "questionText":"Welche dieser Farben ist meine Lieblingsfarbe?", "rightAnswer": 3,
+    "textQuestions": [{
+        "questionText":"Wie heißt mein Lieblingstier?", 
+        "rightAnswer":"Katze"
+    }],  
+    "yesNoQuestions":[{
+            "questionText:":"Esse ich gerne Sushi?", 
+            "yesNoAnswer": "Ja"
+    }],
+    "guessQuestions":[{
+            "questionText:":"Wie alt bin ich?", 
+            "answerNumber": 23, 
+            "answerTolerance": 20
+    }],
+    "singleQuestions":[{
+        "questionText":"Welche dieser Farben ist meine Lieblingsfarbe?", 
+        "rightAnswer": 3,
         "answers":["cyan", "violett", "schwarz"]
-    },
-    "multipleChoiceQuestion":{
-        "questionText": "Welche sind meine 2 Lieblingsanime?", "rightAnswers":[1, 4],
+    }],
+    "multipleChoiceQuestions":[{
+        "questionText": "Welche sind meine 2 Lieblingsanime?", 
+        "rightAnswers":[1, 4],
         "answers":["Fullmetal Alchemist Brotherhood", "Steins Gate", "Attack on Titan", "Fate/Zero"]
-    }  
+    }]  
 }
-]

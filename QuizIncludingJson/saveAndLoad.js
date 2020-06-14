@@ -27,6 +27,18 @@ var QuizIncludingJson;
         return (json);
     }
     QuizIncludingJson.load = load;
+    /*export async function load(_filename: string): Promise<Data> { //warum Promise und async? Das stört total
+      console.log("Start fetch");
+  
+      let response: Response = await fetch(_filename);
+  
+      let text: string = await response.text();
+      let json: Data = JSON.parse(text);
+      // alternative: json = await response.json();
+  
+      console.log("Done fetch");
+      return (json);
+    }*/
     function save(_content, _filename) {
         let blob = new Blob([_content], { type: "text/plain" });
         let url = window.URL.createObjectURL(blob);

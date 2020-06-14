@@ -1,13 +1,21 @@
 "use strict";
 var QuizIncludingJson;
 (function (QuizIncludingJson) {
-    let myJson = QuizIncludingJson.load("./defaultQuestions.json");
+    let myJson = QuizIncludingJson.load("./defaultQuestions.json"); //wie soll ich bitte hier auf Objekte zugreifen?
+    //let jsonArray: Data[] = [];
+    //jsonArray[0] = myJson[0]; 
+    //let jsonArray: Data[] = myJson();
     console.log(myJson);
+    myJson.then((myJsonObject) => {
+        console.log(myJsonObject);
+        let q5 = new QuizIncludingJson.TextQuestion(myJsonObject.textQuestions[0].questionText, myJsonObject.textQuestions[0].rightAnswer);
+        console.log(q5);
+    });
     let q1 = new QuizIncludingJson.TrueFalseQuestion("Ist 1+1=2?", true);
-    //let q1: TrueFalseQuestion = new TrueFalseQuestion(myJson.textQuestion.questiontext, true);
     let q2 = new QuizIncludingJson.MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", ["blau", "lila", "gelb"], [1, 3]);
     let q3 = new QuizIncludingJson.GuessQuestion("Wie hoch ist der Mount Everest?", "8848", 8000);
     let q4 = new QuizIncludingJson.TextQuestion("Wie heißt unsere Hochschule?", "HFU");
+    //let q5: TrueFalseQuestion = new TrueFalseQuestion(myJson.textQuestion, true); //eigentlich ist die Data doch ein string, warum kann ich die hier nicht einfach reinschreiben?
     let quiz = new QuizIncludingJson.Quiz([]);
     quiz.questions.push(q1);
     quiz.questions.push(q2);

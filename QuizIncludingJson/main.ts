@@ -1,16 +1,22 @@
 namespace QuizIncludingJson {
 
-    let myJson: Promise<Data> = load("./defaultQuestions.json"); //wie soll ich bitte hier auf Objekte zugreifen?
+    let myJson: Promise<any> = load("./defaultQuestions.json"); //wie soll ich bitte hier auf Objekte zugreifen?
     //let jsonArray: Data[] = [];
     //jsonArray[0] = myJson[0]; 
     //let jsonArray: Data[] = myJson();
     console.log(myJson);
+    myJson.then((myJsonObject) => {
 
+        console.log(myJsonObject);
+        let q5: TextQuestion = new TextQuestion(myJsonObject.textQuestions[0].questionText, myJsonObject.textQuestions[0].rightAnswer);
+        console.log(q5);
+
+    });
     let q1: TrueFalseQuestion = new TrueFalseQuestion("Ist 1+1=2?", true);
     let q2: MultipleChoiceQuestion = new MultipleChoiceQuestion("Welche dieser Farben gehören zu den Primärfarben?", ["blau", "lila", "gelb"], [1 , 3]);
     let q3: GuessQuestion = new GuessQuestion("Wie hoch ist der Mount Everest?", "8848", 8000);
     let q4: TextQuestion = new TextQuestion("Wie heißt unsere Hochschule?", "HFU");
-    //let q5: TrueFalseQuestion = new TrueFalseQuestion(myJson, true]);eigentlich ist die Data doch ein string, warum kann ich die hier nicht einfach reinschreiben?
+    //let q5: TrueFalseQuestion = new TrueFalseQuestion(myJson.textQuestion, true); //eigentlich ist die Data doch ein string, warum kann ich die hier nicht einfach reinschreiben?
 
     let quiz: Quiz = new Quiz([]);
 
