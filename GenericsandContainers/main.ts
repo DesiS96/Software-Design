@@ -23,4 +23,10 @@ namespace GenericsandContainers {
     console.log(bGeneric);
 
     console.log(bGeneric.getAt(2));
+
+
+
+
+
+
 }
