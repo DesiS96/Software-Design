@@ -2,8 +2,8 @@ namespace GenerischerBaum {
 
     export class Root<T> {
 
-        protected name: T;
-        protected children: TreeNode<T>[];
+        public name: T;
+        public children: TreeNode<T>[];
 
         constructor(_name: T, _children: TreeNode<T>[]) {
 
@@ -21,9 +21,22 @@ namespace GenerischerBaum {
 
                 for (let j: number; j > this.children[i].children.length; j++ ) {
                 console.log("**" + this.children[i].children[j].name);
-                
+
                 }
             }
         }
+        appendChild(_input: TreeNode<T>): void {
+
+            this.children.push(_input);
+        }
+        removeChild(_input: TreeNode<T>): void {
+
+            for (let i: number = 0; i < this.children.length; i++) {
+
+                if (_input.name === this.children[i].name) {
+                    this.children.splice(i);
+                }
+            }
+        }  
     }
 }

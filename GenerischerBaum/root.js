@@ -15,6 +15,16 @@ var GenerischerBaum;
                 }
             }
         }
+        appendChild(_input) {
+            this.children.push(_input);
+        }
+        removeChild(_input) {
+            for (let i = 0; i < this.children.length; i++) {
+                if (_input.name === this.children[i].name) {
+                    this.children.splice(i);
+                }
+            }
+        }
     }
     GenerischerBaum.Root = Root;
 })(GenerischerBaum || (GenerischerBaum = {}));

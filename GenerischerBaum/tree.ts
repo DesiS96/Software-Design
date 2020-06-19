@@ -2,7 +2,7 @@ namespace GenerischerBaum {
 
     export class Tree<T> {
 
-        protected nodes: T[];
+        public nodes: T[];
 
         constructor(_nodes: T[]) {
 
