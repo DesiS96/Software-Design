@@ -29,4 +29,6 @@ namespace GenerischerBaum {
     console.log(tree);
 
     root.printTree();
+    let list: string[] = tree.search("child");
+    console.log(list);
 }

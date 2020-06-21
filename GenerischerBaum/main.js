@@ -22,5 +22,7 @@ var GenerischerBaum;
     console.log(root.children);
     console.log(tree);
     root.printTree();
+    let list = tree.search("child");
+    console.log(list);
 })(GenerischerBaum || (GenerischerBaum = {}));
 //# sourceMappingURL=main.js.map
