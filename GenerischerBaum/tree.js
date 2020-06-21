@@ -7,6 +7,7 @@ var GenerischerBaum;
         }
         createNode(_input) {
             let node = new GenerischerBaum.TreeNode(_input, []);
+            this.nodes.push(node);
             return node;
         }
     }

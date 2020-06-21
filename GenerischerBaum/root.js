@@ -7,11 +7,18 @@ var GenerischerBaum;
             this.children = _children;
         }
         printTree() {
-            for (let i; i < this.children.length; i++) {
-                console.log(this.name);
-                console.log("*" + this.children[i].name);
-                for (let j; j > this.children[i].children.length; j++) {
-                    console.log("**" + this.children[i].children[j].name);
+            console.log(this.name);
+            for (let i = 0; i < this.children.length; i++) {
+                let child = this.children[i];
+                console.log("*" + child.name);
+                //console.log(this.children[i].children);
+                /*for (let j: number = 0; j > child.children.length; j++ ) {
+                console.log("**" + child.children[j].name);
+                }*/
+                let j = 0;
+                while (j < child.children.length) {
+                    console.log("**" + child.children[j].name);
+                    j++;
                 }
             }
         }

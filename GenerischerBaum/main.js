@@ -19,6 +19,8 @@ var GenerischerBaum;
     console.log(child2.children);
     child1.removeChild(grand12);
     console.log(child1.children);
+    console.log(root.children);
+    console.log(tree);
     root.printTree();
 })(GenerischerBaum || (GenerischerBaum = {}));
 //# sourceMappingURL=main.js.map

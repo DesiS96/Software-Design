@@ -24,5 +24,9 @@ namespace GenerischerBaum {
     child1.removeChild(grand12);
     console.log(child1.children);
 
+    console.log(root.children);
+
+    console.log(tree);
+
     root.printTree();
 }
