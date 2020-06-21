@@ -12,13 +12,8 @@ var GenerischerBaum;
                 let child = this.children[i];
                 console.log("*" + child.name);
                 //console.log(this.children[i].children);
-                /*for (let j: number = 0; j > child.children.length; j++ ) {
-                console.log("**" + child.children[j].name);
-                }*/
-                let j = 0;
-                while (j < child.children.length) {
+                for (let j = 0; j < child.children.length; j++) {
                     console.log("**" + child.children[j].name);
-                    j++;
                 }
             }
         }
@@ -26,11 +21,22 @@ var GenerischerBaum;
             this.children.push(_input);
         }
         removeChild(_input) {
+            let fillerArray = [];
             for (let i = 0; i < this.children.length; i++) {
-                if (_input.name === this.children[i].name) {
-                    this.children.splice(i);
+                if (_input.name != this.children[i].name) {
+                    //this.children.splice(i);
+                    //this.children = this.children.splice(i);
+                    //fillerArray.push(this.children[i]);
+                    fillerArray.push(this.children[i]);
                 }
             }
+            console.log(fillerArray);
+            this.children = [];
+            for (let j = 0; j < fillerArray.length; j++) {
+                this.children.push(fillerArray[j]);
+            }
+            console.log(fillerArray);
+            console.log(this.children);
         }
     }
     GenerischerBaum.Root = Root;
