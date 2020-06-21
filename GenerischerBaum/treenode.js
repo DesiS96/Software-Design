@@ -8,16 +8,16 @@ var GenerischerBaum;
         }
         appendChild(_input) {
             super.appendChild(_input);
-            this.children.push(_input);
             _input.parent = this.name;
         }
         removeChild(_input) {
             super.removeChild(_input);
-            for (let i = 0; i < this.children.length; i++) {
+            /*for (let i: number = 0; i < this.children.length; i++) {
+
                 if (_input.name === this.children[i].name) {
                     this.children.splice(i);
                 }
-            }
+            }*/
         }
     }
     GenerischerBaum.TreeNode = TreeNode;
