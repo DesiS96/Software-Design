@@ -14,14 +14,16 @@ namespace GenerischerBaum {
 
         printTree(): void {
 
-            for (let i: number; i < this.children.length; i++) {
+            console.log(this.name);
 
-                console.log(this.name);
-                console.log("*" + this.children[i].name);
+            for (let i: number = 0; i < this.children.length; i++) {
 
-                for (let j: number; j > this.children[i].children.length; j++ ) {
-                console.log("**" + this.children[i].children[j].name);
+                let child: TreeNode<T> = this.children[i];
+                console.log("*" + child.name);
+                //console.log(this.children[i].children);
 
+                for (let j: number = 0; j < child.children.length; j++ ) {
+                console.log("**" + child.children[j].name);
                 }
             }
         }
@@ -31,12 +33,27 @@ namespace GenerischerBaum {
         }
         removeChild(_input: TreeNode<T>): void {
 
+            let fillerArray: TreeNode<T>[] = [];
+
             for (let i: number = 0; i < this.children.length; i++) {
 
-                if (_input.name === this.children[i].name) {
-                    this.children.splice(i);
+                if (_input.name != this.children[i].name) {
+                    //this.children.splice(i);
+                    //this.children = this.children.splice(i);
+                    //fillerArray.push(this.children[i]);
+                    fillerArray.push(this.children[i]);
                 }
             }
+            console.log(fillerArray);
+
+            this.children = [];
+
+            for (let j: number = 0; j < fillerArray.length; j++) {
+
+                this.children.push(fillerArray[j]);
+            }
+            console.log(fillerArray);
+            console.log(this.children);
         }  
     }
 }

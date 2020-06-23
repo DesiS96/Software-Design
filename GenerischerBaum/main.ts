@@ -1,14 +1,11 @@
 namespace GenerischerBaum {
 
-    //let nodes: string[] = [];
-
     let tree: Tree<string> = new Tree([]);
     let root: Root<string> = tree.createNode("root");
     let child1: TreeNode<string> = tree.createNode("child1");
     console.log(child1);
     let child2: TreeNode<string> = tree.createNode("child2");
 
-    //let node = new TreeNode<string>("node", []);
     root.appendChild(child1);
     root.appendChild(child2);
 
@@ -25,6 +22,13 @@ namespace GenerischerBaum {
     child2.appendChild(grand21);
     console.log(child2.children);
     child1.removeChild(grand12);
+    console.log(child1.children);
+
+    console.log(root.children);
+
+    console.log(tree);
 
     root.printTree();
+    let list: string[] = tree.search("child");
+    console.log(list);
 }

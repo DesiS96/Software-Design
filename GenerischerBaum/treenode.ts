@@ -13,19 +13,18 @@ namespace GenerischerBaum {
         appendChild(_input: TreeNode<T>): void {
 
             super.appendChild(_input);
-            this.children.push(_input);
             _input.parent = this.name;
         }
 
         removeChild(_input: TreeNode<T>): void {
 
             super.removeChild(_input);
-            for (let i: number = 0; i < this.children.length; i++) {
+            /*for (let i: number = 0; i < this.children.length; i++) {
 
                 if (_input.name === this.children[i].name) {
                     this.children.splice(i);
                 }
-            }
+            }*/
         }      
     }
 }
