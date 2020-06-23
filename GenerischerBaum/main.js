@@ -24,5 +24,6 @@ var GenerischerBaum;
     root.printTree();
     let list = tree.search("child");
     console.log(list);
+    console.log(child1.appendObservers);
 })(GenerischerBaum || (GenerischerBaum = {}));
 //# sourceMappingURL=main.js.map

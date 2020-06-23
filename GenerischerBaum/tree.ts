@@ -11,7 +11,7 @@ namespace GenerischerBaum {
         }
         createNode(_input: T): TreeNode<T> { 
 
-            let node: TreeNode<T> = new TreeNode(_input, []);
+            let node: TreeNode<T> = new TreeNode(_input, [], []);
             this.nodes.push(_input);
 
             return node;

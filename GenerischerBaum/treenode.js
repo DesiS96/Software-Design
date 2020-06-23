@@ -2,8 +2,8 @@
 var GenerischerBaum;
 (function (GenerischerBaum) {
     class TreeNode extends GenerischerBaum.Root {
-        constructor(_name, _children, _parent /*, _appendObserver: Tree<T>*/) {
-            super(_name, _children);
+        constructor(_name, _children, _appendObservers, _parent) {
+            super(_name, _children, _appendObservers);
             this.parent = _parent;
         }
         appendChild(_input) {
@@ -18,6 +18,11 @@ var GenerischerBaum;
                     this.children.splice(i);
                 }
             }*/
+        }
+        addAppendObserver(_child) {
+            super.addAppendObserver(_child);
+            /*let observer: AppendObserver<T> = new AppendObserver<T>(this, _child);
+            this.appendObservers.push(observer);*/
         }
     }
     GenerischerBaum.TreeNode = TreeNode;

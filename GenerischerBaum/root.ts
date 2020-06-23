@@ -1,18 +1,29 @@
 namespace GenerischerBaum {
 
-    export type AppendObserver<T> = (_parent: TreeNode<T>, _child: TreeNode<T>) => void;
+    export class AppendObserver<T> { 
+
+        public parent: Root<T>;
+        public child: TreeNode<T>;
+
+        constructor(_parent: Root<T>, _child: TreeNode<T>) {
+
+            this.parent = _parent;
+            this.child = _child;
+
+        }
+    }
 
     export class Root<T> {
 
         public name: T;
         public children: TreeNode<T>[];
-        //public appendObserver: AppendObserver<T>[];
+        public appendObservers: AppendObserver<T>[];
 
-        constructor(_name: T, _children: TreeNode<T>[] /*_appendObserver<T>[]*/) {
+        constructor(_name: T, _children: TreeNode<T>[], _appendObservers: AppendObserver<T>[]) {
 
             this.name = _name;
             this.children = _children;
-            //this.appendObserver = _appendObserver;
+            this.appendObservers = _appendObservers;
 
         }
 
@@ -34,6 +45,7 @@ namespace GenerischerBaum {
         appendChild(_input: TreeNode<T>): void {
 
             this.children.push(_input);
+            this.addAppendObserver(_input);
         }
         removeChild(_input: TreeNode<T>): void {
 
@@ -58,6 +70,12 @@ namespace GenerischerBaum {
             }
             console.log(fillerArray);
             console.log(this.children);
-        }  
+        }
+        addAppendObserver(_child: TreeNode<T>): void {
+
+            let observer: AppendObserver<T> = new AppendObserver<T>(this, _child);
+            this.appendObservers.push(observer);
+
+        }
     }
 }

@@ -32,4 +32,6 @@ namespace GenerischerBaum {
     let list: string[] = tree.search("child");
     console.log(list);
 
+    console.log(child1.appendObservers);
+
 }

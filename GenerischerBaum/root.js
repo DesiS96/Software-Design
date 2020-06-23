@@ -1,10 +1,18 @@
 "use strict";
 var GenerischerBaum;
 (function (GenerischerBaum) {
+    class AppendObserver {
+        constructor(_parent, _child) {
+            this.parent = _parent;
+            this.child = _child;
+        }
+    }
+    GenerischerBaum.AppendObserver = AppendObserver;
     class Root {
-        constructor(_name, _children) {
+        constructor(_name, _children, _appendObservers) {
             this.name = _name;
             this.children = _children;
+            this.appendObservers = _appendObservers;
         }
         printTree() {
             console.log(this.name);
@@ -19,6 +27,7 @@ var GenerischerBaum;
         }
         appendChild(_input) {
             this.children.push(_input);
+            this.addAppendObserver(_input);
         }
         removeChild(_input) {
             let fillerArray = [];
@@ -37,6 +46,10 @@ var GenerischerBaum;
             }
             console.log(fillerArray);
             console.log(this.children);
+        }
+        addAppendObserver(_child) {
+            let observer = new AppendObserver(this, _child);
+            this.appendObservers.push(observer);
         }
     }
     GenerischerBaum.Root = Root;
