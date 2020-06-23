@@ -2,11 +2,9 @@ namespace GenerischerBaum {
 
     export class TreeNode<T> extends Root<T> {
       
-        //private appendObserver: Tree<T>;
         public parent: T;
        
-
-        constructor(_name: T, _children: TreeNode<T>[], _parent?: T/*, _appendObserver: Tree<T>*/) {
+        constructor(_name: T, _children: TreeNode<T>[], _parent?: T) {
 
             super(_name, _children);
             this.parent = _parent;

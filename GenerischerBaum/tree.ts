@@ -1,15 +1,12 @@
 namespace GenerischerBaum {
 
-    //export type AppendObserver<T> = (_parent: TreeNode<T>, _child: TreeNode<T>) => void;
     export class Tree<T> {
 
         public nodes: T[];
-        //public appendObservers: Array<AppendObserver<T>>;
 
-        constructor(_nodes: T[]/*, _appendObservers: Array<AppendObserver<T>*/) {
+        constructor(_nodes: T[]) {
 
             this.nodes = _nodes;
-            //this.appendObservers = _appendObservers;
 
         }
         createNode(_input: T): TreeNode<T> { 
@@ -25,8 +22,6 @@ namespace GenerischerBaum {
 
             if (typeof(_input) === typeof(String())) {
 
-                //if (_input.toString() == "child") {
-
                     for (let i: number = 0; i < this.nodes.length; i++) {
 
                         if (this.nodes[i].toString().includes(_input.toString())) {
@@ -34,7 +29,6 @@ namespace GenerischerBaum {
                             list.push(this.nodes[i]);
                         }
                     }
-                //}
             }
             else {
 
@@ -47,6 +41,19 @@ namespace GenerischerBaum {
                 }
             }
             return list;
-        } 
+        }
+
+        /**aGenerator(_treeNode: T): T {
+
+
+            for (_treeNode of this.nodes) {
+
+                return _treeNode;
+
+            }
+            //
+
+        }*/
+
     }
 }
