@@ -2,7 +2,7 @@
 var GenerischerBaum;
 (function (GenerischerBaum) {
     class TreeNode extends GenerischerBaum.Root {
-        constructor(_name, _children, _parent) {
+        constructor(_name, _children, _parent /*, _appendObserver: Tree<T>*/) {
             super(_name, _children);
             this.parent = _parent;
         }

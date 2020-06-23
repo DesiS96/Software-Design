@@ -1,9 +1,12 @@
 "use strict";
 var GenerischerBaum;
 (function (GenerischerBaum) {
+    //export type AppendObserver<T> = (_parent: TreeNode<T>, _child: TreeNode<T>) => void;
     class Tree {
-        constructor(_nodes) {
+        //public appendObservers: Array<AppendObserver<T>>;
+        constructor(_nodes /*, _appendObservers: Array<AppendObserver<T>*/) {
             this.nodes = _nodes;
+            //this.appendObservers = _appendObservers;
         }
         createNode(_input) {
             let node = new GenerischerBaum.TreeNode(_input, []);
