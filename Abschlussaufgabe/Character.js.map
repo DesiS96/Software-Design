@@ -1,1 +1,1 @@
-{"version":3,"file":"Character.js","sourceRoot":"","sources":["Character.ts"],"names":[],"mappings":";AAAA,IAAU,gBAAgB,CAgBzB;AAhBD,WAAU,gBAAgB;IAGtB,MAAsB,SAAS;KAO9B;IAPqB,0BAAS,YAO9B,CAAA;AAML,CAAC,EAhBS,gBAAgB,KAAhB,gBAAgB,QAgBzB"}
+{"version":3,"file":"Character.js","sourceRoot":"","sources":["Character.ts"],"names":[],"mappings":";AAAA,IAAU,gBAAgB,CAiBzB;AAjBD,WAAU,gBAAgB;IAGtB,MAAsB,SAAS;QAK3B,YAAY,KAAa,EAAE,KAAa;YAEpC,IAAI,CAAC,IAAI,GAAG,KAAK,CAAC;YAClB,IAAI,CAAC,IAAI,GAAG,KAAK,CAAC;QAEtB,CAAC;KAEJ;IAZqB,0BAAS,YAY9B,CAAA;AAEL,CAAC,EAjBS,gBAAgB,KAAhB,gBAAgB,QAiBzB"}
