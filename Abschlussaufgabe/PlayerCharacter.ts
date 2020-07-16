@@ -14,20 +14,37 @@ namespace Abschlussaufgabe {
             this.commands = _commands;
         }
 
-        drop(): void {
+        drop(_userInput: string): void {
 
-            let userprompt: string = window.prompt("Which item do you want to drop?:" ); //soll später auf Konsole eingegeben werden können
+            //let userprompt: string = window.prompt("Which item do you want to drop?:" ); soll später auf Konsole eingegeben werden können
+
+            let inventoryContainsItem: boolean = true;
 
             for (let i: number; i < this.inventory.length; i++) {
 
-                /*if (this.inventory[i].name == userprompt) {
-                    console.log("You decided to drop " + this.inventory[i].name);
-                }else{*/
+                        if (i == this.inventory.length && this.inventory[i].name != _userInput) {
+                            console.log("Sorry but there's no such item in your inventoy");
+                            inventoryContainsItem = false;
+                        }
+            }
 
-                    if (i == this.inventory.length && this.inventory[i].name != userprompt) {
+            if (inventoryContainsItem == true) {
 
-                        console.log("Sorry but there'S no such item in your inventoy");
+                let fillerInventory: Item[] = [];
+
+                for (let j: number; j < this.inventory.length; j++) {
+
+                    if (this.inventory[j].name != _userInput) {
+                        fillerInventory.push(this.inventory[j]);
+                                
                     }
+                }
+
+                this.inventory = [];
+
+                for (let k: number; k < fillerInventory.length; k++) {
+                    this.inventory.push(fillerInventory[k]);
+                }
             }
         }
 
