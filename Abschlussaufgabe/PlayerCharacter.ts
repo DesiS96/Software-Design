@@ -5,15 +5,13 @@ namespace Abschlussaufgabe {
         public inventory: Item[];
         public attack: number;
         public commands: string[];
-        public position: Room;
 
-        constructor(_name: string, _life: number, _inventory: Item[], _attack: number, _commands: string[], _position: Room) {
+        constructor(_name: string, _life: number, _position: Room, _inventory: Item[], _attack: number, _commands: string[]) {
 
-            super(_name, _life);
+            super(_name, _life, _position);
             this.inventory = _inventory;
             this.attack = _attack;
             this.commands = _commands;
-            this.position = _position;
         }
 
         drop(_userInput: string): void {

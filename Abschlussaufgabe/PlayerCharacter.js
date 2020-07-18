@@ -2,12 +2,11 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class PlayerCharacter extends Abschlussaufgabe.Character {
-        constructor(_name, _life, _inventory, _attack, _commands, _position) {
-            super(_name, _life);
+        constructor(_name, _life, _position, _inventory, _attack, _commands) {
+            super(_name, _life, _position);
             this.inventory = _inventory;
             this.attack = _attack;
             this.commands = _commands;
-            this.position = _position;
         }
         drop(_userInput) {
             //let userprompt: string = window.prompt("Which item do you want to drop?:" ); soll später auf Konsole eingegeben werden können
