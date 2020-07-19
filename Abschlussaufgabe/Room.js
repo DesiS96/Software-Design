@@ -2,10 +2,10 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class Room {
-        //public passages: Passage[];
-        constructor(_items, _characters) {
+        constructor(_items, _characters, _passages) {
             this.items = _items;
             this.characters = _characters;
+            this.passages = _passages;
         }
     }
     Abschlussaufgabe.Room = Room;

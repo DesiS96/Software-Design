@@ -4,12 +4,13 @@ namespace Abschlussaufgabe {
 
         public items: Item[];
         public characters: Character[];
-        //public passages: Passage[];
+        public passages: Passage[];
 
-        constructor(_items: Item[], _characters: Character[]) {
+        constructor(_items: Item[], _characters: Character[], _passages: Passage[]) {
 
             this.items = _items;
             this.characters = _characters;
+            this.passages = _passages;
 
         }
     }

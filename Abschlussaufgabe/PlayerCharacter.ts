@@ -16,16 +16,6 @@ namespace Abschlussaufgabe {
 
         drop(_userInput: string): void {
 
-            //let userprompt: string = window.prompt("Which item do you want to drop?:" ); soll später auf Konsole eingegeben werden können
-            /*let inventoryContainsItem: boolean = true;
-
-            for (let i: number; i < this.inventory.length; i++) {
-
-                        if (i == this.inventory.length && this.inventory[i].name != _userInput) {
-                            console.log("Sorry but there's no such item in your inventoy");
-                            inventoryContainsItem = false;
-                        }
-            }*/
             let inventoryContainsItem: boolean = doesArrayContain(this.inventory, _userInput);
 
             if (inventoryContainsItem == true) {
@@ -49,6 +39,38 @@ namespace Abschlussaufgabe {
             else {
 
                 console.log("There is no such item in your inventory.");
+            }
+        }
+
+        move(_userInput: string): void {
+
+            for (let i: number; i <= this.position.passages.length; i++) {
+
+                if (this.position.passages[i].direction == _userInput) {
+
+                    if (this.position.passages[i].isPassable == true) {
+                        this.position = this.position.passages[i].leadsTo;
+                        switch (_userInput) {
+
+                            case "n":
+                                console.log("You go north.");
+                            case "w":
+                                console.log("You go west.");
+                            case "s":
+                                console.log("You go south.");
+                            case "e":
+                                console.log("You go east.");
+                        }
+                    }
+                    else {
+                        console.log("This passage isn't passable yet.");
+
+                    }
+                }
+                else {
+                    console.log("There is no door or path this way. Try another direction.");
+
+                }
             }
         }
 

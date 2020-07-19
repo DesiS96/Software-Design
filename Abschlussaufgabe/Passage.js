@@ -2,10 +2,10 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class Passage {
-        constructor(_position, _leadsTo, _direction) {
-            this.position = _position;
+        constructor(_leadsTo, _direction, _isPassable) {
             this.leadsTo = _leadsTo;
             this.direction = _direction;
+            this.isPassable = _isPassable;
         }
     }
     Abschlussaufgabe.Passage = Passage;

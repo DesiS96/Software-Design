@@ -2,15 +2,15 @@ namespace Abschlussaufgabe {
 
     export class Passage {
 
-        public position: Room;
         public leadsTo: Room;
         public direction: string;
+        public isPassable: boolean;
 
-        constructor(_position: Room, _leadsTo: Room, _direction: string) {
+        constructor(_leadsTo: Room, _direction: string, _isPassable: boolean) {
 
-            this.position = _position;
             this.leadsTo = _leadsTo;
             this.direction = _direction;
+            this.isPassable = _isPassable;
 
         }
     }
