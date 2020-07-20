@@ -27,7 +27,7 @@ namespace Abschlussaufgabe {
 
                         if (this.position.characters[i].life == 0) {
 
-                            removeCharacterFromRoom(this.position.characters, this.position.characters[i].name);
+                            this.position.characters = removeCharacterFromRoom(this.position.characters, this.position.characters[i].name);
                             console.log(_userInput + "died by your attack.");
                         }
                         else {
@@ -43,7 +43,7 @@ namespace Abschlussaufgabe {
 
             }
         }
-        
+
         drop(_userInput: string): void {
 
             let inventoryContainsItem: boolean = doesArrayContain(this.inventory, _userInput);

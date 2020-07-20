@@ -15,7 +15,7 @@ var Abschlussaufgabe;
                     if (this.position.characters[i].name == _userInput) {
                         this.position.characters[i].life = this.position.characters[i].life - this.attack;
                         if (this.position.characters[i].life == 0) {
-                            Abschlussaufgabe.removeCharacterFromRoom(this.position.characters, this.position.characters[i].name);
+                            this.position.characters = Abschlussaufgabe.removeCharacterFromRoom(this.position.characters, this.position.characters[i].name);
                             console.log(_userInput + "died by your attack.");
                         }
                         else {
