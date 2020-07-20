@@ -13,5 +13,6 @@ namespace Abschlussaufgabe {
             this.passages = _passages;
 
         }
+        
     }
 }

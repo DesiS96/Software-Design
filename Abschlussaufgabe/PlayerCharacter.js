@@ -8,6 +8,27 @@ var Abschlussaufgabe;
             this.attack = _attack;
             this.commands = _commands;
         }
+        attackNPC(_userInput) {
+            let containsCharacter = Abschlussaufgabe.doesArrayContain(this.position.characters, _userInput);
+            if (containsCharacter == true) {
+                for (let i; i <= this.position.characters.length;) {
+                    if (this.position.characters[i].name == _userInput) {
+                        this.position.characters[i].life = this.position.characters[i].life - this.attack;
+                        if (this.position.characters[i].life == 0) {
+                            Abschlussaufgabe.removeCharacterFromRoom(this.position.characters, this.position.characters[i].name);
+                            console.log(_userInput + "died by your attack.");
+                        }
+                        else {
+                            //Charactertyp herausfinden -> überarbeiten
+                            console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
+                        }
+                    }
+                }
+            }
+            else {
+                console.log("There is no one you could attack.");
+            }
+        }
         drop(_userInput) {
             let inventoryContainsItem = Abschlussaufgabe.doesArrayContain(this.inventory, _userInput);
             if (inventoryContainsItem == true) {

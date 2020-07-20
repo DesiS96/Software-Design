@@ -14,6 +14,36 @@ namespace Abschlussaufgabe {
             this.commands = _commands;
         }
 
+        attackNPC(_userInput: string): void {
+
+            let containsCharacter: boolean = doesArrayContain(this.position.characters, _userInput);
+
+            if (containsCharacter == true) {
+
+                for (let i: number; i <= this.position.characters.length;) {
+                    if (this.position.characters[i].name == _userInput) {
+
+                        this.position.characters[i].life = this.position.characters[i].life - this.attack;
+
+                        if (this.position.characters[i].life == 0) {
+
+                            removeCharacterFromRoom(this.position.characters, this.position.characters[i].name);
+                            console.log(_userInput + "died by your attack.");
+                        }
+                        else {
+
+                            //Charactertyp herausfinden -> überarbeiten
+                            console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
+                        }
+                    }
+                }
+            }
+            else {
+                console.log("There is no one you could attack.");
+
+            }
+        }
+        
         drop(_userInput: string): void {
 
             let inventoryContainsItem: boolean = doesArrayContain(this.inventory, _userInput);
