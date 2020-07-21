@@ -2,8 +2,8 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class PlayerCharacter extends Abschlussaufgabe.Character {
-        constructor(_name, _life, _position, _inventory, _attack, _commands) {
-            super(_name, _life, _position);
+        constructor(_name, _life, _position, _attack, _inventory, _commands) {
+            super(_name, _life, _position, _attack);
             this.inventory = _inventory;
             this.attack = _attack;
             this.commands = _commands;
@@ -15,12 +15,18 @@ var Abschlussaufgabe;
                     if (this.position.characters[i].name == _userInput) {
                         this.position.characters[i].life = this.position.characters[i].life - this.attack;
                         if (this.position.characters[i].life == 0) {
+                            //extra condition für regs und intels, intels können sich heilen wenn sie eine potion haben
                             this.position.characters = Abschlussaufgabe.removeCharacterFromRoom(this.position.characters, this.position.characters[i].name);
                             console.log(_userInput + "died by your attack.");
                         }
                         else {
-                            //Charactertyp herausfinden -> überarbeiten
-                            console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
+                            if (this.position.characters[i].type == "regular") {
+                                console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
+                                this.position.characters[i].move();
+                            }
+                            else {
+                                this.life = this.life - this.position.characters[i].attack;
+                            }
                         }
                     }
                 }
@@ -48,6 +54,7 @@ var Abschlussaufgabe;
             }
         }
         move(_userInput) {
+            super.move();
             for (let i; i <= this.position.passages.length; i++) {
                 if (this.position.passages[i].direction == _userInput) {
                     if (this.position.passages[i].isPassable == true) {

@@ -2,11 +2,10 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class IntelligentNPC extends Abschlussaufgabe.Character {
-        constructor(_name, _life, _position, _inventory, _attack, _look, _type) {
-            super(_name, _life, _position);
+        constructor(_name, _life, _position, _attack, _inventory, _look, _type) {
+            super(_name, _life, _position, _attack);
             this.type = "intelligent";
             this.inventory = _inventory;
-            this.attack = _attack;
             this.look = _look;
             this.type = _type;
         }

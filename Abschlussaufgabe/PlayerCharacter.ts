@@ -3,12 +3,11 @@ namespace Abschlussaufgabe {
     export class PlayerCharacter extends Character {
 
         public inventory: Item[];
-        public attack: number;
         public commands: string[];
 
-        constructor(_name: string, _life: number, _position: Room, _inventory: Item[], _attack: number, _commands: string[]) {
+        constructor(_name: string, _life: number, _position: Room, _attack: number, _inventory: Item[], _commands: string[]) {
 
-            super(_name, _life, _position);
+            super(_name, _life, _position, _attack);
             this.inventory = _inventory;
             this.attack = _attack;
             this.commands = _commands;
@@ -26,14 +25,22 @@ namespace Abschlussaufgabe {
                         this.position.characters[i].life = this.position.characters[i].life - this.attack;
 
                         if (this.position.characters[i].life == 0) {
+                            //extra condition für regs und intels, intels können sich heilen wenn sie eine potion haben
 
                             this.position.characters = removeCharacterFromRoom(this.position.characters, this.position.characters[i].name);
                             console.log(_userInput + "died by your attack.");
                         }
                         else {
 
-                            //Charactertyp herausfinden -> überarbeiten
+                            if (this.position.characters[i].type == "regular") {
+
                             console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
+                            this.position.characters[i].move();
+                            }
+                            else {                      
+                                this.life = this.life - this.position.characters[i].attack;
+
+                            }
                         }
                     }
                 }
@@ -71,8 +78,9 @@ namespace Abschlussaufgabe {
                 console.log("There is no such item in your inventory.");
             }
         }
-
         move(_userInput: string): void {
+
+            super.move();
 
             for (let i: number; i <= this.position.passages.length; i++) {
 
