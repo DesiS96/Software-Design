@@ -16,7 +16,7 @@ namespace Abschlussaufgabe {
 
         attackNPC(_userInput: string): void {
 
-            let containsCharacter: boolean = doesArrayContain(this.position.characters, _userInput);
+            let containsCharacter: boolean = doesRoomContainCharacter(this.position.characters, _userInput);
 
             if (containsCharacter == true) {
 
@@ -46,7 +46,7 @@ namespace Abschlussaufgabe {
 
         drop(_userInput: string): void {
 
-            let inventoryContainsItem: boolean = doesArrayContain(this.inventory, _userInput);
+            let inventoryContainsItem: boolean = doesInventoryContainItem(this.inventory, _userInput);
 
             if (inventoryContainsItem == true) {
 
@@ -123,7 +123,7 @@ namespace Abschlussaufgabe {
 
         take(_userInput: string): void {
 
-            let roomContainsItem: boolean = doesArrayContain(this.position.items, _userInput);
+            let roomContainsItem: boolean = doesInventoryContainItem(this.position.items, _userInput);
 
             if (roomContainsItem == true) {
 

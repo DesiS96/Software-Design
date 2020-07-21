@@ -9,7 +9,7 @@ var Abschlussaufgabe;
             this.commands = _commands;
         }
         attackNPC(_userInput) {
-            let containsCharacter = Abschlussaufgabe.doesArrayContain(this.position.characters, _userInput);
+            let containsCharacter = Abschlussaufgabe.doesRoomContainCharacter(this.position.characters, _userInput);
             if (containsCharacter == true) {
                 for (let i; i <= this.position.characters.length;) {
                     if (this.position.characters[i].name == _userInput) {
@@ -30,7 +30,7 @@ var Abschlussaufgabe;
             }
         }
         drop(_userInput) {
-            let inventoryContainsItem = Abschlussaufgabe.doesArrayContain(this.inventory, _userInput);
+            let inventoryContainsItem = Abschlussaufgabe.doesInventoryContainItem(this.inventory, _userInput);
             if (inventoryContainsItem == true) {
                 let fillerInventory = [];
                 for (let i; i < this.inventory.length; i++) {
@@ -83,7 +83,7 @@ var Abschlussaufgabe;
             console.log(commandsString);
         }
         take(_userInput) {
-            let roomContainsItem = Abschlussaufgabe.doesArrayContain(this.position.items, _userInput);
+            let roomContainsItem = Abschlussaufgabe.doesInventoryContainItem(this.position.items, _userInput);
             if (roomContainsItem == true) {
                 for (let i; i < this.position.items.length; i++) {
                     if (this.position.items[i].name == _userInput) {

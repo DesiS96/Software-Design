@@ -1,7 +1,7 @@
 "use strict";
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
-    function doesArrayContain(_itemArray, _itemName) {
+    function doesInventoryContainItem(_itemArray, _itemName) {
         let containsItem = true;
         for (let i; i < _itemArray.length; i++) {
             if (i == _itemArray.length && _itemArray[i].name != _itemName) {
@@ -10,6 +10,6 @@ var Abschlussaufgabe;
         }
         return containsItem;
     }
-    Abschlussaufgabe.doesArrayContain = doesArrayContain;
+    Abschlussaufgabe.doesInventoryContainItem = doesInventoryContainItem;
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
-//# sourceMappingURL=doesArrayContain.js.map
+//# sourceMappingURL=doesInventoryContainItem.js.map
