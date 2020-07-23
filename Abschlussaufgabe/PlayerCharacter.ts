@@ -5,9 +5,9 @@ namespace Abschlussaufgabe {
         public inventory: Item[];
         public commands: string[];
 
-        constructor(_name: string, _life: number, _position: Room, _attack: number, _inventory: Item[], _commands: string[]) {
+        constructor(_name: string, _life: number, _attack: number, _type: string, _position: Room, _inventory: Item[], _commands: string[]) {
 
-            super(_name, _life, _position, _attack);
+            super(_name, _life, _attack, _type = "player", _position);
             this.inventory = _inventory;
             this.attack = _attack;
             this.commands = _commands;

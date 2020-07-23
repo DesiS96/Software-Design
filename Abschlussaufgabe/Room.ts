@@ -3,10 +3,10 @@ namespace Abschlussaufgabe {
     export class Room {
 
         public items: Item[];
-        public characters: Array<IntelligentNPC|RegularNPC>;
+        public characters: Character[];
         public passages: Passage[];
 
-        constructor(_items: Item[], _characters: Array<IntelligentNPC|RegularNPC>, _passages: Passage[]) {
+        constructor(_items: Item[], _characters: Character[], _passages: Passage[]) {
 
             this.items = _items;
             this.characters = _characters;

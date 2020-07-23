@@ -1,8 +1,8 @@
 namespace Abschlussaufgabe{
 
-    export function removeCharacterFromRoom(_Array: Array<IntelligentNPC|RegularNPC>, _userInput: string): Array<IntelligentNPC|RegularNPC> {
+    export function removeCharacterFromRoom(_Array: Character[], _userInput: string): Character[]{
 
-        let fillerArray: Array<IntelligentNPC|RegularNPC> = [];
+        let fillerArray: Character[] = [];
 
         for (let i: number; i < _Array.length; i++) {
 

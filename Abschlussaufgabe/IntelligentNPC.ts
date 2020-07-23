@@ -5,11 +5,11 @@ namespace Abschlussaufgabe {
         public inventory: Item[];
         public attack: number;
         public look: string;
-        public type: string = "intelligent";
+        
 
-        constructor(_name: string, _life: number, _position: Room, _attack: number, _inventory: Item[], _look: string, _type: string) {
+        constructor(_name: string, _life: number, _attack: number, _type: string, _position: Room, _inventory: Item[], _look: string) {
 
-            super(_name, _life, _position, _attack);
+            super(_name, _life, _attack, _type = "intelligent", _position);
 
             this.inventory = _inventory;
             this.look = _look;

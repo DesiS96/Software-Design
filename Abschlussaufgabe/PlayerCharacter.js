@@ -2,8 +2,8 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class PlayerCharacter extends Abschlussaufgabe.Character {
-        constructor(_name, _life, _position, _attack, _inventory, _commands) {
-            super(_name, _life, _position, _attack);
+        constructor(_name, _life, _attack, _type, _position, _inventory, _commands) {
+            super(_name, _life, _attack, _type = "player", _position);
             this.inventory = _inventory;
             this.attack = _attack;
             this.commands = _commands;

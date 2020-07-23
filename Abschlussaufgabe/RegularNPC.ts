@@ -3,11 +3,10 @@ namespace Abschlussaufgabe {
     export class RegularNPC extends Character {
 
         public look: string;
-        public type: string = "regular";
 
-        constructor(_name: string, _life: number, _position: Room, _attack: number, _look: string, _type: string) {
+        constructor(_name: string, _life: number, _attack: number,  _type: string, _position: Room, _look: string) {
 
-            super(_name, _life, _position, _attack = 0);
+            super(_name, _life, _attack = 0, _type = "regular", _position);
 
             this.look = _look;
             this.type = _type;

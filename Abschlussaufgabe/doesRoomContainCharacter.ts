@@ -1,6 +1,6 @@
 namespace Abschlussaufgabe {
 
-    export function doesRoomContainCharacter(_characterArray: Array<IntelligentNPC|RegularNPC>, _characterName: string): boolean {
+    export function doesRoomContainCharacter(_characterArray: Character[], _characterName: string): boolean {
 
         let containsItem: boolean = true;
 
