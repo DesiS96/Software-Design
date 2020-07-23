@@ -1,0 +1,18 @@
+{
+    "Zelda":{
+
+        "name": "Zelda",
+        "life": 20,
+        "attack": 10,
+        "type": "player",
+        "position": {
+
+
+            
+        }
+
+
+
+    }
+
+}
