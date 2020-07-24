@@ -2,8 +2,9 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class Item {
-        constructor(_name) {
+        constructor(_name, _type) {
             this.name = _name;
+            this.type = _type;
         }
     }
     Abschlussaufgabe.Item = Item;

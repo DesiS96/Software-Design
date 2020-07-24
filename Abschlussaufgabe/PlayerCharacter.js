@@ -2,37 +2,41 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class PlayerCharacter extends Abschlussaufgabe.Character {
-        constructor(_name, _life, _attack, _type, _position, _inventory, _commands) {
-            super(_name, _life, _attack, _type = "player", _position);
+        constructor(_name, _life, _attack, _type, _positionID, _inventory, _commands) {
+            super(_name, _life, _attack, _type = "player", _positionID);
             this.inventory = _inventory;
-            this.attack = _attack;
             this.commands = _commands;
         }
         attackNPC(_userInput) {
-            let containsCharacter = Abschlussaufgabe.doesRoomContainCharacter(this.position.characters, _userInput);
-            if (containsCharacter == true) {
-                for (let i; i <= this.position.characters.length;) {
-                    if (this.position.characters[i].name == _userInput) {
-                        this.position.characters[i].life = this.position.characters[i].life - this.attack;
-                        if (this.position.characters[i].life == 0) {
-                            //extra condition für regs und intels, intels können sich heilen wenn sie eine potion haben
-                            this.position.characters = Abschlussaufgabe.removeCharacterFromRoom(this.position.characters, this.position.characters[i].name);
-                            console.log(_userInput + "died by your attack.");
-                        }
-                        else {
-                            if (this.position.characters[i].type == "regular") {
-                                console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
-                                this.position.characters[i].move();
+            for (let i; i < Abschlussaufgabe.roomArray.length; i++) {
+                if (this.positionID == Abschlussaufgabe.roomArray[i].id) {
+                    let characterPosition = Abschlussaufgabe.roomArray[i];
+                    let containsCharacter = Abschlussaufgabe.doesRoomContainCharacter(characterPosition.characters, _userInput);
+                    if (containsCharacter == true) {
+                        for (let i; i <= characterPosition.characters.length;) {
+                            if (characterPosition.characters[i].name == _userInput) {
+                                characterPosition.characters[i].life = characterPosition.characters[i].life - this.attack;
+                                if (characterPosition.characters[i].life == 0) {
+                                    //extra condition für regs und intels, intels können sich heilen wenn sie eine potion haben
+                                    characterPosition.characters = Abschlussaufgabe.removeCharacterFromRoom(characterPosition.characters, characterPosition.characters[i].name);
+                                    console.log(_userInput + "died by your attack.");
+                                }
                             }
                             else {
-                                this.life = this.life - this.position.characters[i].attack;
+                                if (characterPosition.characters[i].type == "regular") {
+                                    console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
+                                    characterPosition.characters[i].move();
+                                }
+                                else {
+                                    this.life = this.life - characterPosition.characters[i].attack;
+                                }
                             }
                         }
                     }
                 }
-            }
-            else {
-                console.log("There is no one you could attack.");
+                else {
+                    console.log("There is no one you could attack.");
+                }
             }
         }
         drop(_userInput) {
@@ -55,27 +59,33 @@ var Abschlussaufgabe;
         }
         move(_userInput) {
             super.move();
-            for (let i; i <= this.position.passages.length; i++) {
-                if (this.position.passages[i].direction == _userInput) {
-                    if (this.position.passages[i].isPassable == true) {
-                        this.position = this.position.passages[i].leadsTo;
-                        switch (_userInput) {
-                            case "n":
-                                console.log("You go north.");
-                            case "w":
-                                console.log("You go west.");
-                            case "s":
-                                console.log("You go south.");
-                            case "e":
-                                console.log("You go east.");
+            for (let i; i < Abschlussaufgabe.roomArray.length; i++) {
+                if (this.positionID == Abschlussaufgabe.roomArray[i].id) {
+                    let characterPosition = Abschlussaufgabe.roomArray[i];
+                    //let containsCharacter: boolean = doesRoomContainCharacter(characterPosition.characters, _userInput);
+                    for (let i; i <= characterPosition.passages.length; i++) {
+                        if (characterPosition.passages[i].direction == _userInput) {
+                            if (characterPosition.passages[i].isPassable == "yes") {
+                                this.positionID = characterPosition.passages[i].leadsTo;
+                                switch (_userInput) {
+                                    case "n":
+                                        console.log("You go north.");
+                                    case "w":
+                                        console.log("You go west.");
+                                    case "s":
+                                        console.log("You go south.");
+                                    case "e":
+                                        console.log("You go east.");
+                                }
+                            }
+                            else {
+                                console.log("This passage isn't passable yet.");
+                            }
+                        }
+                        else {
+                            console.log("There is no door or path this way. Try another direction.");
                         }
                     }
-                    else {
-                        console.log("This passage isn't passable yet.");
-                    }
-                }
-                else {
-                    console.log("There is no door or path this way. Try another direction.");
                 }
             }
         }
@@ -90,16 +100,22 @@ var Abschlussaufgabe;
             console.log(commandsString);
         }
         take(_userInput) {
-            let roomContainsItem = Abschlussaufgabe.doesInventoryContainItem(this.position.items, _userInput);
-            if (roomContainsItem == true) {
-                for (let i; i < this.position.items.length; i++) {
-                    if (this.position.items[i].name == _userInput) {
-                        this.inventory.push(this.position.items[i]);
+            for (let i; i < Abschlussaufgabe.roomArray.length; i++) {
+                if (this.positionID == Abschlussaufgabe.roomArray[i].id) {
+                    let characterPosition = Abschlussaufgabe.roomArray[i];
+                    //let containsCharacter: boolean = doesRoomContainCharacter(characterPosition.characters, _userInput);
+                    let roomContainsItem = Abschlussaufgabe.doesInventoryContainItem(characterPosition.items, _userInput);
+                    if (roomContainsItem == true) {
+                        for (let i; i < characterPosition.items.length; i++) {
+                            if (characterPosition.items[i].name == _userInput) {
+                                this.inventory.push(characterPosition.items[i]);
+                            }
+                        }
+                    }
+                    else {
+                        console.log("There's no such item in this room");
                     }
                 }
-            }
-            else {
-                console.log("There's no such item in this room");
             }
         }
     }

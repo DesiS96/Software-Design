@@ -1,6 +1,7 @@
 "use strict";
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
+    Abschlussaufgabe.roomArray = [];
     const text = document.createElement("div");
     document.body.appendChild(text);
     //const inputfield = document.createElement("input");

@@ -1,5 +1,7 @@
 namespace Abschlussaufgabe {
 
+    export let roomArray: Room[] = [];
+
     const text = document.createElement("div");
     document.body.appendChild(text);
     //const inputfield = document.createElement("input");

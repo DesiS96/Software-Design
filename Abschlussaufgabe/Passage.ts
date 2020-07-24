@@ -2,11 +2,11 @@ namespace Abschlussaufgabe {
 
     export class Passage {
 
-        public leadsTo: Room;
+        public leadsTo: number;
         public direction: string;
-        public isPassable: boolean;
+        public isPassable: string;
 
-        constructor(_leadsTo: Room, _direction: string, _isPassable: boolean) {
+        constructor(_leadsTo: number, _direction: string, _isPassable: string) {
 
             this.leadsTo = _leadsTo;
             this.direction = _direction;

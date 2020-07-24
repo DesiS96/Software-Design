@@ -1,0 +1,238 @@
+[   
+    {
+    "items": [{
+    }],
+    "characters": [{
+        "name": "Mine-Worker",
+        "life": 10,
+        "attack": 0,
+        "type": "regular",
+        "positionID": 1,
+        "look": "A scared looking worker of the mine"
+    }],
+    "passages":[{
+        "leadsTo": 2,
+        "direction": "e",
+        "isPassable": "yes"
+        },
+        {
+        "leadsTo": 4,
+        "direction": "n",
+        "isPassable": "yes"
+        }    
+    ],
+    "id": 1   
+    },
+    {
+    "items": [{
+        "name": "potion2",
+        "type": "potion"
+    }],
+    "characters": [{}],
+    "passages":[{
+        "leadsTo": 3,
+        "direction": "e",
+        "isPassable": "yes"
+        },
+        {
+        "leadsTo": 1,
+        "direction": "w",
+        "isPassable": "yes"
+    }],
+    "id": 2   
+    },
+    {
+    "items": [{}],
+    "characters": [{
+        "name": "fellow traveler",
+        "life": 10,
+        "attack": 0,
+        "type": "regular",
+        "positionID": 3,
+        "look": "Another traveler, she seems lost."
+        }],
+    "passages":[{
+        "leadsTo": 2,
+        "direction": "w",
+        "isPassable": "yes"
+    }],
+    "id": 3   
+    },
+    {
+    "items": [{
+        }],
+    "characters": [{}],
+    "passages":[{
+        "leadsTo": 5,
+        "direction": "e",
+        "isPassable": "yes"
+        },
+        {
+        "leadsTo": 9,
+        "direction": "n",
+        "isPassable": "yes"
+        }    
+        ],
+    "id": 4
+    },
+    {
+    "items": [{
+        }],
+    "characters": [{
+        "name": "Another worker",
+        "life": 10,
+        "attack": 0,
+        "type": "regular",
+        "positionID": 5,
+        "look": "Another worker of the mines, he seems tired."
+        },
+        {
+        "name": "A bokoblin",
+        "life": 20,
+        "attack": 5,
+        "type": "intelligent",
+        "positionID": 5,
+        "look": "An aggressive bokoblin. Has it something to do with the accident?"
+        }],
+    "passages":[{
+        "leadsTo": 6,
+        "direction": "e",
+        "isPassable": "yes"
+        },
+        {
+        "leadsTo": 4,
+        "direction": "w",
+        "isPassable": "yes"
+        }    
+        ],
+    "id": 5
+    },
+    {
+    "items": [{
+        "name": "potion3",
+        "type": "potion"
+        }],
+    "characters": [{}],
+    "passages":[{
+        "leadsTo": 7,
+        "direction": "n",
+        "isPassable": "yes"
+        },
+        {
+        "leadsTo": 5,
+        "direction": "w",
+        "isPassable": "yes"
+        }    
+    ],
+    "id": 6
+    },
+    {
+    "items": [{
+        "name": "hammer",
+        "type": "tool"
+    }],
+    "characters": [{
+        "name": "a skultulla",
+        "life": 20,
+        "attack": 5,
+        "type": "intelligent",
+        "positionID": 5,
+        "look": "Eww it's a skultulla! I hate those spiders!"
+    }],
+    "passages":[{
+        "leadsTo": 8,
+        "direction": "n",
+        "isPassable": "no"
+        },
+        {
+        "leadsTo": 6,
+        "direction": "s",
+        "isPassable": "yes"
+        }    
+    ],
+    "id": 7
+    },
+    {
+    "items": [{}],
+    "characters": [{
+        "name": "Link",
+        "life": 10,
+        "attack": 0,
+        "type": "regular",
+        "positionID": 8,
+        "look": "Link! I finally found him!"
+    }],
+    "passages":[{
+        "leadsTo": 7,
+        "direction": "s",
+        "isPassable": "yes"
+        
+    }],
+    "id": 8
+    },
+    {
+    "items":[{}],
+    "characters": [{
+    "name": "a stalfols",
+    "life": 20,
+    "attack": 5,
+    "type": "intelligent",
+    "positionID": 5,
+    "look": "A Stalfols. I guess it wants a fight!"
+    }],
+    "passages":[{
+        "leadsTo": 10,
+        "direction": "w",
+        "isPassable": "yes"
+        },
+        {
+        "leadsTo": 4,
+        "direction": "s",
+        "isPassable": "yes"
+        }],
+    "id": 9
+    },
+    {
+    "items":{},
+    "characters": [{
+        "name": "skilled mineworker",
+        "life": 10,
+        "attack": 0,
+        "type": "regular",
+        "positionID": 5,
+        "look": "Yet another mineworker. He looks as if he searches for something."
+        }],
+    "passages":[{
+        "leadsTo": 11,
+        "direction": "w",
+        "isPassable": "no"
+        },
+        {
+        "leadsTo": 9,
+        "direction": "e",
+        "isPassable": "yes"
+        }],
+    "id": 10
+    },
+    {
+    "items":[{
+        "name": "bombflower1",
+        "type": "bombflower"
+    },
+    {
+        "name": "bombflower2",
+        "type": "bombflower"
+    },
+    {
+        "name": "bombflower3",
+        "type": "bombflower"
+    }],
+    "characters": [{}],
+    "passages":[{
+        "leadsTo": 10,
+        "direction": "e",
+        "isPassable": "yes"
+    }],
+    "id": 11
+    }
+]

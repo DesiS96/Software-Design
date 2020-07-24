@@ -5,14 +5,15 @@
         "life": 20,
         "attack": 10,
         "type": "player",
-        "position": {
+        "position": 1,
+        "inventory": [{
 
+            "item1":{
 
-            
-        }
+                "name": "potion"
 
-
-
+            }
+        }],
+        "commands": "commands: attack(a), showCommands(c), drop(d), move(m), showInventory(i), take(t)"
     }
-
 }
