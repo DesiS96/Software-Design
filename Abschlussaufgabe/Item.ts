@@ -1,6 +1,4 @@
-namespace Abschlussaufgabe {
-
-    export class Item { //abstract machen
+export class Item { //abstract machen
 
         public name: string;
         public type: string;
@@ -12,6 +10,5 @@ namespace Abschlussaufgabe {
 
         }
 
-    }
-
 }
+

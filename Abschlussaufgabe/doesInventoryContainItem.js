@@ -1,6 +1,6 @@
-"use strict";
-var Abschlussaufgabe;
-(function (Abschlussaufgabe) {
+System.register([], function (exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     function doesInventoryContainItem(_itemArray, _itemName) {
         let containsItem = true;
         for (let i; i < _itemArray.length; i++) {
@@ -10,6 +10,11 @@ var Abschlussaufgabe;
         }
         return containsItem;
     }
-    Abschlussaufgabe.doesInventoryContainItem = doesInventoryContainItem;
-})(Abschlussaufgabe || (Abschlussaufgabe = {}));
+    exports_1("doesInventoryContainItem", doesInventoryContainItem);
+    return {
+        setters: [],
+        execute: function () {
+        }
+    };
+});
 //# sourceMappingURL=doesInventoryContainItem.js.map

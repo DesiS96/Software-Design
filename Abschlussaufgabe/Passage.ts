@@ -1,6 +1,4 @@
-namespace Abschlussaufgabe {
-
-    export class Passage {
+export class Passage {
 
         public leadsTo: number;
         public direction: string;
@@ -13,5 +11,4 @@ namespace Abschlussaufgabe {
             this.isPassable = _isPassable;
 
         }
-    }
 }

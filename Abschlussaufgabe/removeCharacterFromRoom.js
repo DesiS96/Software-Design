@@ -1,6 +1,6 @@
-"use strict";
-var Abschlussaufgabe;
-(function (Abschlussaufgabe) {
+System.register([], function (exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     function removeCharacterFromRoom(_Array, _userInput) {
         let fillerArray = [];
         for (let i; i < _Array.length; i++) {
@@ -14,6 +14,11 @@ var Abschlussaufgabe;
         }
         return _Array;
     }
-    Abschlussaufgabe.removeCharacterFromRoom = removeCharacterFromRoom;
-})(Abschlussaufgabe || (Abschlussaufgabe = {}));
+    exports_1("removeCharacterFromRoom", removeCharacterFromRoom);
+    return {
+        setters: [],
+        execute: function () {
+        }
+    };
+});
 //# sourceMappingURL=removeCharacterFromRoom.js.map

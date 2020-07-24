@@ -1,6 +1,6 @@
-namespace Abschlussaufgabe {
+import { Character} from "./Character";
 
-    export class RegularNPC extends Character {
+export class RegularNPC extends Character {
 
         public look: string;
 
@@ -11,5 +11,4 @@ namespace Abschlussaufgabe {
             this.look = _look;
             this.type = _type;
         }
-    }
 }

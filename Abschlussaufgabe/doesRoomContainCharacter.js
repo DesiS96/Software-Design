@@ -1,6 +1,6 @@
-"use strict";
-var Abschlussaufgabe;
-(function (Abschlussaufgabe) {
+System.register([], function (exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     function doesRoomContainCharacter(_characterArray, _characterName) {
         let containsItem = true;
         for (let i; i < _characterArray.length; i++) {
@@ -10,6 +10,11 @@ var Abschlussaufgabe;
         }
         return containsItem;
     }
-    Abschlussaufgabe.doesRoomContainCharacter = doesRoomContainCharacter;
-})(Abschlussaufgabe || (Abschlussaufgabe = {}));
+    exports_1("doesRoomContainCharacter", doesRoomContainCharacter);
+    return {
+        setters: [],
+        execute: function () {
+        }
+    };
+});
 //# sourceMappingURL=doesRoomContainCharacter.js.map

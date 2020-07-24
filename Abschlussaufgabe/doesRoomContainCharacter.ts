@@ -1,6 +1,6 @@
-namespace Abschlussaufgabe {
+ import { Character } from "./Character";
 
-    export function doesRoomContainCharacter(_characterArray: Character[], _characterName: string): boolean {
+ export function doesRoomContainCharacter(_characterArray: Character[], _characterName: string): boolean {
 
         let containsItem: boolean = true;
 
@@ -12,5 +12,4 @@ namespace Abschlussaufgabe {
         }
         return containsItem;
 
-    }
 }

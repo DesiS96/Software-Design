@@ -1,6 +1,15 @@
-namespace Abschlussaufgabe {
+import { Character} from "./Character";
+import { RegularNPC} from "./RegularNPC";
+import { IntelligentNPC} from "./IntelligentNPC";
+import { Item } from "./Item";
+import { Room } from "./Room";
+import { roomArray } from "./main";
+import { removeCharacterFromRoom } from "./removeCharacterFromRoom";
+import { doesRoomContainCharacter } from "./doesRoomContainCharacter";
+import { doesInventoryContainItem } from "./doesInventoryContainItem";
 
-    export class PlayerCharacter extends Character {
+
+export class PlayerCharacter extends Character {
 
         public inventory: Item[];
         public commands: string[];
@@ -179,5 +188,3 @@ namespace Abschlussaufgabe {
         }
 
     }
-
-}

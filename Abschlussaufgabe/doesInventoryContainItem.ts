@@ -1,6 +1,5 @@
-namespace Abschlussaufgabe {
-
-    export function doesInventoryContainItem(_itemArray: Item[], _itemName: string): boolean {
+import { Item } from "./Item";
+export function doesInventoryContainItem(_itemArray: Item[], _itemName: string): boolean {
 
         let containsItem: boolean = true;
 
@@ -11,7 +10,5 @@ namespace Abschlussaufgabe {
             }
         }
         return containsItem;
-
-    }
 
 }

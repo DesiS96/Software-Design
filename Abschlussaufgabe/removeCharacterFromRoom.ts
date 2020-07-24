@@ -1,6 +1,6 @@
-namespace Abschlussaufgabe{
+import { Character} from "./Character";
 
-    export function removeCharacterFromRoom(_Array: Character[], _userInput: string): Character[]{
+export function removeCharacterFromRoom(_Array: Character[], _userInput: string): Character[]{
 
         let fillerArray: Character[] = [];
 
@@ -19,5 +19,4 @@ namespace Abschlussaufgabe{
         }
 
         return _Array;
-    }
 }

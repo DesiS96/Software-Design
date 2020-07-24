@@ -1,6 +1,8 @@
-namespace Abschlussaufgabe {
+import { Character} from "./Character";
+import { Item } from "./Item";
+import { Passage } from "./Passage";
 
-    export class Room {
+export class Room {
 
         public items: Item[];
         public characters: Character[];
@@ -16,5 +18,4 @@ namespace Abschlussaufgabe {
 
         }
         
-    }
 }
