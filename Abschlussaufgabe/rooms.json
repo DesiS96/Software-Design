@@ -8,7 +8,7 @@
         "attack": 0,
         "type": "regular",
         "positionID": 1,
-        "look": "A scared looking worker of the mine"
+        "look": "A scared looking worker of the mine"   
     }],
     "passages":[{
         "leadsTo": 2,
@@ -21,7 +21,8 @@
         "isPassable": "yes"
         }    
     ],
-    "id": 1   
+    "id": 1,
+    "description": ""   
     },
     {
     "items": [{
@@ -39,7 +40,8 @@
         "direction": "w",
         "isPassable": "yes"
     }],
-    "id": 2   
+    "id": 2,
+    "description": ""   
     },
     {
     "items": [{}],
@@ -56,7 +58,8 @@
         "direction": "w",
         "isPassable": "yes"
     }],
-    "id": 3   
+    "id": 3,
+    "description": ""   
     },
     {
     "items": [{
@@ -73,7 +76,8 @@
         "isPassable": "yes"
         }    
         ],
-    "id": 4
+    "id": 4,
+    "description": ""
     },
     {
     "items": [{
@@ -105,7 +109,8 @@
         "isPassable": "yes"
         }    
         ],
-    "id": 5
+    "id": 5,
+    "description": ""
     },
     {
     "items": [{
@@ -124,7 +129,8 @@
         "isPassable": "yes"
         }    
     ],
-    "id": 6
+    "id": 6,
+    "description": ""
     },
     {
     "items": [{
@@ -150,7 +156,8 @@
         "isPassable": "yes"
         }    
     ],
-    "id": 7
+    "id": 7,
+    "description": ""
     },
     {
     "items": [{}],
@@ -168,7 +175,8 @@
         "isPassable": "yes"
         
     }],
-    "id": 8
+    "id": 8,
+    "description": ""
     },
     {
     "items":[{}],
@@ -190,7 +198,8 @@
         "direction": "s",
         "isPassable": "yes"
         }],
-    "id": 9
+    "id": 9,
+    "description": ""
     },
     {
     "items":{},
@@ -212,7 +221,8 @@
         "direction": "e",
         "isPassable": "yes"
         }],
-    "id": 10
+    "id": 10,
+    "description": ""
     },
     {
     "items":[{
@@ -233,6 +243,7 @@
         "direction": "e",
         "isPassable": "yes"
     }],
-    "id": 11
+    "id": 11,
+    "description": ""
     }
 ]}

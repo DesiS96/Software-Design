@@ -1,6 +1,4 @@
 import { Character} from "./Character";
-import { RegularNPC} from "./RegularNPC";
-import { IntelligentNPC} from "./IntelligentNPC";
 import { Item } from "./Item";
 import { Room } from "./Room";
 import { roomArray } from "./main";

@@ -1,16 +1,96 @@
-import { PlayerCharacter } from "./PlayerCharacter";
+/*import { PlayerCharacter } from "./PlayerCharacter";
 import { doesRoomContainCharacter } from "./doesRoomContainCharacter";
 import { Character} from "./Character";
 import { RegularNPC} from "./RegularNPC";
 import { Item } from "./Item";
 import { IntelligentNPC } from "./IntelligentNPC";
-import { Room } from "./Room";
+import { Room } from "./Room";*/
+//import { Passage } from "./Passage";
 
-import data from "./rooms.json";
+//let testname: string = JSON.parse(rooms[1].items.name);
 
-let id: number = (data.rooms[1].id);
+/*class Data {
+    array: { text: string|number }[];
+    items: {text: string|number}[];
+    characters: {text: string|number}[];
+    passages: {text: string|number}[];
+    id: number;
+    description: string;
+}*/
 
-console.log(id);
+interface RoomData {
+
+    rooms: RoomData[];
+
+
+}
+
+interface RoomData {
+
+    items: ItemData[];
+    characters: CharaData[];
+    passages: PassageData[];
+    id: number;
+    description: string;
+
+}
+interface PassageData {
+
+    leadsTo: number;
+    direction: string;
+    isPassable: string;
+
+}
+
+interface ItemData {
+
+    name: string;
+
+}
+
+interface CharaData {
+
+    name: string;
+    life: number;
+    attack: number;
+    type: string;
+    positionID: number;
+
+}
+
+async function loadRoom(_filename: string): Promise<RoomData> {
+    console.log("Start fetch");
+
+    let response: Response = await fetch(_filename);
+
+    let text: string = await response.text();
+    let json: RoomData = JSON.parse(text);
+    // alternative: json = await response.json();
+
+    console.log("Done fetch");
+    return (json);
+  }
+
+let filename: string = "./rooms.json";
+
+export let roomArray: Promise<RoomData>[] = [];
+
+
+
+for (let i: number; i < roomArray.length; i++) {
+
+    roomArray.push(loadRoom(filename[i]));
+
+    //let roomArray: Data = loadRoom(filename[1]);
+
+}
+
+console.log(roomArray);
+
+
+
+
+
 
 
 /*declare module 'rooms.json' {
@@ -23,12 +103,13 @@ console.log(id);
  
 //const rooms = require("C:\Users\Desiree\Desktop\Softwaredesign\Software-Design\Abschlussaufgabe\rooms.json");
 
-export let roomArray: Room[] = [];
+
 
 const text = document.createElement("div");
 document.body.appendChild(text);
     //const inputfield = document.createElement("input");
     //document.body.appendChild(inputfield);
+//text.innerHTML = testname;
 
 text.innerHTML = "Welcome to the game. What do you want to do?<br>>start game (s)<br>>quit game (q)";
     //inputfield
