@@ -3,8 +3,8 @@ import { doesRoomContainCharacter } from "./doesRoomContainCharacter";
 import { Character} from "./Character";
 import { RegularNPC} from "./RegularNPC";
 import { Item } from "./Item";
-import { IntelligentNPC } from "./IntelligentNPC";
-import { Room } from "./Room";*/
+import { IntelligentNPC } from "./IntelligentNPC";*/
+import { Room } from "./Room";
 //import { Passage } from "./Passage";
 
 //let testname: string = JSON.parse(rooms[1].items.name);
@@ -18,14 +18,14 @@ import { Room } from "./Room";*/
     description: string;
 }*/
 
-interface RoomData {
+interface Data {
 
-    rooms: RoomData[];
+    rooms: Array<number|string>;
 
 
 }
 
-interface RoomData {
+/*interface RoomData {
 
     items: ItemData[];
     characters: CharaData[];
@@ -56,36 +56,34 @@ interface CharaData {
     type: string;
     positionID: number;
 
-}
+}*/
 
-async function loadRoom(_filename: string): Promise<RoomData> {
+async function load(_filename: string): Promise<Data> {
     console.log("Start fetch");
 
     let response: Response = await fetch(_filename);
 
     let text: string = await response.text();
-    let json: RoomData = JSON.parse(text);
+    let json: Data = JSON.parse(text);
     // alternative: json = await response.json();
 
     console.log("Done fetch");
     return (json);
   }
 
+
 let filename: string = "./rooms.json";
 
-export let roomArray: Promise<RoomData>[] = [];
+let rooms: Promise<Data> = load(filename);
 
 
 
-for (let i: number; i < roomArray.length; i++) {
 
-    roomArray.push(loadRoom(filename[i]));
+export let roomArray: Room[] = [];
 
-    //let roomArray: Data = loadRoom(filename[1]);
 
-}
 
-console.log(roomArray);
+console.log(rooms);
 
 
 

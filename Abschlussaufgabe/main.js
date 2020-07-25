@@ -1,16 +1,40 @@
-/*import { PlayerCharacter } from "./PlayerCharacter";
-import { doesRoomContainCharacter } from "./doesRoomContainCharacter";
-import { Character} from "./Character";
-import { RegularNPC} from "./RegularNPC";
-import { Item } from "./Item";
-import { IntelligentNPC } from "./IntelligentNPC";
-import { Room } from "./Room";*/
-//import { Passage } from "./Passage";
 System.register([], function (exports_1, context_1) {
     "use strict";
-    var filename, roomArray, text, userInput;
+    var filename, rooms, roomArray, text, userInput;
     var __moduleName = context_1 && context_1.id;
-    async function loadRoom(_filename) {
+    /*interface RoomData {
+    
+        items: ItemData[];
+        characters: CharaData[];
+        passages: PassageData[];
+        id: number;
+        description: string;
+    
+    }
+    interface PassageData {
+    
+        leadsTo: number;
+        direction: string;
+        isPassable: string;
+    
+    }
+    
+    interface ItemData {
+    
+        name: string;
+    
+    }
+    
+    interface CharaData {
+    
+        name: string;
+        life: number;
+        attack: number;
+        type: string;
+        positionID: number;
+    
+    }*/
+    async function load(_filename) {
         console.log("Start fetch");
         let response = await fetch(_filename);
         let text = await response.text();
@@ -23,12 +47,9 @@ System.register([], function (exports_1, context_1) {
         setters: [],
         execute: function () {
             filename = "./rooms.json";
+            rooms = load(filename);
             exports_1("roomArray", roomArray = []);
-            for (let i; i < roomArray.length; i++) {
-                roomArray.push(loadRoom(filename[i]));
-                //let roomArray: Data = loadRoom(filename[1]);
-            }
-            console.log(roomArray);
+            console.log(rooms);
             /*declare module 'rooms.json' {
                 import * as json from 'C:\Users\Desiree\Desktop\Softwaredesign\Software-Design\Abschlussaufgabe\rooms.json';
                 export = json;
