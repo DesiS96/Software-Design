@@ -1,3 +1,5 @@
+namespace Abschlussarbeit {
+
 export abstract class Character {
 
         public name: string;
@@ -38,5 +40,6 @@ export abstract class Character {
             }*/
 
         }
+    }
 }
     

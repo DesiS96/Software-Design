@@ -1,19 +1,22 @@
-import { Item } from "./Item";
-import { Character } from "./Character";
+//import { Item } from "./Item";
+//import { Character } from "./Character";
 
-export class IntelligentNPC extends Character {
+namespace Abschlussarbeit {
 
-    public inventory: Item[];
-    public attack: number;
-    public look: string;
-        
+    export class IntelligentNPC extends Character {
 
-    constructor(_name: string, _life: number, _attack: number, _type: string, _positionID: number, _inventory: Item[], _look: string) {
+        public inventory: Item[];
+        public attack: number;
+        public look: string;
+            
 
-        super(_name, _life, _attack, _type = "intelligent", _positionID);
+        constructor(_name: string, _life: number, _attack: number, _type: string, _positionID: number, _inventory: Item[], _look: string) {
 
-        this.inventory = _inventory;
-        this.look = _look;
-        this.type = _type;
+            super(_name, _life, _attack, _type = "intelligent", _positionID);
+
+            this.inventory = _inventory;
+            this.look = _look;
+            this.type = _type;
+        }
     }
 }

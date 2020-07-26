@@ -1,6 +1,8 @@
-import { Character} from "./Character";
+/*import { Character} from "./Character";
 import { Item } from "./Item";
-import { Passage } from "./Passage";
+import { Passage } from "./Passage";*/
+
+namespace Abschlussarbeit {
 
 export class Room {
 
@@ -20,4 +22,5 @@ export class Room {
 
         }
         
+    }
 }

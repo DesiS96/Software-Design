@@ -1,10 +1,12 @@
-import { Character} from "./Character";
+/*import { Character} from "./Character";
 import { Item } from "./Item";
 import { Room } from "./Room";
 import { roomArray } from "./main";
 import { removeCharacterFromRoom } from "./removeCharacterFromRoom";
 import { doesRoomContainCharacter } from "./doesRoomContainCharacter";
-import { doesInventoryContainItem } from "./doesInventoryContainItem";
+import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
+
+namespace Abschlussarbeit {
 
 
 export class PlayerCharacter extends Character {
@@ -186,3 +188,5 @@ export class PlayerCharacter extends Character {
         }
 
     }
+
+}

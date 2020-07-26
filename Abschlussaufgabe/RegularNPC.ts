@@ -1,4 +1,6 @@
-import { Character} from "./Character";
+//import { Character} from "./Character";
+
+namespace Abschlussarbeit {
 
 export class RegularNPC extends Character {
 
@@ -11,4 +13,5 @@ export class RegularNPC extends Character {
             this.look = _look;
             this.type = _type;
         }
+    }
 }

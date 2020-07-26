@@ -1,4 +1,6 @@
-import { Item } from "./Item";
+//import { Item } from "./Item";
+
+namespace Abschlussarbeit {
 export function doesInventoryContainItem(_itemArray: Item[], _itemName: string): boolean {
 
         let containsItem: boolean = true;
@@ -11,4 +13,5 @@ export function doesInventoryContainItem(_itemArray: Item[], _itemName: string):
         }
         return containsItem;
 
+    }
 }

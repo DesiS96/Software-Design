@@ -1,6 +1,8 @@
-System.register([], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+"use strict";
+//import { Item } from "./Item";
+var Abschlussarbeit;
+//import { Item } from "./Item";
+(function (Abschlussarbeit) {
     function doesInventoryContainItem(_itemArray, _itemName) {
         let containsItem = true;
         for (let i; i < _itemArray.length; i++) {
@@ -10,11 +12,6 @@ System.register([], function (exports_1, context_1) {
         }
         return containsItem;
     }
-    exports_1("doesInventoryContainItem", doesInventoryContainItem);
-    return {
-        setters: [],
-        execute: function () {
-        }
-    };
-});
+    Abschlussarbeit.doesInventoryContainItem = doesInventoryContainItem;
+})(Abschlussarbeit || (Abschlussarbeit = {}));
 //# sourceMappingURL=doesInventoryContainItem.js.map

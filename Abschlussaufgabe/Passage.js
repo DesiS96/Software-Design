@@ -1,19 +1,13 @@
-System.register([], function (exports_1, context_1) {
-    "use strict";
-    var Passage;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [],
-        execute: function () {
-            Passage = class Passage {
-                constructor(_leadsTo, _direction, _isPassable) {
-                    this.leadsTo = _leadsTo;
-                    this.direction = _direction;
-                    this.isPassable = _isPassable;
-                }
-            };
-            exports_1("Passage", Passage);
+"use strict";
+var Abschlussarbeit;
+(function (Abschlussarbeit) {
+    class Passage {
+        constructor(_leadsTo, _direction, _isPassable) {
+            this.leadsTo = _leadsTo;
+            this.direction = _direction;
+            this.isPassable = _isPassable;
         }
-    };
-});
+    }
+    Abschlussarbeit.Passage = Passage;
+})(Abschlussarbeit || (Abschlussarbeit = {}));
 //# sourceMappingURL=Passage.js.map

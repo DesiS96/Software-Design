@@ -7,56 +7,14 @@ import { IntelligentNPC } from "./IntelligentNPC";*/
 //import { Room } from "./Room";
 //import { Passage } from "./Passage";
 
-//let testname: string = JSON.parse(rooms[1].items.name);
-
-/*class Data {
-    array: { text: string|number }[];
-    items: {text: string|number}[];
-    characters: {text: string|number}[];
-    passages: {text: string|number}[];
-    id: number;
-    description: string;
-}*/
+namespace Abschlussarbeit {
 
 interface Data {
 
-    testData: string[];
+    testData: string|number[];
 
 
 }
-
-/*interface RoomData {
-
-    items: ItemData[];
-    characters: CharaData[];
-    passages: PassageData[];
-    id: number;
-    description: string;
-
-}
-interface PassageData {
-
-    leadsTo: number;
-    direction: string;
-    isPassable: string;
-
-}
-
-interface ItemData {
-
-    name: string;
-
-}
-
-interface CharaData {
-
-    name: string;
-    life: number;
-    attack: number;
-    type: string;
-    positionID: number;
-
-}*/
 
 async function load(_filename: string): Promise<Data> {
     console.log("Start fetch");
@@ -72,19 +30,21 @@ async function load(_filename: string): Promise<Data> {
 }
 
 
-let filename: string = "./test.json";
+let filename: string = "./rooms.json";
+let filenameCharacters: string = "./playercharacter_json.json";
 
-let test: Promise<Data> = load(filename);
+let rooms: Promise<Data> = load(filename);
+let playerCharacter: Promise<Data> = load(filenameCharacters);
 
 
 
 
-//export let roomArray: Room[] = [];
+export let roomArray: Room[] = [];
 
 
 
 console.log(test);
-
+console.log(testC);
 
 
 
@@ -138,4 +98,5 @@ switch (userInput) {
 
         }
 
+    }
 }

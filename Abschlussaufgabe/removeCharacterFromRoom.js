@@ -1,6 +1,8 @@
-System.register([], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
+"use strict";
+//import { Character} from "./Character";
+var Abschlussarbeit;
+//import { Character} from "./Character";
+(function (Abschlussarbeit) {
     function removeCharacterFromRoom(_Array, _userInput) {
         let fillerArray = [];
         for (let i; i < _Array.length; i++) {
@@ -14,11 +16,6 @@ System.register([], function (exports_1, context_1) {
         }
         return _Array;
     }
-    exports_1("removeCharacterFromRoom", removeCharacterFromRoom);
-    return {
-        setters: [],
-        execute: function () {
-        }
-    };
-});
+    Abschlussarbeit.removeCharacterFromRoom = removeCharacterFromRoom;
+})(Abschlussarbeit || (Abschlussarbeit = {}));
 //# sourceMappingURL=removeCharacterFromRoom.js.map

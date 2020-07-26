@@ -1,4 +1,6 @@
- import { Character } from "./Character";
+ //import { Character } from "./Character";
+
+ namespace Abschlussarbeit {
 
  export function doesRoomContainCharacter(_characterArray: Character[], _characterName: string): boolean {
 
@@ -12,4 +14,5 @@
         }
         return containsItem;
 
+    }
 }

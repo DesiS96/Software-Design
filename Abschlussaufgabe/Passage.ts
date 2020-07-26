@@ -1,3 +1,5 @@
+namespace Abschlussarbeit {
+
 export class Passage {
 
         public leadsTo: number;
@@ -11,4 +13,5 @@ export class Passage {
             this.isPassable = _isPassable;
 
         }
+    }
 }

@@ -1,4 +1,6 @@
-import { Character} from "./Character";
+//import { Character} from "./Character";
+
+namespace Abschlussarbeit{
 
 export function removeCharacterFromRoom(_Array: Character[], _userInput: string): Character[]{
 
@@ -19,4 +21,5 @@ export function removeCharacterFromRoom(_Array: Character[], _userInput: string)
         }
 
         return _Array;
+    }
 }

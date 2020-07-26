@@ -1,3 +1,5 @@
+namespace Abschlussarbeit {
+
 export class Item { //abstract machen
 
         public name: string;
@@ -10,5 +12,6 @@ export class Item { //abstract machen
 
         }
 
+    }
 }
 
