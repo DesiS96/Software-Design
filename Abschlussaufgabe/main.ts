@@ -25,8 +25,6 @@ let roomA: Promise<Data> = loadRooms("./rooms.json");
 
 for ( let i: number; i < Object.keys(roomA).length; i++) {
 
-
-
     roomArray[i] = new Room(roomA[i].items, roomA[i].characters, roomA[i].passages, roomA[i].id, roomA[i].description);
 
 
