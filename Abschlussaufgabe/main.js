@@ -12,13 +12,24 @@ var Abschlussarbeit;
         console.log("Done fetch");
         return json;
     }
-    async function getRooms() {
+    async function getRoomArray() {
         let rooms = await loadRooms("./rooms.json");
         console.log(rooms.length);
         console.log(rooms);
         console.log(rooms[2].characters);
+        for (let i; i < rooms.length; i++) {
+            let characters;
+            let items;
+            for (let j; j < rooms[i].items.length; j++) {
+                let itemName = rooms[i].items[j].name;
+                let item = new Abschlussarbeit.Item(rooms[i].items[j].name, rooms[i].items[j].type);
+            }
+            for (let j; j < rooms[i].characters.length; j++) {
+                let character = new Abschlussarbeit.Character(room[i].character.name, room[i].);
+            }
+        }
+        return rooms;
     }
-    getRooms();
     let characters = [];
     let items = [];
     let passages;

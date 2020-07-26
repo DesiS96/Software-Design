@@ -1,12 +1,43 @@
 namespace Abschlussarbeit {
 
+    export type JSONObject = { [key: string]: JSON };
+    export interface JSONArray extends Array<JSON> {}
+    export type JSON = null | string | number | boolean | JSONArray | JSONObject;
+
     interface RoomData {
 
         items: string[];
-        characters: Character[];
+        characters: CharacterData[];
         passages: Passage[];
         id: number;
         description: string;
+
+    }
+
+    interface ItemData {
+
+        name: string;
+        type: string;
+
+    }
+
+    interface CharacterData {
+
+        name: string;
+        life: number;
+        attack: number;
+        type: string;
+        position: number;
+        inventory: ItemData[];
+        commands: string;
+
+    }
+
+    interface PassageData {
+
+        leadsTo: number;
+        direction: string;
+        isPassable: string;
 
     }
 
@@ -27,21 +58,40 @@ namespace Abschlussarbeit {
         return json;
     }
 
-    async function getRooms(): Promise<void> {
+    async function getRoomArray(): Promise<RoomData[]> {
 
         let rooms: RoomData[] = await loadRooms("./rooms.json");
 
         console.log(rooms.length);
-
         console.log(rooms);
-
         console.log(rooms[2].characters);
 
+        for (let i: number; i < rooms.length; i++) {
+
+            let characters: Character[];
+            let items: Item[];
+
+            for (let j: number; j < rooms[i].items.length; j++) {
+
+                let itemName: string = rooms[i].items[j].name;
+
+                let item: Item = new Item(rooms[i].items[j].name, rooms[i].items[j].type)
+
+            }
+
+            for (let j: number; j < rooms[i].characters.length; j++) {
+
+                let character: Character = new Character(room[i].character.name, room[i].)
+
+
+            }
+
+
+        }
+
+        return rooms;
+
     }
-
-    
-
-    getRooms();
 
     let characters: Character[] = [];
     let items: Item[] = [];

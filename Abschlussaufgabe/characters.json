@@ -1,0 +1,18 @@
+{
+    
+    "name": "Mine-Worker",
+    "life": 10,
+    "attack": 0,
+    "type": "regular",
+    "position": 1,
+    "inventory": [{
+
+        "item1":{
+
+            "name": "potion"
+
+        }
+    }],
+    "commands": "commands: attack(a), showCommands(c), drop(d), move(m), showInventory(i), take(t)"
+    
+}
