@@ -12,9 +12,9 @@ namespace Abschlussarbeit {
 export class PlayerCharacter extends Character {
 
         public inventory: Item[];
-        public commands: string[];
+        public commands: string;
 
-        constructor(_name: string, _life: number, _attack: number, _type: string, _positionID: number, _inventory: Item[], _commands: string[]) {
+        constructor(_name: string, _life: number, _attack: number, _type: string, _positionID: number, _inventory: Item[], _commands: string) {
 
             super(_name, _life, _attack, _type = "player", _positionID);
             this.inventory = _inventory;
@@ -152,9 +152,9 @@ export class PlayerCharacter extends Character {
 
         showCommands(): void {
 
-            let commandsString: string = this.commands.toString();
+            //let commandsString: string = this.commands.toString();
 
-            console.log(commandsString);
+            console.log(this.commands);
         }
 
         take(_userInput: string): void {

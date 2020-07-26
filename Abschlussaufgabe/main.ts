@@ -66,6 +66,8 @@ namespace Abschlussarbeit {
         console.log(rooms);
         console.log(rooms[2].characters);
 
+        
+
         for (let i: number; i < rooms.length; i++) {
 
             let characters: Character[];
@@ -81,7 +83,7 @@ namespace Abschlussarbeit {
 
             for (let j: number; j < rooms[i].characters.length; j++) {
 
-                let character: Character = new Character(room[i].character.name, room[i].)
+                let character: Character = new Character(rooms[i].character.name, rooms[i].)
 
 
             }
@@ -121,6 +123,14 @@ namespace Abschlussarbeit {
 
 
     console.log(roomArray);
+
+    //Game
+
+    let commands: string = "commands: attack(a), showCommands(c), drop(d), move(m), showInventory(i), take(t)";
+
+    let zelda: PlayerCharacter = new PlayerCharacter("Zelda", 20, 10, "player", 1, [], commands);
+    let stalfols: IntelligentNPC = new IntelligentNPC("Stalfols", 20, 5, "intelligent", 5, [], "A Stalfols. I guess it wants a fight!");
+
 
     const text = document.createElement("div");
     document.body.appendChild(text);
