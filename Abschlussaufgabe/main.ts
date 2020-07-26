@@ -43,8 +43,8 @@ export let roomArray: Room[] = [];
 
 
 
-console.log(test);
-console.log(testC);
+console.log(rooms);
+console.log(playerCharacter);
 
 
 

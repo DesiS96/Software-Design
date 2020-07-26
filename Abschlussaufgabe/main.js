@@ -31,8 +31,8 @@ import { IntelligentNPC } from "./IntelligentNPC";*/
     let rooms = load(filename);
     let playerCharacter = load(filenameCharacters);
     Abschlussarbeit.roomArray = [];
-    console.log(test);
-    console.log(testC);
+    console.log(rooms);
+    console.log(playerCharacter);
     /*declare module 'rooms.json' {
         import * as json from 'C:\Users\Desiree\Desktop\Softwaredesign\Software-Design\Abschlussaufgabe\rooms.json';
         export = json;
