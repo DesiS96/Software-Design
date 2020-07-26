@@ -19,25 +19,19 @@ export abstract class Character {
 
         move(_direction?: string): void {
 
-           /* for (let i: number; i < roomArray.length; i++) {
+           for (let i: number; i < roomArray.length; i++) {
 
                 if (this.positionID == roomArray[i].id) {
 
-                    let newPosition = Math.floor(Math.random() * roomArray[i].passages.length);
+                    let newPosition: number = Math.floor(Math.random() * roomArray[i].passages.length);
 
                     removeCharacterFromRoom(roomArray[i].characters, this.name);
 
-                    this.
-
-                    
-
-
-
+                    this.positionID = newPosition;
 
                 }
 
-
-            }*/
+            }
 
         }
     }

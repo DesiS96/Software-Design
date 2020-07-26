@@ -10,25 +10,13 @@ var Abschlussarbeit;
             this.positionID = _positionID;
         }
         move(_direction) {
-            /* for (let i: number; i < roomArray.length; i++) {
- 
-                 if (this.positionID == roomArray[i].id) {
- 
-                     let newPosition = Math.floor(Math.random() * roomArray[i].passages.length);
- 
-                     removeCharacterFromRoom(roomArray[i].characters, this.name);
- 
-                     this.
- 
-                     
- 
- 
- 
- 
-                 }
- 
- 
-             }*/
+            for (let i; i < Abschlussarbeit.roomArray.length; i++) {
+                if (this.positionID == Abschlussarbeit.roomArray[i].id) {
+                    let newPosition = Math.floor(Math.random() * Abschlussarbeit.roomArray[i].passages.length);
+                    Abschlussarbeit.removeCharacterFromRoom(Abschlussarbeit.roomArray[i].characters, this.name);
+                    this.positionID = newPosition;
+                }
+            }
         }
     }
     Abschlussarbeit.Character = Character;

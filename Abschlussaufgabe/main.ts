@@ -1,81 +1,88 @@
 namespace Abschlussarbeit {
 
-class Data {
+    interface RoomData {
 
-    data: Array<string|number>;
+        items: string[];
+        characters: Character[];
+        passages: Passage[];
+        id: number;
+        description: string;
 
-}
+    }
 
-export let roomArray: Room[] = [];
+    //let roomA: Promise<Data> = loadRooms("./rooms.json");
 
-async function loadRooms(_filename: string): Promise<Data> {
-    console.log("Start fetch");
+    export let roomArray: Room[] = [];
 
-    let response: Response = await fetch(_filename);
+    async function loadRooms(_filename: string): Promise<RoomData[]> {
+        console.log("Start fetch");
 
-    let text: string = await response.text();
-    let json: Data = JSON.parse(text);
-    // alternative: json = await response.json();
+        let response: Response = await fetch(_filename);
 
-    console.log("Done fetch");
-    return (json);
-}
+        let text: string = await response.text();
+        let json: RoomData[] = JSON.parse(text);
+        // alternative: json = await response.json();
 
-let roomA: Promise<Data> = loadRooms("./rooms.json");
+        console.log("Done fetch");
+        return json;
+    }
 
-for ( let i: number; i < Object.keys(roomA).length; i++) {
+    async function getRooms(): Promise<void> {
 
-    roomArray[i] = new Room(roomA[i].items, roomA[i].characters, roomA[i].passages, roomA[i].id, roomA[i].description);
+        let rooms: RoomData[] = await loadRooms("./rooms.json");
 
+        console.log(rooms.length);
 
-}
+        console.log(rooms);
 
+        console.log(rooms[2].characters);
 
+    }
 
-
-
-
-async function loadPlayer(_filename: string): Promise<PlayerCharacter> {
-    console.log("Start fetch");
-
-    let response: Response = await fetch(_filename);
-
-    let text: string = await response.text();
-    let json: PlayerCharacter = JSON.parse(text);
-    // alternative: json = await response.json();
-
-    console.log("Done fetch");
-
-    return json;
     
-}
 
-let filename: string = "./rooms.json";
-let filenameCharacters: string = "./playercharacter_json.json";
+    getRooms();
 
-export let playerJson: Promise<PlayerCharacter> = loadPlayer("./playercharacter_json.json");
-
-
-
-//let rooms: Room[] = Promise.resolve(roomArray);
+    let characters: Character[] = [];
+    let items: Item[] = [];
+    let passages: Passage[];
 
 
-console.log(roomArray);
 
-const text = document.createElement("div");
-document.body.appendChild(text);
-    //const inputfield = document.createElement("input");
-    //document.body.appendChild(inputfield);
-//text.innerHTML = testname;
+    async function loadPlayer(_filename: string): Promise<PlayerCharacter> {
+        console.log("Start fetch");
 
-text.innerHTML = "Welcome to the game. What do you want to do?<br>>start game (s)<br>>quit game (q)";
+        let response: Response = await fetch(_filename);
+
+        let text: string = await response.text();
+        let json: PlayerCharacter = JSON.parse(text);
+        // alternative: json = await response.json();
+
+        console.log("Done fetch");
+
+        return json;
+
+    }
+
+    let filename: string = "./rooms.json";
+    let filenameCharacters: string = "./playercharacter_json.json";
+
+    export let playerJson: Promise<PlayerCharacter> = loadPlayer("./playercharacter_json.json");
+
+
+    console.log(roomArray);
+
+    const text = document.createElement("div");
+    document.body.appendChild(text);
+
+    text.innerHTML = "Welcome to the game. What do you want to do?<br>>start game (s)<br>>quit game (q)";
     //inputfield
 
-let userInput: string = window.prompt("Select either s to start the game or q to quit it:");
+    let userInput: string = window.prompt("Select either s to start the game or q to quit it:");
 
-text.innerHTML = text.innerHTML + "<br>" + userInput;
+    text.innerHTML = text.innerHTML + "<br>" + userInput;
 
-switch (userInput) {
+    switch (userInput) {
 
         case "s": {
 

@@ -1,5 +1,4 @@
-{"rooms":[
-    {
+[{
     "items": [{
     }],
     "characters": [{
@@ -245,5 +244,4 @@
     }],
     "id": 11,
     "description": ""
-    }
-]}
+    }]

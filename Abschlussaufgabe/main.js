@@ -1,8 +1,7 @@
 "use strict";
 var Abschlussarbeit;
 (function (Abschlussarbeit) {
-    class Data {
-    }
+    //let roomA: Promise<Data> = loadRooms("./rooms.json");
     Abschlussarbeit.roomArray = [];
     async function loadRooms(_filename) {
         console.log("Start fetch");
@@ -11,12 +10,18 @@ var Abschlussarbeit;
         let json = JSON.parse(text);
         // alternative: json = await response.json();
         console.log("Done fetch");
-        return (json);
+        return json;
     }
-    let roomA = loadRooms("./rooms.json");
-    for (let i; i < Object.keys(roomA).length; i++) {
-        Abschlussarbeit.roomArray[i] = new Abschlussarbeit.Room(roomA[i].items, roomA[i].characters, roomA[i].passages, roomA[i].id, roomA[i].description);
+    async function getRooms() {
+        let rooms = await loadRooms("./rooms.json");
+        console.log(rooms.length);
+        console.log(rooms);
+        console.log(rooms[2].characters);
     }
+    getRooms();
+    let characters = [];
+    let items = [];
+    let passages;
     async function loadPlayer(_filename) {
         console.log("Start fetch");
         let response = await fetch(_filename);
@@ -29,13 +34,9 @@ var Abschlussarbeit;
     let filename = "./rooms.json";
     let filenameCharacters = "./playercharacter_json.json";
     Abschlussarbeit.playerJson = loadPlayer("./playercharacter_json.json");
-    //let rooms: Room[] = Promise.resolve(roomArray);
     console.log(Abschlussarbeit.roomArray);
     const text = document.createElement("div");
     document.body.appendChild(text);
-    //const inputfield = document.createElement("input");
-    //document.body.appendChild(inputfield);
-    //text.innerHTML = testname;
     text.innerHTML = "Welcome to the game. What do you want to do?<br>>start game (s)<br>>quit game (q)";
     //inputfield
     let userInput = window.prompt("Select either s to start the game or q to quit it:");
