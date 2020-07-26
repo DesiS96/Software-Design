@@ -1,19 +1,18 @@
 {
-    "Zelda":{
+    
+    "name": "Zelda",
+    "life": 20,
+    "attack": 10,
+    "type": "player",
+    "position": 1,
+    "inventory": [{
 
-        "name": "Zelda",
-        "life": 20,
-        "attack": 10,
-        "type": "player",
-        "position": 1,
-        "inventory": [{
+        "item1":{
 
-            "item1":{
+            "name": "potion"
 
-                "name": "potion"
-
-            }
-        }],
-        "commands": "commands: attack(a), showCommands(c), drop(d), move(m), showInventory(i), take(t)"
-    }
+        }
+    }],
+    "commands": "commands: attack(a), showCommands(c), drop(d), move(m), showInventory(i), take(t)"
+    
 }

@@ -17,7 +17,7 @@ import { IntelligentNPC } from "./IntelligentNPC";*/
 //import { Room } from "./Room";
 //import { Passage } from "./Passage";
 (function (Abschlussarbeit) {
-    async function load(_filename) {
+    async function loadRooms(_filename) {
         console.log("Start fetch");
         let response = await fetch(_filename);
         let text = await response.text();
@@ -26,18 +26,22 @@ import { IntelligentNPC } from "./IntelligentNPC";*/
         console.log("Done fetch");
         return (json);
     }
+    async function loadPlayer(_filename) {
+        console.log("Start fetch");
+        let response = await fetch(_filename);
+        let text = await response.text();
+        let json = JSON.parse(text);
+        // alternative: json = await response.json();
+        console.log("Done fetch");
+        return json;
+    }
     let filename = "./rooms.json";
     let filenameCharacters = "./playercharacter_json.json";
-    let rooms = load(filename);
-    let playerCharacter = load(filenameCharacters);
-    Abschlussarbeit.roomArray = [];
-    console.log(rooms);
-    console.log(playerCharacter);
-    /*declare module 'rooms.json' {
-        import * as json from 'C:\Users\Desiree\Desktop\Softwaredesign\Software-Design\Abschlussaufgabe\rooms.json';
-        export = json;
-    }*/
-    //const rooms = require("C:\Users\Desiree\Desktop\Softwaredesign\Software-Design\Abschlussaufgabe\rooms.json");
+    Abschlussarbeit.roomArray = loadRooms("./rooms.json");
+    Abschlussarbeit.playerJson = loadPlayer("./playercharacter_json.json");
+    let roomArray2 = [];
+    //let rooms: Room[] = Promise.resolve(roomArray);
+    console.log(Abschlussarbeit.roomArray);
     const text = document.createElement("div");
     document.body.appendChild(text);
     //const inputfield = document.createElement("input");
