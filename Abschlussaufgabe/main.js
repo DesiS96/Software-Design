@@ -1,22 +1,9 @@
 "use strict";
-/*import { PlayerCharacter } from "./PlayerCharacter";
-import { doesRoomContainCharacter } from "./doesRoomContainCharacter";
-import { Character} from "./Character";
-import { RegularNPC} from "./RegularNPC";
-import { Item } from "./Item";
-import { IntelligentNPC } from "./IntelligentNPC";*/
-//import { Room } from "./Room";
-//import { Passage } from "./Passage";
 var Abschlussarbeit;
-/*import { PlayerCharacter } from "./PlayerCharacter";
-import { doesRoomContainCharacter } from "./doesRoomContainCharacter";
-import { Character} from "./Character";
-import { RegularNPC} from "./RegularNPC";
-import { Item } from "./Item";
-import { IntelligentNPC } from "./IntelligentNPC";*/
-//import { Room } from "./Room";
-//import { Passage } from "./Passage";
 (function (Abschlussarbeit) {
+    class Data {
+    }
+    Abschlussarbeit.roomArray = [];
     async function loadRooms(_filename) {
         console.log("Start fetch");
         let response = await fetch(_filename);
@@ -25,6 +12,10 @@ import { IntelligentNPC } from "./IntelligentNPC";*/
         // alternative: json = await response.json();
         console.log("Done fetch");
         return (json);
+    }
+    let roomA = loadRooms("./rooms.json");
+    for (let i; i < Object.keys(roomA).length; i++) {
+        Abschlussarbeit.roomArray[i] = new Abschlussarbeit.Room(roomA[i].items, roomA[i].characters, roomA[i].passages, roomA[i].id, roomA[i].description);
     }
     async function loadPlayer(_filename) {
         console.log("Start fetch");
@@ -37,9 +28,7 @@ import { IntelligentNPC } from "./IntelligentNPC";*/
     }
     let filename = "./rooms.json";
     let filenameCharacters = "./playercharacter_json.json";
-    Abschlussarbeit.roomArray = loadRooms("./rooms.json");
     Abschlussarbeit.playerJson = loadPlayer("./playercharacter_json.json");
-    let roomArray2 = [];
     //let rooms: Room[] = Promise.resolve(roomArray);
     console.log(Abschlussarbeit.roomArray);
     const text = document.createElement("div");

@@ -1,26 +1,41 @@
-/*import { PlayerCharacter } from "./PlayerCharacter";
-import { doesRoomContainCharacter } from "./doesRoomContainCharacter";
-import { Character} from "./Character";
-import { RegularNPC} from "./RegularNPC";
-import { Item } from "./Item";
-import { IntelligentNPC } from "./IntelligentNPC";*/
-//import { Room } from "./Room";
-//import { Passage } from "./Passage";
-
 namespace Abschlussarbeit {
 
-async function loadRooms(_filename: string): Promise<Room[]> {
+class Data {
+
+    data: Array<string|number>;
+
+}
+
+export let roomArray: Room[] = [];
+
+async function loadRooms(_filename: string): Promise<Data> {
     console.log("Start fetch");
 
     let response: Response = await fetch(_filename);
 
     let text: string = await response.text();
-    let json: Room[] = JSON.parse(text);
+    let json: Data = JSON.parse(text);
     // alternative: json = await response.json();
 
     console.log("Done fetch");
     return (json);
 }
+
+let roomA: Promise<Data> = loadRooms("./rooms.json");
+
+for ( let i: number; i < Object.keys(roomA).length; i++) {
+
+
+
+    roomArray[i] = new Room(roomA[i].items, roomA[i].characters, roomA[i].passages, roomA[i].id, roomA[i].description);
+
+
+}
+
+
+
+
+
 
 async function loadPlayer(_filename: string): Promise<PlayerCharacter> {
     console.log("Start fetch");
@@ -40,10 +55,9 @@ async function loadPlayer(_filename: string): Promise<PlayerCharacter> {
 let filename: string = "./rooms.json";
 let filenameCharacters: string = "./playercharacter_json.json";
 
-export let roomArray: Promise<Room[]> = loadRooms("./rooms.json");
 export let playerJson: Promise<PlayerCharacter> = loadPlayer("./playercharacter_json.json");
 
-let roomArray2: Room[] = [];
+
 
 //let rooms: Room[] = Promise.resolve(roomArray);
 
