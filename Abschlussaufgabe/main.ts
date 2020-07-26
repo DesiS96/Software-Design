@@ -4,7 +4,7 @@ import { Character} from "./Character";
 import { RegularNPC} from "./RegularNPC";
 import { Item } from "./Item";
 import { IntelligentNPC } from "./IntelligentNPC";*/
-import { Room } from "./Room";
+//import { Room } from "./Room";
 //import { Passage } from "./Passage";
 
 //let testname: string = JSON.parse(rooms[1].items.name);
@@ -20,7 +20,7 @@ import { Room } from "./Room";
 
 interface Data {
 
-    rooms: Array<number|string>;
+    testData: string[];
 
 
 }
@@ -69,21 +69,21 @@ async function load(_filename: string): Promise<Data> {
 
     console.log("Done fetch");
     return (json);
-  }
+}
 
 
-let filename: string = "./rooms.json";
+let filename: string = "./test.json";
 
-let rooms: Promise<Data> = load(filename);
-
-
-
-
-export let roomArray: Room[] = [];
+let test: Promise<Data> = load(filename);
 
 
 
-console.log(rooms);
+
+//export let roomArray: Room[] = [];
+
+
+
+console.log(test);
 
 
 
