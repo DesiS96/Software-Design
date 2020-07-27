@@ -172,7 +172,7 @@ namespace Abschlussarbeit {
     let passageR111: Passage = new Passage(10, "e", "yes");
 
     //Rooms
-    let roomArray: Room[] = [];
+    export let roomArray: Room[] = [];
     roomArray[1] = new Room([], [mineWorker], [passageE1, passageE2], 1, "The entrance of the mine.");
     roomArray[2] = new Room([potion1], [], [passageR21, passageR22], 2, "Another dark Room. Aside from the one through which I entered i only see one other.");
     roomArray[3] = new Room([], [adventurer], [passageR31], 3, "This seems like a dead-end.");
