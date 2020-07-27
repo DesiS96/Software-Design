@@ -20,8 +20,7 @@
         "isPassable": "yes"
         }    
     ],
-    "id": 1,
-    "description": ""   
+    "id": 1 
     },
     {
     "items": [{
@@ -39,26 +38,24 @@
         "direction": "w",
         "isPassable": "yes"
     }],
-    "id": 2,
-    "description": ""   
+    "id": 2 
     },
     {
     "items": [{}],
     "characters": [{
-        "name": "fellow traveler",
+        "name": "fellow adventurer",
         "life": 10,
         "attack": 0,
         "type": "regular",
         "positionID": 3,
-        "look": "Another traveler, she seems lost."
+        "look": "Another adventurer, she seems lost."
         }],
     "passages":[{
         "leadsTo": 2,
         "direction": "w",
         "isPassable": "yes"
     }],
-    "id": 3,
-    "description": ""   
+    "id": 3
     },
     {
     "items": [{
@@ -75,8 +72,7 @@
         "isPassable": "yes"
         }    
         ],
-    "id": 4,
-    "description": ""
+    "id": 4
     },
     {
     "items": [{
@@ -108,8 +104,7 @@
         "isPassable": "yes"
         }    
         ],
-    "id": 5,
-    "description": ""
+    "id": 5
     },
     {
     "items": [{
@@ -128,8 +123,7 @@
         "isPassable": "yes"
         }    
     ],
-    "id": 6,
-    "description": ""
+    "id": 6
     },
     {
     "items": [{
@@ -141,7 +135,7 @@
         "life": 20,
         "attack": 5,
         "type": "intelligent",
-        "positionID": 5,
+        "positionID": 7,
         "look": "Eww it's a skultulla! I hate those spiders!"
     }],
     "passages":[{
@@ -155,8 +149,7 @@
         "isPassable": "yes"
         }    
     ],
-    "id": 7,
-    "description": ""
+    "id": 7
     },
     {
     "items": [{}],
@@ -174,8 +167,7 @@
         "isPassable": "yes"
         
     }],
-    "id": 8,
-    "description": ""
+    "id": 8
     },
     {
     "items":[{}],
@@ -184,7 +176,7 @@
     "life": 20,
     "attack": 5,
     "type": "intelligent",
-    "positionID": 5,
+    "positionID": 9,
     "look": "A Stalfols. I guess it wants a fight!"
     }],
     "passages":[{
@@ -197,8 +189,7 @@
         "direction": "s",
         "isPassable": "yes"
         }],
-    "id": 9,
-    "description": ""
+    "id": 9
     },
     {
     "items":{},
@@ -220,8 +211,7 @@
         "direction": "e",
         "isPassable": "yes"
         }],
-    "id": 10,
-    "description": ""
+    "id": 10
     },
     {
     "items":[{
@@ -242,6 +232,5 @@
         "direction": "e",
         "isPassable": "yes"
     }],
-    "id": 11,
-    "description": ""
+    "id": 11
     }]
