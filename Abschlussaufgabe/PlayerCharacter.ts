@@ -16,7 +16,7 @@ export class PlayerCharacter extends Character {
 
         constructor(_name: string, _life: number, _attack: number, _type: string, _positionID: number, _inventory: Item[], _commands: string) {
 
-            super(_name, _life, _attack, _type = "player", _positionID);
+            super(_name, _life, _attack, _type, _positionID);
             this.inventory = _inventory;
             this.commands = _commands;
         }
@@ -95,6 +95,22 @@ export class PlayerCharacter extends Character {
                 console.log("There is no such item in your inventory.");
             }
         }
+
+        getCurrentRoom(): Room {
+
+            let search: Room = new Room([], [], [], undefined, undefined );
+
+            for (let i: number; i <= roomArray.length; i++) {
+                if (this.positionID == roomArray[i].id) {
+
+                    search = roomArray[i];
+                }
+                break;
+            }
+
+            return search;
+        }
+
         move(_userInput: string): void {
 
             super.move();

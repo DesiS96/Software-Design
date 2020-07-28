@@ -17,7 +17,7 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
 (function (Abschlussarbeit) {
     class PlayerCharacter extends Abschlussarbeit.Character {
         constructor(_name, _life, _attack, _type, _positionID, _inventory, _commands) {
-            super(_name, _life, _attack, _type = "player", _positionID);
+            super(_name, _life, _attack, _type, _positionID);
             this.inventory = _inventory;
             this.commands = _commands;
         }
@@ -71,6 +71,16 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
                 console.log("There is no such item in your inventory.");
             }
         }
+        getCurrentRoom() {
+            let search = new Abschlussarbeit.Room([], [], [], undefined, undefined);
+            for (let i; i <= Abschlussarbeit.roomArray.length; i++) {
+                if (this.positionID == Abschlussarbeit.roomArray[i].id) {
+                    search = Abschlussarbeit.roomArray[i];
+                }
+                break;
+            }
+            return search;
+        }
         move(_userInput) {
             super.move();
             for (let i; i < Abschlussarbeit.roomArray.length; i++) {
@@ -110,8 +120,8 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
             }
         }
         showCommands() {
-            let commandsString = this.commands.toString();
-            console.log(commandsString);
+            //let commandsString: string = this.commands.toString();
+            console.log(this.commands);
         }
         take(_userInput) {
             for (let i; i < Abschlussarbeit.roomArray.length; i++) {

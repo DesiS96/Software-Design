@@ -7,10 +7,9 @@ var Abschlussarbeit;
 (function (Abschlussarbeit) {
     class IntelligentNPC extends Abschlussarbeit.Character {
         constructor(_name, _life, _attack, _type, _positionID, _inventory, _look) {
-            super(_name, _life, _attack, _type = "intelligent", _positionID);
+            super(_name, _life, _attack, _type, _positionID);
             this.inventory = _inventory;
             this.look = _look;
-            this.type = _type;
         }
     }
     Abschlussarbeit.IntelligentNPC = IntelligentNPC;

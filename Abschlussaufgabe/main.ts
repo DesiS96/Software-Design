@@ -33,13 +33,13 @@ namespace Abschlussarbeit {
 
     }
 
-    interface PassageData {
+    /*interface PassageData {
 
         leadsTo: number;
         direction: string;
         isPassable: string;
 
-    }
+    }*/
 
     //let roomA: Promise<Data> = loadRooms("./rooms.json");
 
@@ -95,13 +95,9 @@ namespace Abschlussarbeit {
 
     }*/
 
-    let characters: Character[] = [];
-    let items: Item[] = [];
-    let passages: Passage[];
 
 
-
-    async function loadPlayer(_filename: string): Promise<PlayerCharacter> {
+    /*async function loadPlayer(_filename: string): Promise<PlayerCharacter> {
         console.log("Start fetch");
 
         let response: Response = await fetch(_filename);
@@ -114,12 +110,12 @@ namespace Abschlussarbeit {
 
         return json;
 
-    }
+    }*/
 
-    let filename: string = "./rooms.json";
-    let filenameCharacters: string = "./playercharacter_json.json";
+    //let filename: string = "./rooms.json";
+    //let filenameCharacters: string = "./playercharacter_json.json";
 
-    export let playerJson: Promise<PlayerCharacter> = loadPlayer("./playercharacter_json.json");
+    //export let playerJson: Promise<PlayerCharacter> = loadPlayer("./playercharacter_json.json");
 
 
     //console.log(roomArray);
@@ -173,17 +169,19 @@ namespace Abschlussarbeit {
 
     //Rooms
     export let roomArray: Room[] = [];
-    roomArray[1] = new Room([], [mineWorker], [passageE1, passageE2], 1, "The entrance of the mine.");
-    roomArray[2] = new Room([potion1], [], [passageR21, passageR22], 2, "Another dark Room. Aside from the one through which I entered i only see one other.");
-    roomArray[3] = new Room([], [adventurer], [passageR31], 3, "This seems like a dead-end.");
-    roomArray[4] = new Room([], [], [passageR41, passageR42], 4, "Nothing of interest here.");
-    roomArray[5] = new Room([], [worker], [passageR51, passageR52], 5, "");
-    roomArray[6] = new Room([potion2], [], [passageR61, passageR62], 6, "");
-    roomArray[7] = new Room([], [], [passageR71, passageR72], 7, "");
-    roomArray[8] = new Room([], [link], [passageR81], 8, "");
-    roomArray[9] = new Room([], [], [passageR91, passageR92], 9, "");
-    roomArray[10] = new Room([bombFlower], [skilledWorker], [passageR101, passageR102], 10, "There is a small river that seperates the room into two parts. On the other side i see a bombflower. It could be useful if i could reach it." );
-    roomArray[11] = new Room([], [], [passageR111], 7, "");
+    roomArray[0] = new Room([], [mineWorker], [passageE1, passageE2], 1, "You are at the entrance of the mine.");
+    roomArray[1] = new Room([potion1], [], [passageR21, passageR22], 2, "Another dark Room. Aside from the one through which I entered i only see one other.");
+    roomArray[2] = new Room([], [adventurer], [passageR31], 3, "This seems like a dead-end.");
+    roomArray[3] = new Room([], [], [passageR41, passageR42], 4, "Nothing of interest here.");
+    roomArray[4] = new Room([], [worker, bokoblin], [passageR51, passageR52], 5, "");
+    roomArray[5] = new Room([potion2], [], [passageR61, passageR62], 6, "");
+    roomArray[6] = new Room([], [skultulla], [passageR71, passageR72], 7, "");
+    roomArray[7] = new Room([], [link], [passageR81], 8, "");
+    roomArray[8] = new Room([], [stalfols], [passageR91, passageR92], 9, "");
+    roomArray[9] = new Room([bombFlower], [skilledWorker], [passageR101, passageR102], 10, "There is a small river that seperates the room into two parts. On the other side i see a bombflower. It could be useful if i could reach it." );
+    roomArray[10] = new Room([], [], [passageR111], 7, "");
+
+    console.log(roomArray);
 
     const text = document.createElement("div");
     document.body.appendChild(text);
@@ -199,7 +197,30 @@ namespace Abschlussarbeit {
 
         case "s": {
 
-            text.innerHTML = text.innerHTML + "<br>" + "You decide to enter the forgotten Mines <br> All you have is a torch to lighten the way and your magic to attack foes. <br> You see ";
+            text.innerHTML = text.innerHTML + "<br>" + "You decide to enter the forgotten Mines <br> All you have is a torch to lighten the way and your magic to attack foes.";
+
+            let currentRoom: Room = new Room([], [], [], undefined, undefined );
+            zelda.getCurrentRoom();
+            console.log(zelda.positionID);
+            console.log(currentRoom);
+
+            text.innerHTML = text.innerHTML + "<br>" + currentRoom.description + "<br>" + "You see:";
+
+            //print out items and characters of room
+
+            console.log(currentRoom.characters.length);
+
+            for (let i: number; i <= currentRoom.items.length; i++) {
+
+                text.innerHTML = text.innerHTML + "<br>" + currentRoom.items[i].name;
+            }
+            for (let j: number; j <= currentRoom.characters.length; j++) {
+
+                let characterAtJ: string = currentRoom.characters[j].name;
+                console.log(characterAtJ);
+
+                text.innerHTML = text.innerHTML + "<br>" + characterAtJ;
+            }
             break;
 
         }
