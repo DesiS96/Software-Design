@@ -22,38 +22,35 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
             this.commands = _commands;
         }
         attackNPC(_userInput) {
-            for (let i; i < Abschlussarbeit.roomArray.length; i++) {
-                if (this.positionID == Abschlussarbeit.roomArray[i].id) {
-                    let characterPosition = Abschlussarbeit.roomArray[i];
-                    let containsCharacter = Abschlussarbeit.doesRoomContainCharacter(characterPosition.characters, _userInput);
-                    if (containsCharacter == true) {
-                        for (let i = 0; i <= characterPosition.characters.length;) {
-                            if (characterPosition.characters[i].name == _userInput) {
-                                characterPosition.characters[i].life = characterPosition.characters[i].life - this.attack;
-                                if (characterPosition.characters[i].life == 0) {
-                                    //extra condition für regs und intels, intels können sich heilen wenn sie eine potion haben
-                                    characterPosition.characters = Abschlussarbeit.removeCharacterFromRoom(characterPosition.characters, characterPosition.characters[i].name);
-                                    Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "died by your attack.";
-                                    console.log(_userInput + "died by your attack.");
-                                }
+            let currentRoom = this.getCurrentRoom();
+            let containsCharacter = Abschlussarbeit.doesRoomContainCharacter(currentRoom.characters, _userInput);
+            if (containsCharacter == true) {
+                for (let i = 0; i <= currentRoom.characters.length; i++) {
+                    if (currentRoom.characters[i].name == _userInput) {
+                        currentRoom.characters[i].life = currentRoom.characters[i].life - this.attack;
+                        if (currentRoom.characters[i].life == 0) {
+                            //extra condition für regs und intels, intels können sich heilen wenn sie eine potion haben
+                            currentRoom.characters = Abschlussarbeit.removeCharacterFromRoom(currentRoom.characters, currentRoom.characters[i].name);
+                            Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "died by your attack.";
+                            console.log(_userInput + "died by your attack.");
+                            break;
+                        }
+                        else {
+                            if (currentRoom.characters[i].type == "regular") {
+                                Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + ": Ouch that hurts! Why are you doing this? I'm out of here!";
+                                console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
+                                currentRoom.characters[i].move();
                             }
                             else {
-                                if (characterPosition.characters[i].type == "regular") {
-                                    Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + ": Ouch that hurts! Why are you doing this? I'm out of here!";
-                                    console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
-                                    characterPosition.characters[i].move();
-                                }
-                                else {
-                                    this.life = this.life - characterPosition.characters[i].attack;
-                                }
+                                this.life = this.life - currentRoom.characters[i].attack;
                             }
                         }
                     }
                 }
-                else {
-                    Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "There is no one you could attack.";
-                    console.log("There is no one you could attack.");
-                }
+            }
+            else {
+                Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "There is no one you could attack.";
+                console.log("There is no one you could attack.");
             }
         }
         drop(_userInput) {
@@ -89,10 +86,13 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
             super.move();
             let currentRoom = this.getCurrentRoom();
             console.log(currentRoom);
+            console.log(currentRoom.passages[1].direction);
             for (let i = 0; i <= currentRoom.passages.length; i++) {
                 if (currentRoom.passages[i].direction == _userInput) {
+                    //let passage: string = currentRoom.passages[i].direction;
                     if (currentRoom.passages[i].isPassable == "yes") {
                         this.positionID = currentRoom.passages[i].leadsTo;
+                        console.log(Abschlussarbeit.zelda.positionID);
                         switch (_userInput) {
                             case "n":
                                 Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You go north.";
@@ -111,6 +111,7 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
                                 console.log("You go east.");
                                 break;
                         }
+                        break;
                     }
                     else {
                         Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "This passage isn't passable yet.";

@@ -23,53 +23,53 @@ export class PlayerCharacter extends Character {
 
         attackNPC(_userInput: string): void {
 
-            for (let i: number; i < roomArray.length; i++) {
+            let currentRoom: Room = this.getCurrentRoom();
 
-                if (this.positionID == roomArray[i].id) {
+            let containsCharacter: boolean = doesRoomContainCharacter(currentRoom.characters, _userInput);
 
-                    let characterPosition: Room = roomArray[i];
+            if (containsCharacter == true) {
 
-                    let containsCharacter: boolean = doesRoomContainCharacter(characterPosition.characters, _userInput);
+                for (let i: number = 0; i <= currentRoom.characters.length; i++) {
+                    if (currentRoom.characters[i].name == _userInput) {
 
-                    if (containsCharacter == true) {
+                        currentRoom.characters[i].life = currentRoom.characters[i].life - this.attack;
 
-                        for (let i: number = 0; i <= characterPosition.characters.length;) {
-                            if (characterPosition.characters[i].name == _userInput) {
+                        if (currentRoom.characters[i].life == 0) {
+                        //extra condition für regs und intels, intels können sich heilen wenn sie eine potion haben
 
-                                characterPosition.characters[i].life = characterPosition.characters[i].life - this.attack;
+                            currentRoom.characters = removeCharacterFromRoom(currentRoom.characters, currentRoom.characters[i].name);
+                            text.innerHTML = text.innerHTML + "<br>" + "died by your attack.";
+                            console.log(_userInput + "died by your attack.");
+                            break;
+                        }
+                        else {
 
-                                if (characterPosition.characters[i].life == 0) {
-                                //extra condition für regs und intels, intels können sich heilen wenn sie eine potion haben
-
-                                characterPosition.characters = removeCharacterFromRoom(characterPosition.characters, characterPosition.characters[i].name);
-                                text.innerHTML = text.innerHTML + "<br>" + "died by your attack.";
-                                console.log(_userInput + "died by your attack.");
-                                }
+                            if (currentRoom.characters[i].type == "regular") {
+    
+                            text.innerHTML = text.innerHTML + "<br>" + ": Ouch that hurts! Why are you doing this? I'm out of here!";
+    
+                            console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
+                            currentRoom.characters[i].move();
+    
                             }
-                        
-                            else {
-
-                                if (characterPosition.characters[i].type == "regular") {
-
-                                text.innerHTML = text.innerHTML + "<br>" + ": Ouch that hurts! Why are you doing this? I'm out of here!";
-
-                                console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
-                                characterPosition.characters[i].move();
-                                }
-                                else {                      
-                                    this.life = this.life - characterPosition.characters[i].attack;
-
-                                    }
-                                }
+                            else {                      
+                                this.life = this.life - currentRoom.characters[i].attack;
+    
+                            }
+                                
                         }
                     }
+                    
+                    
                 }
-                else {
-                    text.innerHTML = text.innerHTML + "<br>" + "There is no one you could attack.";
-                    console.log("There is no one you could attack.");
-
-                }
+                
             }
+            else {
+                text.innerHTML = text.innerHTML + "<br>" + "There is no one you could attack.";
+                console.log("There is no one you could attack.");
+
+            }
+            
         }
 
         drop(_userInput: string): void {
@@ -123,13 +123,18 @@ export class PlayerCharacter extends Character {
 
             let currentRoom: Room = this.getCurrentRoom();
             console.log(currentRoom);
+            console.log(currentRoom.passages[1].direction);
 
             for (let i: number = 0; i <= currentRoom.passages.length; i++) {
 
                 if (currentRoom.passages[i].direction == _userInput) {
 
+                    //let passage: string = currentRoom.passages[i].direction;
+
                     if (currentRoom.passages[i].isPassable == "yes") {
                         this.positionID = currentRoom.passages[i].leadsTo;
+                        console.log(zelda.positionID);
+                        
                         switch (_userInput) {
 
                             case "n":
@@ -149,6 +154,7 @@ export class PlayerCharacter extends Character {
                                 console.log("You go east.");
                                 break;
                         }
+                        break;
                     }
                     else {
                         text.innerHTML = text.innerHTML + "<br>" + "This passage isn't passable yet.";

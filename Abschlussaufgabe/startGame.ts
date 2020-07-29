@@ -7,13 +7,23 @@ namespace Abschlussarbeit {
 
         let continueSlope: boolean = true;
 
+        /*function timeout(): number {
+
+            return 10;
+
+        }*/
+
         while (continueSlope == true) {
+
+            //setTimeout(timeout, 10);
                 
             look();
 
             text.innerHTML = text.innerHTML + "<br>" + "What do you want to do?";
 
             let userInput: string = window.prompt("If you press c, the commands enabled to you will be shown. Select your choice:");
+            
+            text.innerHTML = text.innerHTML + "<br>" + userInput;
 
             switch (userInput) {
 
@@ -72,7 +82,8 @@ namespace Abschlussarbeit {
                 case "q": {
 
                     text.innerHTML = text.innerHTML + "<br>" + "You decided to end the game. Hope to see you again soon!";
-                    continueSlope = false;         
+                    continueSlope = false;  
+                    break;       
                 }
             }
         }
