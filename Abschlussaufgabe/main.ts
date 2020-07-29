@@ -122,51 +122,51 @@ namespace Abschlussarbeit {
 
     //Game
 
-    let commands: string = "commands: attack(a), showCommands(c), drop(d), move(m), showInventory(i), take(t)";
+    export let commands: string = "commands: attack(a), showCommands(c), drop(d), move(m), showInventory(i), take(t)";
 
     //PlayerCharacter
-    let zelda: PlayerCharacter = new PlayerCharacter("Zelda", 20, 10, "player", 1, [], commands);
-
+    export let zelda: PlayerCharacter = new PlayerCharacter("Zelda", 20, 10, "player", 1, [], commands);
+        
     //Enemies
-    let stalfols: IntelligentNPC = new IntelligentNPC("Stalfols", 20, 5, "intelligent", 9, [], "A Stalfols. I guess it wants a fight!");
-    let skultulla: IntelligentNPC = new IntelligentNPC("a skultulla", 20, 5, "intelligent", 7, [], "Eww it's a skultulla! I hate those spiders!");
-    let bokoblin: IntelligentNPC = new IntelligentNPC("A bokoblin", 20, 5, "intelligent", 5, [], "An aggressive bokoblin. Has it something to do with the accident?");
-    
+    export let stalfols: IntelligentNPC = new IntelligentNPC("Stalfols", 20, 5, "intelligent", 9, [], "A Stalfols. I guess it wants a fight!");
+    export let skultulla: IntelligentNPC = new IntelligentNPC("a skultulla", 20, 5, "intelligent", 7, [], "Eww it's a skultulla! I hate those spiders!");
+    export let bokoblin: IntelligentNPC = new IntelligentNPC("A bokoblin", 20, 5, "intelligent", 5, [], "An aggressive bokoblin. Has it something to do with the accident?");
+            
     //Items
-    let potion1: Item = new Item("potion1", "potion");
-    let potion2: Item = new Item("potion2", "potion");
-    let bombFlower: Item = new Item("bombflower1", "bombflower");
-
+    export let potion1: Item = new Item("potion1", "potion");
+    export let potion2: Item = new Item("potion2", "potion");
+    export let bombFlower: Item = new Item("bombflower1", "bombflower");
+        
     //Characters
-
-    let mineWorker: RegularNPC = new RegularNPC("Mine-Worker", 10, 0, "regular", 1, "A scared looking worker of the mine");
-    let adventurer: RegularNPC = new RegularNPC("fellow adventurer", 10, 0, "regular", 3, "Another adventurer, she seems lost.");
-    let worker: RegularNPC = new RegularNPC("Another worker", 10, 0, "regular", 5, "Another worker of the mines, he seems tired.");
-    let link: RegularNPC = new RegularNPC("Link", 10, 0, "regular", 8, "Link! I finally found him!");
-    let skilledWorker: RegularNPC = new RegularNPC("Skilled worker", 10, 0, "regular", 10, "He says that he searches for a hammer. He offers to build a bridge to the other side if I find it for him.");
-
+        
+    export let mineWorker: RegularNPC = new RegularNPC("Mine-Worker", 10, 0, "regular", 1, "A scared looking worker of the mine");
+    export let adventurer: RegularNPC = new RegularNPC("fellow adventurer", 10, 0, "regular", 3, "Another adventurer, she seems lost.");
+    export let worker: RegularNPC = new RegularNPC("Another worker", 10, 0, "regular", 5, "Another worker of the mines, he seems tired.");
+    export let link: RegularNPC = new RegularNPC("Link", 10, 0, "regular", 8, "Link! I finally found him!");
+    export let skilledWorker: RegularNPC = new RegularNPC("Skilled worker", 10, 0, "regular", 10, "He says that he searches for a hammer. He offers to build a bridge to the other side if I find it for him.");
+        
     //Passage
-
-    let passageE1: Passage = new Passage(2, "e", "yes");
-    let passageE2: Passage = new Passage(4, "n", "yes");
-    let passageR21: Passage = new Passage(3, "e", "yes");
-    let passageR22: Passage = new Passage(1, "w", "yes");
-    let passageR31: Passage = new Passage(2, "w", "yes");
-    let passageR41: Passage = new Passage(5, "e", "yes");
-    let passageR42: Passage = new Passage(9, "n", "yes");
-    let passageR51: Passage = new Passage(6, "e", "yes");
-    let passageR52: Passage = new Passage(4, "w", "yes");
-    let passageR61: Passage = new Passage(7, "n", "yes");
-    let passageR62: Passage = new Passage(5, "w", "yes");
-    let passageR71: Passage = new Passage(8, "n", "no");
-    let passageR72: Passage = new Passage(6, "s", "yes");
-    let passageR81: Passage = new Passage(7, "s", "yes");
-    let passageR91: Passage = new Passage(10, "w", "yes");
-    let passageR92: Passage = new Passage(6, "s", "yes");
-    let passageR101: Passage = new Passage(11, "w", "no");
-    let passageR102: Passage = new Passage(9, "e", "yes");
-    let passageR111: Passage = new Passage(10, "e", "yes");
-
+        
+    export let passageE1: Passage = new Passage(2, "e", "yes");
+    export let passageE2: Passage = new Passage(4, "n", "yes");
+    export let passageR21: Passage = new Passage(3, "e", "yes");
+    export let passageR22: Passage = new Passage(1, "w", "yes");
+    export let passageR31: Passage = new Passage(2, "w", "yes");
+    export let passageR41: Passage = new Passage(5, "e", "yes");
+    export let passageR42: Passage = new Passage(9, "n", "yes");
+    export let passageR51: Passage = new Passage(6, "e", "yes");
+    export let passageR52: Passage = new Passage(4, "w", "yes");
+    export let passageR61: Passage = new Passage(7, "n", "yes");
+    export let passageR62: Passage = new Passage(5, "w", "yes");
+    export let passageR71: Passage = new Passage(8, "n", "no");
+    export let passageR72: Passage = new Passage(6, "s", "yes");
+    export let passageR81: Passage = new Passage(7, "s", "yes");
+    export let passageR91: Passage = new Passage(10, "w", "yes");
+    export let passageR92: Passage = new Passage(6, "s", "yes");
+    export let passageR101: Passage = new Passage(11, "w", "no");
+    export let passageR102: Passage = new Passage(9, "e", "yes");
+    export let passageR111: Passage = new Passage(10, "e", "yes");
+        
     //Rooms
     export let roomArray: Room[] = [];
     roomArray[0] = new Room([], [mineWorker], [passageE1, passageE2], 1, "You are at the entrance of the mine.");
@@ -180,10 +180,10 @@ namespace Abschlussarbeit {
     roomArray[8] = new Room([], [stalfols], [passageR91, passageR92], 9, "");
     roomArray[9] = new Room([bombFlower], [skilledWorker], [passageR101, passageR102], 10, "There is a small river that seperates the room into two parts. On the other side i see a bombflower. It could be useful if i could reach it." );
     roomArray[10] = new Room([], [], [passageR111], 7, "");
-
+        
     console.log(roomArray);
 
-    const text = document.createElement("div");
+    export const text = document.createElement("div");
     document.body.appendChild(text);
 
     text.innerHTML = "Welcome to the game. What do you want to do?<br>>start game (s)<br>>quit game (q)";
@@ -197,30 +197,7 @@ namespace Abschlussarbeit {
 
         case "s": {
 
-            text.innerHTML = text.innerHTML + "<br>" + "You decide to enter the forgotten Mines <br> All you have is a torch to lighten the way and your magic to attack foes.";
-
-            let currentRoom: Room = new Room([], [], [], undefined, undefined );
-            zelda.getCurrentRoom();
-            console.log(zelda.positionID);
-            console.log(currentRoom);
-
-            text.innerHTML = text.innerHTML + "<br>" + currentRoom.description + "<br>" + "You see:";
-
-            //print out items and characters of room
-
-            console.log(currentRoom.characters.length);
-
-            for (let i: number; i <= currentRoom.items.length; i++) {
-
-                text.innerHTML = text.innerHTML + "<br>" + currentRoom.items[i].name;
-            }
-            for (let j: number; j <= currentRoom.characters.length; j++) {
-
-                let characterAtJ: string = currentRoom.characters[j].name;
-                console.log(characterAtJ);
-
-                text.innerHTML = text.innerHTML + "<br>" + characterAtJ;
-            }
+            startGame();
             break;
 
         }

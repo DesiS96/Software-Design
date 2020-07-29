@@ -98,17 +98,18 @@ export class PlayerCharacter extends Character {
 
         getCurrentRoom(): Room {
 
-            let search: Room = new Room([], [], [], undefined, undefined );
+            let roomNumber: number;
 
-            for (let i: number; i <= roomArray.length; i++) {
-                if (this.positionID == roomArray[i].id) {
+            let characterPosition: number = this.positionID;
 
-                    search = roomArray[i];
+            for (let i: number = 0; i < roomArray.length; i++) {
+                if (characterPosition == roomArray[i].id) {
+
+                    roomNumber = i;
                 }
-                break;
             }
 
-            return search;
+            return roomArray[roomNumber];
         }
 
         move(_userInput: string): void {
@@ -158,10 +159,11 @@ export class PlayerCharacter extends Character {
 
         showInventory(): void {
 
-            console.log("Your inventory contains:");
+            text.innerHTML = text.innerHTML + "<br>" + "Your inventory contains:";
 
             for (let i: number; i < this.inventory.length; i++) {
                 console.log("a" + this.inventory[i]);
+                text.innerHTML = text.innerHTML + "<br>" + "a" + this.inventory[i];
 
             }
         }

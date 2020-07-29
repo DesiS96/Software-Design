@@ -72,14 +72,14 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
             }
         }
         getCurrentRoom() {
-            let search = new Abschlussarbeit.Room([], [], [], undefined, undefined);
-            for (let i; i <= Abschlussarbeit.roomArray.length; i++) {
-                if (this.positionID == Abschlussarbeit.roomArray[i].id) {
-                    search = Abschlussarbeit.roomArray[i];
+            let roomNumber;
+            let characterPosition = this.positionID;
+            for (let i = 0; i < Abschlussarbeit.roomArray.length; i++) {
+                if (characterPosition == Abschlussarbeit.roomArray[i].id) {
+                    roomNumber = i;
                 }
-                break;
             }
-            return search;
+            return Abschlussarbeit.roomArray[roomNumber];
         }
         move(_userInput) {
             super.move();
@@ -114,9 +114,10 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
             }
         }
         showInventory() {
-            console.log("Your inventory contains:");
+            Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "Your inventory contains:";
             for (let i; i < this.inventory.length; i++) {
                 console.log("a" + this.inventory[i]);
+                Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "a" + this.inventory[i];
             }
         }
         showCommands() {

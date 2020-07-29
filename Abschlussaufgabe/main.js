@@ -74,89 +74,74 @@ var Abschlussarbeit;
     //export let playerJson: Promise<PlayerCharacter> = loadPlayer("./playercharacter_json.json");
     //console.log(roomArray);
     //Game
-    let commands = "commands: attack(a), showCommands(c), drop(d), move(m), showInventory(i), take(t)";
+    Abschlussarbeit.commands = "commands: attack(a), showCommands(c), drop(d), move(m), showInventory(i), take(t)";
     //PlayerCharacter
-    let zelda = new Abschlussarbeit.PlayerCharacter("Zelda", 20, 10, "player", 1, [], commands);
+    Abschlussarbeit.zelda = new Abschlussarbeit.PlayerCharacter("Zelda", 20, 10, "player", 1, [], Abschlussarbeit.commands);
     //Enemies
-    let stalfols = new Abschlussarbeit.IntelligentNPC("Stalfols", 20, 5, "intelligent", 9, [], "A Stalfols. I guess it wants a fight!");
-    let skultulla = new Abschlussarbeit.IntelligentNPC("a skultulla", 20, 5, "intelligent", 7, [], "Eww it's a skultulla! I hate those spiders!");
-    let bokoblin = new Abschlussarbeit.IntelligentNPC("A bokoblin", 20, 5, "intelligent", 5, [], "An aggressive bokoblin. Has it something to do with the accident?");
+    Abschlussarbeit.stalfols = new Abschlussarbeit.IntelligentNPC("Stalfols", 20, 5, "intelligent", 9, [], "A Stalfols. I guess it wants a fight!");
+    Abschlussarbeit.skultulla = new Abschlussarbeit.IntelligentNPC("a skultulla", 20, 5, "intelligent", 7, [], "Eww it's a skultulla! I hate those spiders!");
+    Abschlussarbeit.bokoblin = new Abschlussarbeit.IntelligentNPC("A bokoblin", 20, 5, "intelligent", 5, [], "An aggressive bokoblin. Has it something to do with the accident?");
     //Items
-    let potion1 = new Abschlussarbeit.Item("potion1", "potion");
-    let potion2 = new Abschlussarbeit.Item("potion2", "potion");
-    let bombFlower = new Abschlussarbeit.Item("bombflower1", "bombflower");
+    Abschlussarbeit.potion1 = new Abschlussarbeit.Item("potion1", "potion");
+    Abschlussarbeit.potion2 = new Abschlussarbeit.Item("potion2", "potion");
+    Abschlussarbeit.bombFlower = new Abschlussarbeit.Item("bombflower1", "bombflower");
     //Characters
-    let mineWorker = new Abschlussarbeit.RegularNPC("Mine-Worker", 10, 0, "regular", 1, "A scared looking worker of the mine");
-    let adventurer = new Abschlussarbeit.RegularNPC("fellow adventurer", 10, 0, "regular", 3, "Another adventurer, she seems lost.");
-    let worker = new Abschlussarbeit.RegularNPC("Another worker", 10, 0, "regular", 5, "Another worker of the mines, he seems tired.");
-    let link = new Abschlussarbeit.RegularNPC("Link", 10, 0, "regular", 8, "Link! I finally found him!");
-    let skilledWorker = new Abschlussarbeit.RegularNPC("Skilled worker", 10, 0, "regular", 10, "He says that he searches for a hammer. He offers to build a bridge to the other side if I find it for him.");
+    Abschlussarbeit.mineWorker = new Abschlussarbeit.RegularNPC("Mine-Worker", 10, 0, "regular", 1, "A scared looking worker of the mine");
+    Abschlussarbeit.adventurer = new Abschlussarbeit.RegularNPC("fellow adventurer", 10, 0, "regular", 3, "Another adventurer, she seems lost.");
+    Abschlussarbeit.worker = new Abschlussarbeit.RegularNPC("Another worker", 10, 0, "regular", 5, "Another worker of the mines, he seems tired.");
+    Abschlussarbeit.link = new Abschlussarbeit.RegularNPC("Link", 10, 0, "regular", 8, "Link! I finally found him!");
+    Abschlussarbeit.skilledWorker = new Abschlussarbeit.RegularNPC("Skilled worker", 10, 0, "regular", 10, "He says that he searches for a hammer. He offers to build a bridge to the other side if I find it for him.");
     //Passage
-    let passageE1 = new Abschlussarbeit.Passage(2, "e", "yes");
-    let passageE2 = new Abschlussarbeit.Passage(4, "n", "yes");
-    let passageR21 = new Abschlussarbeit.Passage(3, "e", "yes");
-    let passageR22 = new Abschlussarbeit.Passage(1, "w", "yes");
-    let passageR31 = new Abschlussarbeit.Passage(2, "w", "yes");
-    let passageR41 = new Abschlussarbeit.Passage(5, "e", "yes");
-    let passageR42 = new Abschlussarbeit.Passage(9, "n", "yes");
-    let passageR51 = new Abschlussarbeit.Passage(6, "e", "yes");
-    let passageR52 = new Abschlussarbeit.Passage(4, "w", "yes");
-    let passageR61 = new Abschlussarbeit.Passage(7, "n", "yes");
-    let passageR62 = new Abschlussarbeit.Passage(5, "w", "yes");
-    let passageR71 = new Abschlussarbeit.Passage(8, "n", "no");
-    let passageR72 = new Abschlussarbeit.Passage(6, "s", "yes");
-    let passageR81 = new Abschlussarbeit.Passage(7, "s", "yes");
-    let passageR91 = new Abschlussarbeit.Passage(10, "w", "yes");
-    let passageR92 = new Abschlussarbeit.Passage(6, "s", "yes");
-    let passageR101 = new Abschlussarbeit.Passage(11, "w", "no");
-    let passageR102 = new Abschlussarbeit.Passage(9, "e", "yes");
-    let passageR111 = new Abschlussarbeit.Passage(10, "e", "yes");
+    Abschlussarbeit.passageE1 = new Abschlussarbeit.Passage(2, "e", "yes");
+    Abschlussarbeit.passageE2 = new Abschlussarbeit.Passage(4, "n", "yes");
+    Abschlussarbeit.passageR21 = new Abschlussarbeit.Passage(3, "e", "yes");
+    Abschlussarbeit.passageR22 = new Abschlussarbeit.Passage(1, "w", "yes");
+    Abschlussarbeit.passageR31 = new Abschlussarbeit.Passage(2, "w", "yes");
+    Abschlussarbeit.passageR41 = new Abschlussarbeit.Passage(5, "e", "yes");
+    Abschlussarbeit.passageR42 = new Abschlussarbeit.Passage(9, "n", "yes");
+    Abschlussarbeit.passageR51 = new Abschlussarbeit.Passage(6, "e", "yes");
+    Abschlussarbeit.passageR52 = new Abschlussarbeit.Passage(4, "w", "yes");
+    Abschlussarbeit.passageR61 = new Abschlussarbeit.Passage(7, "n", "yes");
+    Abschlussarbeit.passageR62 = new Abschlussarbeit.Passage(5, "w", "yes");
+    Abschlussarbeit.passageR71 = new Abschlussarbeit.Passage(8, "n", "no");
+    Abschlussarbeit.passageR72 = new Abschlussarbeit.Passage(6, "s", "yes");
+    Abschlussarbeit.passageR81 = new Abschlussarbeit.Passage(7, "s", "yes");
+    Abschlussarbeit.passageR91 = new Abschlussarbeit.Passage(10, "w", "yes");
+    Abschlussarbeit.passageR92 = new Abschlussarbeit.Passage(6, "s", "yes");
+    Abschlussarbeit.passageR101 = new Abschlussarbeit.Passage(11, "w", "no");
+    Abschlussarbeit.passageR102 = new Abschlussarbeit.Passage(9, "e", "yes");
+    Abschlussarbeit.passageR111 = new Abschlussarbeit.Passage(10, "e", "yes");
     //Rooms
     Abschlussarbeit.roomArray = [];
-    Abschlussarbeit.roomArray[0] = new Abschlussarbeit.Room([], [mineWorker], [passageE1, passageE2], 1, "You are at the entrance of the mine.");
-    Abschlussarbeit.roomArray[1] = new Abschlussarbeit.Room([potion1], [], [passageR21, passageR22], 2, "Another dark Room. Aside from the one through which I entered i only see one other.");
-    Abschlussarbeit.roomArray[2] = new Abschlussarbeit.Room([], [adventurer], [passageR31], 3, "This seems like a dead-end.");
-    Abschlussarbeit.roomArray[3] = new Abschlussarbeit.Room([], [], [passageR41, passageR42], 4, "Nothing of interest here.");
-    Abschlussarbeit.roomArray[4] = new Abschlussarbeit.Room([], [worker, bokoblin], [passageR51, passageR52], 5, "");
-    Abschlussarbeit.roomArray[5] = new Abschlussarbeit.Room([potion2], [], [passageR61, passageR62], 6, "");
-    Abschlussarbeit.roomArray[6] = new Abschlussarbeit.Room([], [skultulla], [passageR71, passageR72], 7, "");
-    Abschlussarbeit.roomArray[7] = new Abschlussarbeit.Room([], [link], [passageR81], 8, "");
-    Abschlussarbeit.roomArray[8] = new Abschlussarbeit.Room([], [stalfols], [passageR91, passageR92], 9, "");
-    Abschlussarbeit.roomArray[9] = new Abschlussarbeit.Room([bombFlower], [skilledWorker], [passageR101, passageR102], 10, "There is a small river that seperates the room into two parts. On the other side i see a bombflower. It could be useful if i could reach it.");
-    Abschlussarbeit.roomArray[10] = new Abschlussarbeit.Room([], [], [passageR111], 7, "");
+    Abschlussarbeit.roomArray[0] = new Abschlussarbeit.Room([], [Abschlussarbeit.mineWorker], [Abschlussarbeit.passageE1, Abschlussarbeit.passageE2], 1, "You are at the entrance of the mine.");
+    Abschlussarbeit.roomArray[1] = new Abschlussarbeit.Room([Abschlussarbeit.potion1], [], [Abschlussarbeit.passageR21, Abschlussarbeit.passageR22], 2, "Another dark Room. Aside from the one through which I entered i only see one other.");
+    Abschlussarbeit.roomArray[2] = new Abschlussarbeit.Room([], [Abschlussarbeit.adventurer], [Abschlussarbeit.passageR31], 3, "This seems like a dead-end.");
+    Abschlussarbeit.roomArray[3] = new Abschlussarbeit.Room([], [], [Abschlussarbeit.passageR41, Abschlussarbeit.passageR42], 4, "Nothing of interest here.");
+    Abschlussarbeit.roomArray[4] = new Abschlussarbeit.Room([], [Abschlussarbeit.worker, Abschlussarbeit.bokoblin], [Abschlussarbeit.passageR51, Abschlussarbeit.passageR52], 5, "");
+    Abschlussarbeit.roomArray[5] = new Abschlussarbeit.Room([Abschlussarbeit.potion2], [], [Abschlussarbeit.passageR61, Abschlussarbeit.passageR62], 6, "");
+    Abschlussarbeit.roomArray[6] = new Abschlussarbeit.Room([], [Abschlussarbeit.skultulla], [Abschlussarbeit.passageR71, Abschlussarbeit.passageR72], 7, "");
+    Abschlussarbeit.roomArray[7] = new Abschlussarbeit.Room([], [Abschlussarbeit.link], [Abschlussarbeit.passageR81], 8, "");
+    Abschlussarbeit.roomArray[8] = new Abschlussarbeit.Room([], [Abschlussarbeit.stalfols], [Abschlussarbeit.passageR91, Abschlussarbeit.passageR92], 9, "");
+    Abschlussarbeit.roomArray[9] = new Abschlussarbeit.Room([Abschlussarbeit.bombFlower], [Abschlussarbeit.skilledWorker], [Abschlussarbeit.passageR101, Abschlussarbeit.passageR102], 10, "There is a small river that seperates the room into two parts. On the other side i see a bombflower. It could be useful if i could reach it.");
+    Abschlussarbeit.roomArray[10] = new Abschlussarbeit.Room([], [], [Abschlussarbeit.passageR111], 7, "");
     console.log(Abschlussarbeit.roomArray);
-    const text = document.createElement("div");
-    document.body.appendChild(text);
-    text.innerHTML = "Welcome to the game. What do you want to do?<br>>start game (s)<br>>quit game (q)";
+    Abschlussarbeit.text = document.createElement("div");
+    document.body.appendChild(Abschlussarbeit.text);
+    Abschlussarbeit.text.innerHTML = "Welcome to the game. What do you want to do?<br>>start game (s)<br>>quit game (q)";
     //inputfield
     let userInput = window.prompt("Select either s to start the game or q to quit it:");
-    text.innerHTML = text.innerHTML + "<br>" + userInput;
+    Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + userInput;
     switch (userInput) {
         case "s": {
-            text.innerHTML = text.innerHTML + "<br>" + "You decide to enter the forgotten Mines <br> All you have is a torch to lighten the way and your magic to attack foes.";
-            let currentRoom = new Abschlussarbeit.Room([], [], [], undefined, undefined);
-            zelda.getCurrentRoom();
-            console.log(zelda.positionID);
-            console.log(currentRoom);
-            text.innerHTML = text.innerHTML + "<br>" + currentRoom.description + "<br>" + "You see:";
-            //print out items and characters of room
-            console.log(currentRoom.characters.length);
-            for (let i; i <= currentRoom.items.length; i++) {
-                text.innerHTML = text.innerHTML + "<br>" + currentRoom.items[i].name;
-            }
-            for (let j; j <= currentRoom.characters.length; j++) {
-                let characterAtJ = currentRoom.characters[j].name;
-                console.log(characterAtJ);
-                text.innerHTML = text.innerHTML + "<br>" + characterAtJ;
-            }
+            Abschlussarbeit.startGame();
             break;
         }
         case "q": {
-            text.innerHTML = text.innerHTML + "<br>" + "You've ended the game. <br> Hope to see you again soon!";
+            Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You've ended the game. <br> Hope to see you again soon!";
             break;
         }
         default: {
-            text.innerHTML = text.innerHTML + "<br>" + "Please restart Page and enter s or q.";
+            Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "Please restart Page and enter s or q.";
         }
     }
 })(Abschlussarbeit || (Abschlussarbeit = {}));
