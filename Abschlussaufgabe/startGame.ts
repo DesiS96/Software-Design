@@ -1,6 +1,5 @@
 namespace Abschlussarbeit {
 
-
     export function startGame(): void {
 
         text.innerHTML = text.innerHTML + "<br>" + "You decide to enter the forgotten Mines <br> All you have is a torch to lighten the way and your magic to attack foes.";
@@ -58,6 +57,7 @@ namespace Abschlussarbeit {
                     text.innerHTML = text.innerHTML + "<br>" + "You go further into the mines.";
                     let userInput: string = window.prompt("In which direction do you want to go?:");
                     zelda.move(userInput);
+                    console.log(zelda.positionID);
                     break;
                 }
                 case "t": {
@@ -66,6 +66,7 @@ namespace Abschlussarbeit {
 
                     let userInput: string = window.prompt("Which item do you want to take?:");
                     zelda.take(userInput);
+                    console.log(zelda.inventory);
                     break;     
                 }
                 case "q": {

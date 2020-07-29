@@ -38,12 +38,14 @@ var Abschlussarbeit;
                     Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You go further into the mines.";
                     let userInput = window.prompt("In which direction do you want to go?:");
                     Abschlussarbeit.zelda.move(userInput);
+                    console.log(Abschlussarbeit.zelda.positionID);
                     break;
                 }
                 case "t": {
                     Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You decide to take an item from the room.";
                     let userInput = window.prompt("Which item do you want to take?:");
                     Abschlussarbeit.zelda.take(userInput);
+                    console.log(Abschlussarbeit.zelda.inventory);
                     break;
                 }
                 case "q": {

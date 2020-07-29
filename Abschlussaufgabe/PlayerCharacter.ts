@@ -33,7 +33,7 @@ export class PlayerCharacter extends Character {
 
                     if (containsCharacter == true) {
 
-                        for (let i: number; i <= characterPosition.characters.length;) {
+                        for (let i: number = 0; i <= characterPosition.characters.length;) {
                             if (characterPosition.characters[i].name == _userInput) {
 
                                 characterPosition.characters[i].life = characterPosition.characters[i].life - this.attack;
@@ -42,6 +42,7 @@ export class PlayerCharacter extends Character {
                                 //extra condition für regs und intels, intels können sich heilen wenn sie eine potion haben
 
                                 characterPosition.characters = removeCharacterFromRoom(characterPosition.characters, characterPosition.characters[i].name);
+                                text.innerHTML = text.innerHTML + "<br>" + "died by your attack.";
                                 console.log(_userInput + "died by your attack.");
                                 }
                             }
@@ -49,6 +50,8 @@ export class PlayerCharacter extends Character {
                             else {
 
                                 if (characterPosition.characters[i].type == "regular") {
+
+                                text.innerHTML = text.innerHTML + "<br>" + ": Ouch that hurts! Why are you doing this? I'm out of here!";
 
                                 console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
                                 characterPosition.characters[i].move();
@@ -62,6 +65,7 @@ export class PlayerCharacter extends Character {
                     }
                 }
                 else {
+                    text.innerHTML = text.innerHTML + "<br>" + "There is no one you could attack.";
                     console.log("There is no one you could attack.");
 
                 }
@@ -76,7 +80,7 @@ export class PlayerCharacter extends Character {
 
                 let fillerInventory: Item[] = [];
 
-                for (let i: number; i < this.inventory.length; i++) {
+                for (let i: number = 0; i < this.inventory.length; i++) {
 
                     if (this.inventory[i].name != _userInput) {
                         fillerInventory.push(this.inventory[i]);
@@ -86,11 +90,12 @@ export class PlayerCharacter extends Character {
 
                 this.inventory = [];
 
-                for (let j: number; j < fillerInventory.length; j++) {
+                for (let j: number = 0; j < fillerInventory.length; j++) {
                     this.inventory.push(fillerInventory[j]);
                 }
             }
             else {
+                text.innerHTML = text.innerHTML + "<br>" + "There is no such item in your inventory.";
 
                 console.log("There is no such item in your inventory.");
             }
@@ -116,7 +121,51 @@ export class PlayerCharacter extends Character {
 
             super.move();
 
-            for (let i: number; i < roomArray.length; i++) {
+            let currentRoom: Room = this.getCurrentRoom();
+            console.log(currentRoom);
+
+            for (let i: number = 0; i <= currentRoom.passages.length; i++) {
+
+                if (currentRoom.passages[i].direction == _userInput) {
+
+                    if (currentRoom.passages[i].isPassable == "yes") {
+                        this.positionID = currentRoom.passages[i].leadsTo;
+                        switch (_userInput) {
+
+                            case "n":
+                                text.innerHTML = text.innerHTML + "<br>" + "You go north.";
+                                console.log("You go north.");
+                                break;
+                            case "w":
+                                text.innerHTML = text.innerHTML + "<br>" + "You go west.";
+                                console.log("You go west.");
+                                break;
+                            case "s":
+                                text.innerHTML = text.innerHTML + "<br>" + "You go south.";
+                                console.log("You go south.");
+                                break;
+                            case "e":
+                                text.innerHTML = text.innerHTML + "<br>" + "You go east.";
+                                console.log("You go east.");
+                                break;
+                        }
+                    }
+                    else {
+                        text.innerHTML = text.innerHTML + "<br>" + "This passage isn't passable yet.";
+                        console.log("This passage isn't passable yet.");
+
+                    }
+                }
+                else {
+
+                    if (i == currentRoom.passages.length && currentRoom.passages[i].direction == _userInput) {
+                        text.innerHTML = text.innerHTML + "<br>" + "There is no door or path this way. Try another direction.";
+                        console.log("There is no door or path this way. Try another direction.");
+                    }
+
+                }
+            }
+            /*for (let i: number = 0; i <= roomArray.length; i++) {
 
                 if (this.positionID == roomArray[i].id) {
 
@@ -124,7 +173,7 @@ export class PlayerCharacter extends Character {
 
                     //let containsCharacter: boolean = doesRoomContainCharacter(characterPosition.characters, _userInput);
 
-                    for (let i: number; i <= characterPosition.passages.length; i++) {
+                    for (let i: number = 0; i <= characterPosition.passages.length; i++) {
 
                         if (characterPosition.passages[i].direction == _userInput) {
 
@@ -133,28 +182,38 @@ export class PlayerCharacter extends Character {
                                 switch (_userInput) {
 
                                     case "n":
+                                        text.innerHTML = text.innerHTML + "<br>" + "You go north.";
                                         console.log("You go north.");
+                                        break;
                                     case "w":
+                                        text.innerHTML = text.innerHTML + "<br>" + "You go west.";
                                         console.log("You go west.");
+                                        break;
                                     case "s":
+                                        text.innerHTML = text.innerHTML + "<br>" + "You go south.";
                                         console.log("You go south.");
+                                        break;
                                     case "e":
+                                        text.innerHTML = text.innerHTML + "<br>" + "You go east.";
                                         console.log("You go east.");
+                                        break;
                                 }
                             }
                             else {
+                                text.innerHTML = text.innerHTML + "<br>" + "This passage isn't passable yet.";
                                 console.log("This passage isn't passable yet.");
 
                             }
                         }
                         else {
+                            text.innerHTML = text.innerHTML + "<br>" + "There is no door or path this way. Try another direction.";
                             console.log("There is no door or path this way. Try another direction.");
 
                         }
                     }        
                 }
 
-            }
+            }*/
         }
 
         showInventory(): void {
@@ -177,7 +236,7 @@ export class PlayerCharacter extends Character {
 
         take(_userInput: string): void {
 
-            for (let i: number; i < roomArray.length; i++) {
+            for (let i: number = 0; i < roomArray.length; i++) {
 
                 if (this.positionID == roomArray[i].id) {
 
@@ -198,6 +257,7 @@ export class PlayerCharacter extends Character {
                             }
                         }
                         else {
+                            text.innerHTML = text.innerHTML + "<br>" + "There's no such item in this room";
                             console.log("There's no such item in this room");
 
                         }
