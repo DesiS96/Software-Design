@@ -1,98 +1,150 @@
 "use strict";
 var Abschlussarbeit;
 (function (Abschlussarbeit) {
-    /*interface PassageData {
-
-        leadsTo: number;
-        direction: string;
-        isPassable: string;
-
-    }*/
-    //let roomA: Promise<Data> = loadRooms("./rooms.json");
-    //export let roomArray: Room[] = [];
-    async function loadRooms(_filename) {
+    /*async function loadRooms(_filename: string): Promise<RoomData[]> {
         console.log("Start fetch");
-        let response = await fetch(_filename);
-        let text = await response.text();
-        let json = JSON.parse(text);
+
+        let response: Response = await fetch(_filename);
+
+        let text: string = await response.text();
+        let json: RoomData[] = JSON.parse(text);
         // alternative: json = await response.json();
+
         console.log("Done fetch");
         return json;
-    }
-    let itemArray2 = [];
-    async function loadItems(_filename) {
-        console.log("Start fetch");
-        let response = await fetch(_filename);
-        let text = await response.text();
-        let json = JSON.parse(text);
-        //json = await response.json();
-        console.log(json);
-        //let myJSON : string = JSON.stringify(json);
-        for (let i = 0; i <= json.length; i++) {
-            let itemName = JSON.stringify(json[i].name);
-            console.log(itemName);
-            let itemType = JSON.stringify(json[i].type);
-            console.log(itemType);
-            itemArray2[i] = new Abschlussarbeit.Item(itemName, itemType);
-            console.log(itemArray2[i]);
-            if (i == 4) {
-                console.log(itemArray2);
-                break;
-            }
-        }
-        console.log("Done fetch");
-    }
-    /*async function getRoomArray(): Promise<RoomData[]> {
+    }*/
+    /*    async function getRoomArray(): Promise<RoomData[]> {
 
         let rooms: RoomData[] = await loadRooms("./rooms.json");
 
         console.log(rooms.length);
         console.log(rooms);
         console.log(rooms[2].characters);
+        for (let i: number; i < rooms.length; i++) {
+
+            let characters: Character[];
+            let items: Item[];
+
+            for (let j: number; j < rooms[i].items.length; j++) {
+
+                let itemName: string = rooms[i].items[j].name;
+
+                let item: Item = new Item(rooms[i].items[j].name, rooms[i].items[j].type)
+            }
+
+            for (let j: number; j < rooms[i].characters.length; j++) {
+
+                let character: Character = new Character(rooms[i].character.name, rooms[i].)
+            }
+        }
         return rooms;
 
     }*/
-    loadItems("./itemsJSON.json");
-    /*let itemsString: string = JSON.stringify(items);
-    console.log(itemsString);
-
-    console.log(itemsString[0] + "!");*/
-    /*    async function getRoomArray(): Promise<RoomData[]> {
-    
-            let rooms: RoomData[] = await loadRooms("./rooms.json");
-    
-            console.log(rooms.length);
-            console.log(rooms);
-            console.log(rooms[2].characters);
-    
-            
-    
-            for (let i: number; i < rooms.length; i++) {
-    
-                let characters: Character[];
-                let items: Item[];
-    
-                for (let j: number; j < rooms[i].items.length; j++) {
-    
-                    let itemName: string = rooms[i].items[j].name;
-    
-                    let item: Item = new Item(rooms[i].items[j].name, rooms[i].items[j].type)
-    
-                }
-    
-                for (let j: number; j < rooms[i].characters.length; j++) {
-    
-                    let character: Character = new Character(rooms[i].character.name, rooms[i].)
-    
-    
-                }
-    
-    
+    //LoadItems
+    let itemArray = [];
+    async function loadItems(_filename) {
+        console.log("Start fetch");
+        let response = await fetch(_filename);
+        let text = await response.text();
+        let json = JSON.parse(text);
+        console.log(json);
+        for (let i = 0; i <= json.length - 1; i++) {
+            console.log(json);
+            let itemName = JSON.stringify(json[i].name);
+            console.log(itemName);
+            let itemType = JSON.stringify(json[i].type);
+            console.log(itemType);
+            itemArray[i] = new Abschlussarbeit.Item(itemName, itemType);
+            console.log(itemArray[i]);
+        }
+        console.log("Done fetch");
+    }
+    //LoadCharacters
+    let characterArray = [];
+    async function loadNPCs(_filename) {
+        console.log("Start fetch");
+        let response = await fetch(_filename);
+        let text = await response.text();
+        let json = JSON.parse(text);
+        console.log(json);
+        for (let i = 0; i <= json.length - 1; i++) {
+            console.log(json);
+            let characterName = JSON.stringify(json[i].name);
+            console.log(characterName);
+            let characterLife = JSON.stringify(json[i].life);
+            let lifeToNumber = Number(characterLife);
+            console.log(characterLife);
+            let characterAttack = JSON.stringify(json[i].attack);
+            let attackToNumber = Number(characterAttack);
+            console.log(characterAttack);
+            let characterType = JSON.stringify(json[i].type);
+            console.log(characterAttack);
+            let characterPositionID = JSON.stringify(json[i].position);
+            let positionToNumber = Number(characterPositionID);
+            console.log(characterAttack);
+            let characterLook = JSON.stringify(json[i].look);
+            console.log(characterAttack);
+            if (characterType == "intelligent") {
+                let npcPotion = new Abschlussarbeit.Item("potion", "potion");
+                characterArray[i] = new Abschlussarbeit.IntelligentNPC(characterName, lifeToNumber, attackToNumber, characterType, positionToNumber, [npcPotion], characterLook);
             }
-    
-            return rooms;
-    
-        }*/
+            else {
+                characterArray[i] = new Abschlussarbeit.RegularNPC(characterName, lifeToNumber, attackToNumber, characterType, positionToNumber, characterLook);
+            }
+            console.log(characterArray[i]);
+        }
+        console.log("Done fetch");
+    }
+    //LoadPassages
+    let passageArray = []; //alles in einer Methode in Raum laden?
+    async function loadPassages(_filename) {
+        console.log("Start fetch");
+        let response = await fetch(_filename);
+        let text = await response.text();
+        let json = JSON.parse(text);
+        console.log(json);
+        for (let i = 0; i <= json.length - 1; i++) {
+            console.log(json);
+            let passageLeadsTo = JSON.stringify(json[i].leadsTo);
+            let leadsToNumber = Number(passageLeadsTo);
+            console.log(passageLeadsTo);
+            let passageDirection = JSON.stringify(json[i].direction);
+            console.log(passageDirection);
+            let passageIsPassable = JSON.stringify(json[i].isPassable);
+            console.log(passageDirection);
+            passageArray[i] = new Abschlussarbeit.Passage(leadsToNumber, passageDirection, passageIsPassable);
+            console.log(passageArray[i]);
+        }
+        console.log("Done fetch");
+    }
+    loadItems("./itemsJSON.json");
+    console.log(itemArray);
+    loadNPCs("./characters.json");
+    console.log(characterArray);
+    loadPassages("./passagesJSON.json");
+    let numberOfRooms = 11; //userprompt -> How many rooms
+    let roomArray2 = [];
+    /*for (let i: number = 0; i < numberOfRooms; i++) {
+
+        let charactersForRoom: Character[] = [];
+        let passagesForRoom: Passage[] = [];
+
+        for (let j: number = 0; j < characterArray.length; j++) {
+
+            if (characterArray[i].positionID == i + 1) {
+
+                charactersForRoom.push(characterArray[i]);
+                passagesForRoom.push(passageArray[i]);
+            }
+        }
+
+        let add: number = i + 1;
+
+        let userInput: string = window.prompt("Write a description for room " + add + " :");
+
+        roomArray2[i] = new Room([], charactersForRoom, passagesForRoom, i + 1, userInput);
+    }*/
+    console.log(roomArray2);
     //Game
     Abschlussarbeit.commands = "commands: attack(a), showCommands(c), drop(d), move(m), showInventory(i), take(t)";
     //PlayerCharacter
@@ -158,6 +210,15 @@ var Abschlussarbeit;
         }
         case "l": {
             //Inhalt
+            Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You decieded to load existing files.";
+            let userInputItems = window.prompt("Select a file for items you want to load: ");
+            let userInputCharacters = window.prompt("Select a file for characters you want to load: ");
+            let userInputPassages = window.prompt("Select a file for passages to Rooms you want to load: ");
+            loadItems(userInputItems);
+            console.log(itemArray);
+            loadNPCs(userInputCharacters);
+            console.log(characterArray);
+            loadPassages(userInputPassages);
             break;
         }
         case "q": {

@@ -198,7 +198,7 @@
         "life": 10,
         "attack": 0,
         "type": "regular",
-        "positionID": 5,
+        "positionID": 10,
         "look": "Yet another mineworker. He looks as if he searches for something."
         }],
     "passages":[{

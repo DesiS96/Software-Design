@@ -1,0 +1,70 @@
+[{
+    "name": "Mine-Worker",
+    "life": 10,
+    "attack": 0,
+    "type": "regular",
+    "positionID": 1,
+    "look": "A scared looking worker of the mine."
+
+},{
+
+    "name": "fellow adventurer",
+    "life": 10,
+    "attack": 0,
+    "type": "regular",
+    "positionID": 3,
+    "look": "Another adventurer, she seems lost."
+
+},{
+
+    "name": "Another worker",
+    "life": 10,
+    "attack": 0,
+    "type": "regular",
+    "positionID": 5,
+    "look": "Another worker of the mines, he seems tired."
+}, {
+
+    "name": "A bokoblin",
+    "life": 20,
+    "attack": 5,
+    "type": "intelligent",
+    "positionID": 5,
+    "look": "An aggressive bokoblin. Has it something to do with the accident?"
+
+},{
+
+    "name": "a skultulla",
+    "life": 20,
+    "attack": 5,
+    "type": "intelligent",
+    "positionID": 7,
+    "look": "Eww it's a skultulla! I hate those spiders!"
+},{
+
+    "name": "Link",
+    "life": 10,
+    "attack": 0,
+    "type": "regular",
+    "positionID": 8,
+    "look": "Link! I finally found him!"
+
+},{
+    
+    "name": "a stalfols",
+    "life": 20,
+    "attack": 5,
+    "type": "intelligent",
+    "positionID": 9,
+    "look": "A Stalfols. I guess it wants a fight!"
+
+},{
+
+    "name": "skilled mineworker",
+    "life": 10,
+    "attack": 0,
+    "type": "regular",
+    "positionID": 10,
+    "look": "Another worker. He says that he searches for a hammer. He offers to build a bridge to the other side if I find it for him."
+
+}]

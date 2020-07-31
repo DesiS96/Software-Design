@@ -28,24 +28,25 @@ namespace Abschlussarbeit {
         attack: number;
         type: string;
         position: number;
-        inventory: ItemData[];
-        commands: string;
+        look: string;
 
     }
 
-    /*interface PassageData {
+    interface PassageData {
 
         leadsTo: number;
         direction: string;
         isPassable: string;
 
-    }*/
+    }
 
-    //let roomA: Promise<Data> = loadRooms("./rooms.json");
+    interface RoomData {
 
-    //export let roomArray: Room[] = [];
 
-    async function loadRooms(_filename: string): Promise<RoomData[]> {
+
+    }
+
+    /*async function loadRooms(_filename: string): Promise<RoomData[]> {
         console.log("Start fetch");
 
         let response: Response = await fetch(_filename);
@@ -56,72 +57,15 @@ namespace Abschlussarbeit {
 
         console.log("Done fetch");
         return json;
-    }
-    let itemArray2: Item[] = [];
-
-    async function loadItems(_filename: string): Promise<void> {
-        console.log("Start fetch");
-
-        let response: Response = await fetch(_filename);
-
-        let text: string = await response.text();
-        let json: ItemData[] = JSON.parse(text);
-        //json = await response.json();
-
-        console.log(json);
-
-        //let myJSON : string = JSON.stringify(json);
-
-        for (let i: number = 0; i <= json.length; i++) {
-
-            let itemName: string = JSON.stringify(json[i].name);
-            console.log(itemName);
-            let itemType: string = JSON.stringify(json[i].type);
-            console.log(itemType);
-
-            itemArray2[i] = new Item(itemName, itemType);
-
-            console.log(itemArray2[i]);
-
-            if (i == 4) {
-
-                console.log(itemArray2);
-                break;
-            }
-        }
-
-        console.log("Done fetch");
-    }
-
-    /*async function getRoomArray(): Promise<RoomData[]> {
-
-        let rooms: RoomData[] = await loadRooms("./rooms.json");
-
-        console.log(rooms.length);
-        console.log(rooms);
-        console.log(rooms[2].characters);
-        return rooms;
-
     }*/
 
-    loadItems("./itemsJSON.json");
-
-    /*let itemsString: string = JSON.stringify(items);
-    console.log(itemsString);
-
-    console.log(itemsString[0] + "!");*/
-
-
-/*    async function getRoomArray(): Promise<RoomData[]> {
+    /*    async function getRoomArray(): Promise<RoomData[]> {
 
         let rooms: RoomData[] = await loadRooms("./rooms.json");
 
         console.log(rooms.length);
         console.log(rooms);
         console.log(rooms[2].characters);
-
-        
-
         for (let i: number; i < rooms.length; i++) {
 
             let characters: Character[];
@@ -132,22 +76,169 @@ namespace Abschlussarbeit {
                 let itemName: string = rooms[i].items[j].name;
 
                 let item: Item = new Item(rooms[i].items[j].name, rooms[i].items[j].type)
-
             }
 
             for (let j: number; j < rooms[i].characters.length; j++) {
 
                 let character: Character = new Character(rooms[i].character.name, rooms[i].)
-
-
             }
-
-
         }
-
         return rooms;
 
     }*/
+
+    //LoadItems
+
+    let itemArray: Item[] = [];
+
+    async function loadItems(_filename: string): Promise<void> {
+        console.log("Start fetch");
+
+        let response: Response = await fetch(_filename);
+
+        let text: string = await response.text();
+        let json: ItemData[] = JSON.parse(text);
+
+        console.log(json);
+
+        for (let i: number = 0; i <= json.length - 1; i++) {
+
+            console.log(json);
+
+            let itemName: string = JSON.stringify(json[i].name);
+            console.log(itemName);
+            let itemType: string = JSON.stringify(json[i].type);
+            console.log(itemType);
+
+            itemArray[i] = new Item(itemName, itemType);
+
+            console.log(itemArray[i]);
+
+        }
+
+        console.log("Done fetch");
+    }
+
+    //LoadCharacters
+
+    let characterArray: Character[] = [];
+
+    async function loadNPCs(_filename: string): Promise<void> {
+        console.log("Start fetch");
+
+        let response: Response = await fetch(_filename);
+
+        let text: string = await response.text();
+        let json: CharacterData[] = JSON.parse(text);
+
+        console.log(json);
+
+        for (let i: number = 0; i <= json.length - 1; i++) {
+
+            console.log(json);
+
+            let characterName: string = JSON.stringify(json[i].name);
+            console.log(characterName);
+            let characterLife: string = JSON.stringify(json[i].life);
+            let lifeToNumber: number = Number(characterLife);
+            console.log(characterLife);
+            let characterAttack: string = JSON.stringify(json[i].attack);
+            let attackToNumber: number = Number(characterAttack);
+            console.log(characterAttack);
+            let characterType: string = JSON.stringify(json[i].type); 
+            console.log(characterAttack);
+            let characterPositionID: string = JSON.stringify(json[i].position);
+            let positionToNumber: number = Number(characterPositionID);
+            console.log(characterAttack);
+            let characterLook: string = JSON.stringify(json[i].look);
+            console.log(characterAttack);
+
+            if (characterType == "intelligent") {
+
+                let npcPotion: Item = new Item("potion", "potion");
+
+                characterArray[i] = new IntelligentNPC(characterName, lifeToNumber, attackToNumber, characterType, positionToNumber, [npcPotion], characterLook);
+            }
+            else {
+
+            characterArray[i] = new RegularNPC(characterName, lifeToNumber, attackToNumber, characterType, positionToNumber, characterLook);
+
+            
+            }
+            console.log(characterArray[i]);
+
+        }
+
+        console.log("Done fetch");
+    }
+
+    //LoadPassages
+
+    let passageArray: Passage[] = []; //alles in einer Methode in Raum laden?
+
+    async function loadPassages(_filename: string): Promise<void> {
+        console.log("Start fetch");
+
+        let response: Response = await fetch(_filename);
+
+        let text: string = await response.text();
+        let json: PassageData[] = JSON.parse(text);
+
+        console.log(json);
+
+        for (let i: number = 0; i <= json.length - 1; i++) {
+
+            console.log(json);
+
+            let passageLeadsTo: string = JSON.stringify(json[i].leadsTo);
+            let leadsToNumber: number = Number(passageLeadsTo);
+            console.log(passageLeadsTo);
+            let passageDirection: string = JSON.stringify(json[i].direction);
+            console.log(passageDirection);
+            let passageIsPassable: string = JSON.stringify(json[i].isPassable);
+            console.log(passageDirection);
+
+            passageArray[i] = new Passage(leadsToNumber, passageDirection, passageIsPassable);
+
+            console.log(passageArray[i]);
+        }
+
+        console.log("Done fetch");
+    }
+
+    loadItems("./itemsJSON.json");
+    console.log(itemArray);
+
+    loadNPCs("./characters.json");
+    console.log(characterArray);
+
+    loadPassages("./passagesJSON.json");
+
+    let numberOfRooms: number = 11; //userprompt -> How many rooms
+    let roomArray2: Room[] = [];
+
+    /*for (let i: number = 0; i < numberOfRooms; i++) {
+
+        let charactersForRoom: Character[] = [];
+        let passagesForRoom: Passage[] = [];
+
+        for (let j: number = 0; j < characterArray.length; j++) {
+
+            if (characterArray[i].positionID == i + 1) {
+
+                charactersForRoom.push(characterArray[i]);
+                passagesForRoom.push(passageArray[i]);
+            }
+        }
+
+        let add: number = i + 1;
+
+        let userInput: string = window.prompt("Write a description for room " + add + " :");
+
+        roomArray2[i] = new Room([], charactersForRoom, passagesForRoom, i + 1, userInput);
+    }*/
+
+    console.log(roomArray2);
 
     //Game
 
@@ -233,11 +324,30 @@ namespace Abschlussarbeit {
         case "l": {
 
             //Inhalt
+            text.innerHTML = text.innerHTML + "<br>" + "You decieded to load existing files.";
+
+            let userInputItems: string = window.prompt("Select a file for items you want to load: ");
+
+            let userInputCharacters: string = window.prompt("Select a file for characters you want to load: ");
+
+            let userInputPassages: string = window.prompt("Select a file for passages to Rooms you want to load: ");
+
+            loadItems(userInputItems);
+            console.log(itemArray);
+        
+            loadNPCs(userInputCharacters);
+            console.log(characterArray);
+        
+            loadPassages(userInputPassages);
+
+
             break;
 
         }
 
         case "q": {
+
+
 
             text.innerHTML = text.innerHTML + "<br>" + "You've ended the game. <br> Hope to see you again soon!";
             break;

@@ -1,0 +1,113 @@
+[{
+    "leadsTo": 2,
+    "direction": "e",
+    "isPassable": "yes"
+
+},{
+
+    "leadsTo": 4,
+    "direction": "n",
+    "isPassable": "yes"
+
+},{
+
+    "leadsTo": 3,
+    "direction": "e",
+    "isPassable": "yes"
+
+}, {
+
+    "leadsTo": 1,
+    "direction": "w",
+    "isPassable": "yes"
+
+},{
+
+    "leadsTo": 2,
+    "direction": "w",
+    "isPassable": "yes"
+},{
+
+    "leadsTo": 5,
+    "direction": "e",
+    "isPassable": "yes"
+
+},{
+    
+    "leadsTo": 9,
+    "direction": "n",
+    "isPassable": "yes"
+
+},{
+
+    "leadsTo": 6,
+    "direction": "e",
+    "isPassable": "yes"
+
+},{
+
+    "leadsTo": 4,
+    "direction": "w",
+    "isPassable": "yes"
+
+},{
+
+    "leadsTo": 7,
+    "direction": "n",
+    "isPassable": "yes"
+
+},{
+
+    "leadsTo": 5,
+    "direction": "w",
+    "isPassable": "yes"
+
+},{
+
+    "leadsTo": 8,
+    "direction": "n",
+    "isPassable": "no"
+
+},{
+
+    "leadsTo": 6,
+    "direction": "s",
+    "isPassable": "yes"
+
+},{
+
+    "leadsTo": 7,
+    "direction": "s",
+    "isPassable": "yes"
+
+},{
+
+    "leadsTo": 10,
+    "direction": "w",
+    "isPassable": "yes"
+
+},{
+
+    "leadsTo": 4,
+    "direction": "s",
+    "isPassable": "yes"
+
+},{
+
+    "leadsTo": 11,
+    "direction": "w",
+    "isPassable": "no"
+
+},{
+
+    "leadsTo": 9,
+    "direction": "e",
+    "isPassable": "yes"
+
+},{
+
+    "leadsTo": 10,
+    "direction": "e",
+    "isPassable": "yes"
+
+}]

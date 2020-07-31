@@ -59,7 +59,22 @@ var Abschlussarbeit;
                     let letUserSave = window.prompt("Do you want to save your game? Yes(y)/No(n): ");
                     switch (letUserSave) {
                         case "y": {
-                            //save
+                            let roomString = Abschlussarbeit.roomArray.toString();
+                            function save(_content, _filename) {
+                                let blob = new Blob([_content], { type: "text/plain" });
+                                let url = window.URL.createObjectURL(blob);
+                                //*/ using anchor element for download
+                                let downloader;
+                                downloader = document.createElement("a");
+                                downloader.setAttribute("href", url);
+                                downloader.setAttribute("download", _filename);
+                                document.body.appendChild(downloader);
+                                downloader.click();
+                                document.body.removeChild(downloader);
+                                window.URL.revokeObjectURL(url);
+                            }
+                            save(roomString, "rooms.json"); //characters, items und passages
+                            Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You saved your progress. Hope to see you soon.";
                             break;
                         }
                         case "n": {
