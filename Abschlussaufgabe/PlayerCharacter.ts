@@ -77,20 +77,31 @@ export class PlayerCharacter extends Character {
 
             if (inventoryContainsItem == true) {
 
-                let fillerInventory: Item[] = [];
+                if (this.inventory.length > 1) {
 
-                for (let i: number = 0; i < this.inventory.length; i++) {
+                    let fillerInventory: Item[] = [];
 
-                    if (this.inventory[i].name != _userInput) {
-                        fillerInventory.push(this.inventory[i]);
-                                
+                    for (let i: number = 0; i < this.inventory.length; i++) {
+
+                        if (this.inventory[i].name != _userInput) {
+                            fillerInventory.push(this.inventory[i]);
+                                        
+                        }
                     }
+
+                    this.inventory = [];
+
+                    for (let j: number = 0; j < fillerInventory.length; j++) {
+                        this.inventory.push(fillerInventory[j]);
+                    }
+                    console.log(this.inventory);
+                    
                 }
+                else {
 
-                this.inventory = [];
+                    this.inventory = [];
+                    console.log(this.inventory);
 
-                for (let j: number = 0; j < fillerInventory.length; j++) {
-                    this.inventory.push(fillerInventory[j]);
                 }
             }
             else {
@@ -98,7 +109,7 @@ export class PlayerCharacter extends Character {
 
                 console.log("There is no such item in your inventory.");
             }
-        }
+        }      
 
         getCurrentRoom(): Room {
 
@@ -115,6 +126,30 @@ export class PlayerCharacter extends Character {
             }
 
             return roomArray[roomNumber];
+        }
+
+        look(): void {
+
+            let currentRoom: Room = this.getCurrentRoom();
+    
+            text.innerHTML = text.innerHTML + "<br>" + currentRoom.description + "<br>" + "You see:";
+            if (currentRoom.items.length != 0) {
+    
+                for (let i: number = 0; i <= currentRoom.items.length; i++) {
+                    
+                    text.innerHTML = text.innerHTML + "<br>" + currentRoom.items[i].name;
+                    console.log(currentRoom.items[i].name);
+                }
+            }
+            if (currentRoom.characters.length != 0) {
+                for (let j: number = 0; j <= currentRoom.characters.length; j++) {
+                    
+                    let characterAtJ: string = currentRoom.characters[j].name;
+                    console.log(characterAtJ);
+                    
+                    text.innerHTML = text.innerHTML + "<br>" + characterAtJ;
+                }
+            }
         }
 
         move(_userInput: string): void {
@@ -207,8 +242,11 @@ export class PlayerCharacter extends Character {
 
                         this.inventory.push(currentRoom.items[i]);
                         console.log(this.inventory);
+                        console.log(currentRoom.items);
 
-                        currentRoom.removeItemFromRoom(currentRoom.items[i].name);
+                        let itemToRemove: string = currentRoom.items[i].name;
+
+                        currentRoom.removeItemFromRoom(itemToRemove);
                     }
                     else {
                         console.log("Name of item was spelled wrong.");

@@ -56,9 +56,18 @@ var Abschlussarbeit;
                     break;
                 }
                 case "q": {
-                    Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You decided to end the game. Hope to see you again soon!";
-                    continueSlope = false;
-                    break;
+                    let letUserSave = window.prompt("Do you want to save your game? Yes(y)/No(n): ");
+                    switch (letUserSave) {
+                        case "y": {
+                            //save
+                            break;
+                        }
+                        case "n": {
+                            Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You decided to end the game. Hope to see you again soon!";
+                            continueSlope = false;
+                            break;
+                        }
+                    }
                 }
             }
         }

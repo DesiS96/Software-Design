@@ -23,20 +23,28 @@ export class Room {
         }
         removeItemFromRoom(_itemName: string): Item[] {
 
-            let fillerArray: Item[] = [];
+            if (this.items.length > 1) {
 
-            for (let i: number = 0; i <= this.items.length; i++) {
+                let fillerArray: Item[] = [];
 
-                if (this.items[i].name != _itemName) {
-                fillerArray.push(this.items[i]);
-                                
+                for (let i: number = 0; i <= this.items.length; i++) {
+
+                    if (this.items[i].name != _itemName) {
+                    fillerArray.push(this.items[i]);
+                                    
+                        }
                     }
+
+                this.items = [];
+
+                for (let j: number = 0; j <= fillerArray.length; j++) {
+                    this.items.push(fillerArray[j]);
                 }
+            }
+            else {
 
-            this.items = [];
+                this.items = [];
 
-            for (let j: number = 0; j <= fillerArray.length; j++) {
-                this.items.push(fillerArray[j]);
             }
 
             return this.items;

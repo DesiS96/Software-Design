@@ -16,15 +16,20 @@ import { Passage } from "./Passage";*/
             this.description = _description;
         }
         removeItemFromRoom(_itemName) {
-            let fillerArray = [];
-            for (let i = 0; i <= this.items.length; i++) {
-                if (this.items[i].name != _itemName) {
-                    fillerArray.push(this.items[i]);
+            if (this.items.length > 1) {
+                let fillerArray = [];
+                for (let i = 0; i <= this.items.length; i++) {
+                    if (this.items[i].name != _itemName) {
+                        fillerArray.push(this.items[i]);
+                    }
+                }
+                this.items = [];
+                for (let j = 0; j <= fillerArray.length; j++) {
+                    this.items.push(fillerArray[j]);
                 }
             }
-            this.items = [];
-            for (let j = 0; j <= fillerArray.length; j++) {
-                this.items.push(fillerArray[j]);
+            else {
+                this.items = [];
             }
             return this.items;
         }

@@ -81,9 +81,24 @@ namespace Abschlussarbeit {
                 }
                 case "q": {
 
-                    text.innerHTML = text.innerHTML + "<br>" + "You decided to end the game. Hope to see you again soon!";
-                    continueSlope = false;  
-                    break;       
+                    let letUserSave: string = window.prompt("Do you want to save your game? Yes(y)/No(n): ");
+
+                    switch (letUserSave) {
+
+                        case "y": {
+
+                            //save
+                            break;
+
+                        }
+                        case "n": {
+
+                        text.innerHTML = text.innerHTML + "<br>" + "You decided to end the game. Hope to see you again soon!";
+                        continueSlope = false;  
+                        break;  
+                         
+                        }
+                    }    
                 }
             }
         }

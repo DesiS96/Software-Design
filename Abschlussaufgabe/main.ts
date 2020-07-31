@@ -57,6 +57,60 @@ namespace Abschlussarbeit {
         console.log("Done fetch");
         return json;
     }
+    let itemArray2: Item[] = [];
+
+    async function loadItems(_filename: string): Promise<void> {
+        console.log("Start fetch");
+
+        let response: Response = await fetch(_filename);
+
+        let text: string = await response.text();
+        let json: ItemData[] = JSON.parse(text);
+        //json = await response.json();
+
+        console.log(json);
+
+        //let myJSON : string = JSON.stringify(json);
+
+        for (let i: number = 0; i <= json.length; i++) {
+
+            let itemName: string = JSON.stringify(json[i].name);
+            console.log(itemName);
+            let itemType: string = JSON.stringify(json[i].type);
+            console.log(itemType);
+
+            itemArray2[i] = new Item(itemName, itemType);
+
+            console.log(itemArray2[i]);
+
+            if (i == 4) {
+
+                console.log(itemArray2);
+                break;
+            }
+        }
+
+        console.log("Done fetch");
+    }
+
+    /*async function getRoomArray(): Promise<RoomData[]> {
+
+        let rooms: RoomData[] = await loadRooms("./rooms.json");
+
+        console.log(rooms.length);
+        console.log(rooms);
+        console.log(rooms[2].characters);
+        return rooms;
+
+    }*/
+
+    loadItems("./itemsJSON.json");
+
+    /*let itemsString: string = JSON.stringify(items);
+    console.log(itemsString);
+
+    console.log(itemsString[0] + "!");*/
+
 
 /*    async function getRoomArray(): Promise<RoomData[]> {
 
@@ -94,31 +148,6 @@ namespace Abschlussarbeit {
         return rooms;
 
     }*/
-
-
-
-    /*async function loadPlayer(_filename: string): Promise<PlayerCharacter> {
-        console.log("Start fetch");
-
-        let response: Response = await fetch(_filename);
-
-        let text: string = await response.text();
-        let json: PlayerCharacter = JSON.parse(text);
-        // alternative: json = await response.json();
-
-        console.log("Done fetch");
-
-        return json;
-
-    }*/
-
-    //let filename: string = "./rooms.json";
-    //let filenameCharacters: string = "./playercharacter_json.json";
-
-    //export let playerJson: Promise<PlayerCharacter> = loadPlayer("./playercharacter_json.json");
-
-
-    //console.log(roomArray);
 
     //Game
 
@@ -198,6 +227,12 @@ namespace Abschlussarbeit {
         case "s": {
 
             startGame();
+            break;
+
+        }
+        case "l": {
+
+            //Inhalt
             break;
 
         }

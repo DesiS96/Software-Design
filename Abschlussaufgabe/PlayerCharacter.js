@@ -56,15 +56,22 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
         drop(_userInput) {
             let inventoryContainsItem = Abschlussarbeit.doesInventoryContainItem(this.inventory, _userInput);
             if (inventoryContainsItem == true) {
-                let fillerInventory = [];
-                for (let i = 0; i < this.inventory.length; i++) {
-                    if (this.inventory[i].name != _userInput) {
-                        fillerInventory.push(this.inventory[i]);
+                if (this.inventory.length > 1) {
+                    let fillerInventory = [];
+                    for (let i = 0; i < this.inventory.length; i++) {
+                        if (this.inventory[i].name != _userInput) {
+                            fillerInventory.push(this.inventory[i]);
+                        }
                     }
+                    this.inventory = [];
+                    for (let j = 0; j < fillerInventory.length; j++) {
+                        this.inventory.push(fillerInventory[j]);
+                    }
+                    console.log(this.inventory);
                 }
-                this.inventory = [];
-                for (let j = 0; j < fillerInventory.length; j++) {
-                    this.inventory.push(fillerInventory[j]);
+                else {
+                    this.inventory = [];
+                    console.log(this.inventory);
                 }
             }
             else {
@@ -82,6 +89,23 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
                 }
             }
             return Abschlussarbeit.roomArray[roomNumber];
+        }
+        look() {
+            let currentRoom = this.getCurrentRoom();
+            Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + currentRoom.description + "<br>" + "You see:";
+            if (currentRoom.items.length != 0) {
+                for (let i = 0; i <= currentRoom.items.length; i++) {
+                    Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + currentRoom.items[i].name;
+                    console.log(currentRoom.items[i].name);
+                }
+            }
+            if (currentRoom.characters.length != 0) {
+                for (let j = 0; j <= currentRoom.characters.length; j++) {
+                    let characterAtJ = currentRoom.characters[j].name;
+                    console.log(characterAtJ);
+                    Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + characterAtJ;
+                }
+            }
         }
         move(_userInput) {
             super.move();
@@ -149,7 +173,9 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
                     if (currentRoom.items[i].name == _userInput) {
                         this.inventory.push(currentRoom.items[i]);
                         console.log(this.inventory);
-                        currentRoom.removeItemFromRoom(currentRoom.items[i].name);
+                        console.log(currentRoom.items);
+                        let itemToRemove = currentRoom.items[i].name;
+                        currentRoom.removeItemFromRoom(itemToRemove);
                     }
                     else {
                         console.log("Name of item was spelled wrong.");
