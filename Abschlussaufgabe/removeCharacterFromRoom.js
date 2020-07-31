@@ -5,13 +5,13 @@ var Abschlussarbeit;
 (function (Abschlussarbeit) {
     function removeCharacterFromRoom(_Array, _userInput) {
         let fillerArray = [];
-        for (let i; i < _Array.length; i++) {
+        for (let i = 0; i < _Array.length; i++) {
             if (_Array[i].name != _userInput) {
                 fillerArray.push(_Array[i]);
             }
         }
         _Array = [];
-        for (let j; j < fillerArray.length; j++) {
+        for (let j = 0; j < fillerArray.length; j++) {
             _Array.push(fillerArray[j]);
         }
         return _Array;

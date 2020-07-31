@@ -21,6 +21,46 @@ export class Room {
             this.description = _description;
 
         }
+        removeItemFromRoom(_itemName: string): Item[] {
+
+            let fillerArray: Item[] = [];
+
+            for (let i: number = 0; i <= this.items.length; i++) {
+
+                if (this.items[i].name != _itemName) {
+                fillerArray.push(this.items[i]);
+                                
+                    }
+                }
+
+            this.items = [];
+
+            for (let j: number = 0; j <= fillerArray.length; j++) {
+                this.items.push(fillerArray[j]);
+            }
+
+            return this.items;
+        }
+        removeCharacterFromThisRoom(_userInput: string): Character[] {
+
+            let fillerArray: Character[] = [];
+    
+            for (let i: number = 0; i <= this.characters.length; i++) {
+    
+                if (this.characters[i].name != _userInput) {
+                    fillerArray.push(this.characters[i]);
+                                    
+                    }
+            }
+    
+            this.characters = [];
+    
+            for (let j: number = 0; j <= fillerArray.length; j++) {
+                this.characters.push(fillerArray[j]);
+            }
+    
+            return this.characters;
+        }
         
     }
 }

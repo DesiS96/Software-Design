@@ -37,7 +37,7 @@ export class PlayerCharacter extends Character {
                         if (currentRoom.characters[i].life == 0) {
                         //extra condition für regs und intels, intels können sich heilen wenn sie eine potion haben
 
-                            currentRoom.characters = removeCharacterFromRoom(currentRoom.characters, currentRoom.characters[i].name);
+                            currentRoom.characters = currentRoom.removeCharacterFromThisRoom(currentRoom.characters[i].name);
                             text.innerHTML = text.innerHTML + "<br>" + "died by your attack.";
                             console.log(_userInput + "died by your attack.");
                             break;
@@ -59,8 +59,7 @@ export class PlayerCharacter extends Character {
                                 
                         }
                     }
-                    
-                    
+                          
                 }
                 
             }
@@ -107,10 +106,11 @@ export class PlayerCharacter extends Character {
 
             let characterPosition: number = this.positionID;
 
-            for (let i: number = 0; i < roomArray.length; i++) {
+            for (let i: number = 0; i <= roomArray.length; i++) {
                 if (characterPosition == roomArray[i].id) {
 
                     roomNumber = i;
+                    break;
                 }
             }
 
@@ -128,8 +128,6 @@ export class PlayerCharacter extends Character {
             for (let i: number = 0; i <= currentRoom.passages.length; i++) {
 
                 if (currentRoom.passages[i].direction == _userInput) {
-
-                    //let passage: string = currentRoom.passages[i].direction;
 
                     if (currentRoom.passages[i].isPassable == "yes") {
                         this.positionID = currentRoom.passages[i].leadsTo;
@@ -171,60 +169,12 @@ export class PlayerCharacter extends Character {
 
                 }
             }
-            /*for (let i: number = 0; i <= roomArray.length; i++) {
-
-                if (this.positionID == roomArray[i].id) {
-
-                    let characterPosition: Room = roomArray[i];
-
-                    //let containsCharacter: boolean = doesRoomContainCharacter(characterPosition.characters, _userInput);
-
-                    for (let i: number = 0; i <= characterPosition.passages.length; i++) {
-
-                        if (characterPosition.passages[i].direction == _userInput) {
-
-                            if (characterPosition.passages[i].isPassable == "yes") {
-                                this.positionID = characterPosition.passages[i].leadsTo;
-                                switch (_userInput) {
-
-                                    case "n":
-                                        text.innerHTML = text.innerHTML + "<br>" + "You go north.";
-                                        console.log("You go north.");
-                                        break;
-                                    case "w":
-                                        text.innerHTML = text.innerHTML + "<br>" + "You go west.";
-                                        console.log("You go west.");
-                                        break;
-                                    case "s":
-                                        text.innerHTML = text.innerHTML + "<br>" + "You go south.";
-                                        console.log("You go south.");
-                                        break;
-                                    case "e":
-                                        text.innerHTML = text.innerHTML + "<br>" + "You go east.";
-                                        console.log("You go east.");
-                                        break;
-                                }
-                            }
-                            else {
-                                text.innerHTML = text.innerHTML + "<br>" + "This passage isn't passable yet.";
-                                console.log("This passage isn't passable yet.");
-
-                            }
-                        }
-                        else {
-                            text.innerHTML = text.innerHTML + "<br>" + "There is no door or path this way. Try another direction.";
-                            console.log("There is no door or path this way. Try another direction.");
-
-                        }
-                    }        
-                }
-
-            }*/
         }
 
         showInventory(): void {
 
             text.innerHTML = text.innerHTML + "<br>" + "Your inventory contains:";
+            console.log("Your inventory contains:");
 
             for (let i: number; i < this.inventory.length; i++) {
                 console.log("a" + this.inventory[i]);
@@ -235,42 +185,45 @@ export class PlayerCharacter extends Character {
 
         showCommands(): void {
 
-            //let commandsString: string = this.commands.toString();
-
             console.log(this.commands);
         }
 
         take(_userInput: string): void {
 
-            for (let i: number = 0; i < roomArray.length; i++) {
+            let currentRoom: Room = this.getCurrentRoom();
+            console.log(currentRoom);
+            console.log(currentRoom.items);
 
-                if (this.positionID == roomArray[i].id) {
+            let roomContainsItem: boolean = doesInventoryContainItem(currentRoom.items, _userInput);
 
-                        let characterPosition: Room = roomArray[i];
+            if (roomContainsItem == true) {
 
-                        //let containsCharacter: boolean = doesRoomContainCharacter(characterPosition.characters, _userInput);
+                for (let i: number = 0; i <= currentRoom.items.length; i++) {
 
-                        let roomContainsItem: boolean = doesInventoryContainItem(characterPosition.items, _userInput);
+                    console.log(currentRoom.items[i].name);
+                    console.log(_userInput);
 
-                        if (roomContainsItem == true) {
+                    if (currentRoom.items[i].name == _userInput) {
 
-                            for (let i: number; i < characterPosition.items.length; i++) {
+                        this.inventory.push(currentRoom.items[i]);
+                        console.log(this.inventory);
 
-                                if (characterPosition.items[i].name == _userInput) {
+                        currentRoom.removeItemFromRoom(currentRoom.items[i].name);
+                    }
+                    else {
+                        console.log("Name of item was spelled wrong.");
 
-                                    this.inventory.push(characterPosition.items[i]);
-                                }
-                            }
-                        }
-                        else {
-                            text.innerHTML = text.innerHTML + "<br>" + "There's no such item in this room";
-                            console.log("There's no such item in this room");
-
-                        }
+                    }
                 }
-            }   
+            }
+            else {
+                text.innerHTML = text.innerHTML + "<br>" + "There's no such item in this room";
+                console.log("There's no such item in this room");
+
+            }
         }
-
-    }
-
+    }   
 }
+
+    
+

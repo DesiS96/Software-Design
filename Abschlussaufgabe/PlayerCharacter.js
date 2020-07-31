@@ -30,7 +30,7 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
                         currentRoom.characters[i].life = currentRoom.characters[i].life - this.attack;
                         if (currentRoom.characters[i].life == 0) {
                             //extra condition für regs und intels, intels können sich heilen wenn sie eine potion haben
-                            currentRoom.characters = Abschlussarbeit.removeCharacterFromRoom(currentRoom.characters, currentRoom.characters[i].name);
+                            currentRoom.characters = currentRoom.removeCharacterFromThisRoom(currentRoom.characters[i].name);
                             Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "died by your attack.";
                             console.log(_userInput + "died by your attack.");
                             break;
@@ -75,9 +75,10 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
         getCurrentRoom() {
             let roomNumber;
             let characterPosition = this.positionID;
-            for (let i = 0; i < Abschlussarbeit.roomArray.length; i++) {
+            for (let i = 0; i <= Abschlussarbeit.roomArray.length; i++) {
                 if (characterPosition == Abschlussarbeit.roomArray[i].id) {
                     roomNumber = i;
+                    break;
                 }
             }
             return Abschlussarbeit.roomArray[roomNumber];
@@ -89,7 +90,6 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
             console.log(currentRoom.passages[1].direction);
             for (let i = 0; i <= currentRoom.passages.length; i++) {
                 if (currentRoom.passages[i].direction == _userInput) {
-                    //let passage: string = currentRoom.passages[i].direction;
                     if (currentRoom.passages[i].isPassable == "yes") {
                         this.positionID = currentRoom.passages[i].leadsTo;
                         console.log(Abschlussarbeit.zelda.positionID);
@@ -125,85 +125,40 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
                     }
                 }
             }
-            /*for (let i: number = 0; i <= roomArray.length; i++) {
-
-                if (this.positionID == roomArray[i].id) {
-
-                    let characterPosition: Room = roomArray[i];
-
-                    //let containsCharacter: boolean = doesRoomContainCharacter(characterPosition.characters, _userInput);
-
-                    for (let i: number = 0; i <= characterPosition.passages.length; i++) {
-
-                        if (characterPosition.passages[i].direction == _userInput) {
-
-                            if (characterPosition.passages[i].isPassable == "yes") {
-                                this.positionID = characterPosition.passages[i].leadsTo;
-                                switch (_userInput) {
-
-                                    case "n":
-                                        text.innerHTML = text.innerHTML + "<br>" + "You go north.";
-                                        console.log("You go north.");
-                                        break;
-                                    case "w":
-                                        text.innerHTML = text.innerHTML + "<br>" + "You go west.";
-                                        console.log("You go west.");
-                                        break;
-                                    case "s":
-                                        text.innerHTML = text.innerHTML + "<br>" + "You go south.";
-                                        console.log("You go south.");
-                                        break;
-                                    case "e":
-                                        text.innerHTML = text.innerHTML + "<br>" + "You go east.";
-                                        console.log("You go east.");
-                                        break;
-                                }
-                            }
-                            else {
-                                text.innerHTML = text.innerHTML + "<br>" + "This passage isn't passable yet.";
-                                console.log("This passage isn't passable yet.");
-
-                            }
-                        }
-                        else {
-                            text.innerHTML = text.innerHTML + "<br>" + "There is no door or path this way. Try another direction.";
-                            console.log("There is no door or path this way. Try another direction.");
-
-                        }
-                    }
-                }
-
-            }*/
         }
         showInventory() {
             Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "Your inventory contains:";
+            console.log("Your inventory contains:");
             for (let i; i < this.inventory.length; i++) {
                 console.log("a" + this.inventory[i]);
                 Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "a" + this.inventory[i];
             }
         }
         showCommands() {
-            //let commandsString: string = this.commands.toString();
             console.log(this.commands);
         }
         take(_userInput) {
-            for (let i = 0; i < Abschlussarbeit.roomArray.length; i++) {
-                if (this.positionID == Abschlussarbeit.roomArray[i].id) {
-                    let characterPosition = Abschlussarbeit.roomArray[i];
-                    //let containsCharacter: boolean = doesRoomContainCharacter(characterPosition.characters, _userInput);
-                    let roomContainsItem = Abschlussarbeit.doesInventoryContainItem(characterPosition.items, _userInput);
-                    if (roomContainsItem == true) {
-                        for (let i; i < characterPosition.items.length; i++) {
-                            if (characterPosition.items[i].name == _userInput) {
-                                this.inventory.push(characterPosition.items[i]);
-                            }
-                        }
+            let currentRoom = this.getCurrentRoom();
+            console.log(currentRoom);
+            console.log(currentRoom.items);
+            let roomContainsItem = Abschlussarbeit.doesInventoryContainItem(currentRoom.items, _userInput);
+            if (roomContainsItem == true) {
+                for (let i = 0; i <= currentRoom.items.length; i++) {
+                    console.log(currentRoom.items[i].name);
+                    console.log(_userInput);
+                    if (currentRoom.items[i].name == _userInput) {
+                        this.inventory.push(currentRoom.items[i]);
+                        console.log(this.inventory);
+                        currentRoom.removeItemFromRoom(currentRoom.items[i].name);
                     }
                     else {
-                        Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "There's no such item in this room";
-                        console.log("There's no such item in this room");
+                        console.log("Name of item was spelled wrong.");
                     }
                 }
+            }
+            else {
+                Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "There's no such item in this room";
+                console.log("There's no such item in this room");
             }
         }
     }
