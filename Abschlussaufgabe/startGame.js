@@ -5,13 +5,7 @@ var Abschlussarbeit;
         Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You decide to enter the forgotten Mines <br> All you have is a torch to lighten the way and your magic to attack foes.";
         console.log(Abschlussarbeit.zelda.positionID);
         let continueSlope = true;
-        /*function timeout(): number {
-
-            return 10;
-
-        }*/
         while (continueSlope == true) {
-            //setTimeout(timeout, 10);
             Abschlussarbeit.look();
             Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "What do you want to do?";
             let userInput = window.prompt("If you press c, the commands enabled to you will be shown. Select your choice:");

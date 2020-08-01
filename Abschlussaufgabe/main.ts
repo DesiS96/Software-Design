@@ -4,16 +4,6 @@ namespace Abschlussarbeit {
     export interface JSONArray extends Array<JSON> {}
     export type JSON = null | string | number | boolean | JSONArray | JSONObject;
 
-    interface RoomData {
-
-        items: string[];
-        characters: CharacterData[];
-        passages: Passage[];
-        id: number;
-        description: string;
-
-    }
-
     interface ItemData {
 
         name: string;
@@ -37,12 +27,6 @@ namespace Abschlussarbeit {
         leadsTo: number;
         direction: string;
         isPassable: string;
-
-    }
-
-    interface RoomData {
-
-
 
     }
 
@@ -214,9 +198,6 @@ namespace Abschlussarbeit {
 
     loadPassages("./passagesJSON.json");
 
-    let numberOfRooms: number = 11; //userprompt -> How many rooms
-    let roomArray2: Room[] = [];
-
     /*for (let i: number = 0; i < numberOfRooms; i++) {
 
         let charactersForRoom: Character[] = [];
@@ -237,8 +218,6 @@ namespace Abschlussarbeit {
 
         roomArray2[i] = new Room([], charactersForRoom, passagesForRoom, i + 1, userInput);
     }*/
-
-    console.log(roomArray2);
 
     //Game
 
@@ -339,7 +318,6 @@ namespace Abschlussarbeit {
             console.log(characterArray);
         
             loadPassages(userInputPassages);
-
 
             break;
 

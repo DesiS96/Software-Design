@@ -7,15 +7,7 @@ namespace Abschlussarbeit {
 
         let continueSlope: boolean = true;
 
-        /*function timeout(): number {
-
-            return 10;
-
-        }*/
-
         while (continueSlope == true) {
-
-            //setTimeout(timeout, 10);
                 
             look();
 

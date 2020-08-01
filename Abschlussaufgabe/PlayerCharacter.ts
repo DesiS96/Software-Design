@@ -58,17 +58,13 @@ export class PlayerCharacter extends Character {
                             }
                                 
                         }
-                    }
-                          
-                }
-                
+                    }                        
+                }            
             }
             else {
                 text.innerHTML = text.innerHTML + "<br>" + "There is no one you could attack.";
                 console.log("There is no one you could attack.");
-
-            }
-            
+            }         
         }
 
         drop(_userInput: string): void {

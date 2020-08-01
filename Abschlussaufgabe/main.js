@@ -122,8 +122,6 @@ var Abschlussarbeit;
     loadNPCs("./characters.json");
     console.log(characterArray);
     loadPassages("./passagesJSON.json");
-    let numberOfRooms = 11; //userprompt -> How many rooms
-    let roomArray2 = [];
     /*for (let i: number = 0; i < numberOfRooms; i++) {
 
         let charactersForRoom: Character[] = [];
@@ -144,7 +142,6 @@ var Abschlussarbeit;
 
         roomArray2[i] = new Room([], charactersForRoom, passagesForRoom, i + 1, userInput);
     }*/
-    console.log(roomArray2);
     //Game
     Abschlussarbeit.commands = "commands: attack(a), showCommands(c), drop(d), move(m), showInventory(i), take(t)";
     //PlayerCharacter
