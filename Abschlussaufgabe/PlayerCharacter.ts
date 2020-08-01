@@ -24,6 +24,7 @@ export class PlayerCharacter extends Character {
         attackNPC(_userInput: string): void {
 
             let currentRoom: Room = this.getCurrentRoom();
+            console.log(currentRoom);
 
             let containsCharacter: boolean = doesRoomContainCharacter(currentRoom.characters, _userInput);
 
@@ -32,13 +33,18 @@ export class PlayerCharacter extends Character {
                 for (let i: number = 0; i <= currentRoom.characters.length; i++) {
                     if (currentRoom.characters[i].name == _userInput) {
 
+                        console.log(currentRoom.characters[i].life);
+
                         currentRoom.characters[i].life = currentRoom.characters[i].life - this.attack;
+                        console.log(currentRoom.characters[i].life);
 
                         if (currentRoom.characters[i].life == 0) {
                         //extra condition für regs und intels, intels können sich heilen wenn sie eine potion haben
+                        //geht nicht da Character-Array nicht intelligentNPC-Array
 
                             currentRoom.characters = currentRoom.removeCharacterFromThisRoom(currentRoom.characters[i].name);
                             text.innerHTML = text.innerHTML + "<br>" + "died by your attack.";
+
                             console.log(_userInput + "died by your attack.");
                             break;
                         }
@@ -50,10 +56,14 @@ export class PlayerCharacter extends Character {
     
                             console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
                             currentRoom.characters[i].move();
+                            break;
     
                             }
-                            else {                      
+                            else {       
+                                console.log(this.life);               
                                 this.life = this.life - currentRoom.characters[i].attack;
+                                console.log(this.life);
+                                break;
     
                             }
                                 
@@ -124,7 +134,7 @@ export class PlayerCharacter extends Character {
             return roomArray[roomNumber];
         }
 
-        look(): void {
+        /*look(): void {
 
             let currentRoom: Room = this.getCurrentRoom();
     
@@ -146,7 +156,7 @@ export class PlayerCharacter extends Character {
                     text.innerHTML = text.innerHTML + "<br>" + characterAtJ;
                 }
             }
-        }
+        }*/
 
         move(_userInput: string): void {
 

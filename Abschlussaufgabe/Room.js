@@ -35,14 +35,19 @@ import { Passage } from "./Passage";*/
         }
         removeCharacterFromThisRoom(_userInput) {
             let fillerArray = [];
-            for (let i = 0; i <= this.characters.length; i++) {
-                if (this.characters[i].name != _userInput) {
-                    fillerArray.push(this.characters[i]);
+            if (this.characters.length > 1) {
+                for (let i = 0; i <= this.characters.length; i++) {
+                    if (this.characters[i].name != _userInput) {
+                        fillerArray.push(this.characters[i]);
+                    }
+                }
+                this.characters = [];
+                for (let j = 0; j <= fillerArray.length; j++) {
+                    this.characters.push(fillerArray[j]);
                 }
             }
-            this.characters = [];
-            for (let j = 0; j <= fillerArray.length; j++) {
-                this.characters.push(fillerArray[j]);
+            else {
+                this.characters = [];
             }
             return this.characters;
         }

@@ -23,13 +23,17 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
         }
         attackNPC(_userInput) {
             let currentRoom = this.getCurrentRoom();
+            console.log(currentRoom);
             let containsCharacter = Abschlussarbeit.doesRoomContainCharacter(currentRoom.characters, _userInput);
             if (containsCharacter == true) {
                 for (let i = 0; i <= currentRoom.characters.length; i++) {
                     if (currentRoom.characters[i].name == _userInput) {
+                        console.log(currentRoom.characters[i].life);
                         currentRoom.characters[i].life = currentRoom.characters[i].life - this.attack;
+                        console.log(currentRoom.characters[i].life);
                         if (currentRoom.characters[i].life == 0) {
                             //extra condition für regs und intels, intels können sich heilen wenn sie eine potion haben
+                            //geht nicht da Character-Array nicht intelligentNPC-Array
                             currentRoom.characters = currentRoom.removeCharacterFromThisRoom(currentRoom.characters[i].name);
                             Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "died by your attack.";
                             console.log(_userInput + "died by your attack.");
@@ -40,9 +44,13 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
                                 Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + ": Ouch that hurts! Why are you doing this? I'm out of here!";
                                 console.log(_userInput + ": Ouch that hurts! Why are you doing this? I'm out of here!");
                                 currentRoom.characters[i].move();
+                                break;
                             }
                             else {
+                                console.log(this.life);
                                 this.life = this.life - currentRoom.characters[i].attack;
+                                console.log(this.life);
+                                break;
                             }
                         }
                     }
@@ -90,23 +98,29 @@ import { doesInventoryContainItem } from "./doesInventoryContainItem";*/
             }
             return Abschlussarbeit.roomArray[roomNumber];
         }
-        look() {
-            let currentRoom = this.getCurrentRoom();
-            Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + currentRoom.description + "<br>" + "You see:";
+        /*look(): void {
+
+            let currentRoom: Room = this.getCurrentRoom();
+    
+            text.innerHTML = text.innerHTML + "<br>" + currentRoom.description + "<br>" + "You see:";
             if (currentRoom.items.length != 0) {
-                for (let i = 0; i <= currentRoom.items.length; i++) {
-                    Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + currentRoom.items[i].name;
+    
+                for (let i: number = 0; i <= currentRoom.items.length; i++) {
+                    
+                    text.innerHTML = text.innerHTML + "<br>" + currentRoom.items[i].name;
                     console.log(currentRoom.items[i].name);
                 }
             }
             if (currentRoom.characters.length != 0) {
-                for (let j = 0; j <= currentRoom.characters.length; j++) {
-                    let characterAtJ = currentRoom.characters[j].name;
+                for (let j: number = 0; j <= currentRoom.characters.length; j++) {
+                    
+                    let characterAtJ: string = currentRoom.characters[j].name;
                     console.log(characterAtJ);
-                    Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + characterAtJ;
+                    
+                    text.innerHTML = text.innerHTML + "<br>" + characterAtJ;
                 }
             }
-        }
+        }*/
         move(_userInput) {
             super.move();
             let currentRoom = this.getCurrentRoom();

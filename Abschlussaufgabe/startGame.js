@@ -3,16 +3,29 @@ var Abschlussarbeit;
 (function (Abschlussarbeit) {
     function startGame() {
         Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You decide to enter the forgotten Mines <br> All you have is a torch to lighten the way and your magic to attack foes.";
+        console.log("You decide to enter the forgotten Mines <br> All you have is a torch to lighten the way and your magic to attack foes.");
         console.log(Abschlussarbeit.zelda.positionID);
         let continueSlope = true;
+        //Einsatzpunkt für Bombflower einbauen
         while (continueSlope == true) {
             Abschlussarbeit.look();
             Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "What do you want to do?";
+            console.log("What do you want to do?");
             let userInput = window.prompt("If you press c, the commands enabled to you will be shown. Select your choice:");
+            /*let userInput: string;
+
+            setTimeout(function(): string {
+                userInput = window.prompt("If you press c, the commands enabled to you will be shown. Select your choice:");
+                return userInput;
+            }, 100);*/
+            //setTimeout(userInput = window.prompt("If you press c, the commands enabled to you will be shown. Select your choice:"), 2000);
+            //setTimeout(selfmadePrompt("If you press c, the commands enabled to you will be shown. Select your choice:", userInput), 1000);
+            //let userInput: string = setTimeout(selfmadePrompt, 100);
             Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + userInput;
             switch (userInput) {
                 case "a": {
                     Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You decided to attack a character.";
+                    console.log("You decided to attack a character");
                     let userInput = window.prompt("Which character do you want to attack?:");
                     Abschlussarbeit.zelda.attackNPC(userInput);
                     break;
@@ -23,6 +36,7 @@ var Abschlussarbeit;
                 }
                 case "d": {
                     Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You decided to drop an item.";
+                    console.log("You decided to drop an item.");
                     let userInput = window.prompt("Which item do you want to drop?:");
                     Abschlussarbeit.zelda.drop(userInput);
                     break;
@@ -37,6 +51,7 @@ var Abschlussarbeit;
                 }
                 case "m": {
                     Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You go further into the mines.";
+                    console.log("You go further into the mines.");
                     let userInput = window.prompt("In which direction do you want to go?:");
                     Abschlussarbeit.zelda.move(userInput);
                     console.log(Abschlussarbeit.zelda.positionID);
@@ -44,6 +59,7 @@ var Abschlussarbeit;
                 }
                 case "t": {
                     Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You decide to take an item from the room.";
+                    console.log("You decide to take an item from the room.");
                     let userInput = window.prompt("Which item do you want to take?:");
                     Abschlussarbeit.zelda.take(userInput);
                     console.log(Abschlussarbeit.zelda.inventory);
@@ -53,26 +69,34 @@ var Abschlussarbeit;
                     let letUserSave = window.prompt("Do you want to save your game? Yes(y)/No(n): ");
                     switch (letUserSave) {
                         case "y": {
-                            let roomString = Abschlussarbeit.roomArray.toString();
-                            function save(_content, _filename) {
-                                let blob = new Blob([_content], { type: "text/plain" });
-                                let url = window.URL.createObjectURL(blob);
-                                //*/ using anchor element for download
-                                let downloader;
-                                downloader = document.createElement("a");
-                                downloader.setAttribute("href", url);
-                                downloader.setAttribute("download", _filename);
-                                document.body.appendChild(downloader);
-                                downloader.click();
-                                document.body.removeChild(downloader);
-                                window.URL.revokeObjectURL(url);
+                            let passageArray = [];
+                            let itemArray = [];
+                            let characterArray = [];
+                            let passageString = passageArray.toString();
+                            let itemString = itemArray.toString();
+                            let characterString = characterArray.toString();
+                            for (let i = 0; i <= Abschlussarbeit.roomArray.length; i++) {
+                                for (let j = 0; j <= Abschlussarbeit.roomArray[i].passages.length; j++) {
+                                    passageArray.push(Abschlussarbeit.roomArray[i].passages[j]);
+                                }
+                                for (let k = 0; k <= Abschlussarbeit.roomArray[i].items.length; k++) {
+                                    itemArray.push(Abschlussarbeit.roomArray[i].items[k]);
+                                }
+                                for (let l = 0; l <= Abschlussarbeit.roomArray[i].characters.length; l++) {
+                                    characterArray.push(Abschlussarbeit.roomArray[i].characters[l]);
+                                }
                             }
-                            save(roomString, "rooms.json"); //characters, items und passages
+                            //speichern von charcters, items und passages
+                            Abschlussarbeit.save(passageString, "passages.json");
+                            Abschlussarbeit.save(itemString, "items.json");
+                            Abschlussarbeit.save(characterString, "characters.json");
                             Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You saved your progress. Hope to see you soon.";
+                            console.log("You saved your progress. Hope to see you soon.");
                             break;
                         }
                         case "n": {
                             Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + "You decided to end the game. Hope to see you again soon!";
+                            console.log("You decided to end the game. Hope to see you again soon!");
                             continueSlope = false;
                             break;
                         }

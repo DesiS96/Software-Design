@@ -52,20 +52,28 @@ export class Room {
         removeCharacterFromThisRoom(_userInput: string): Character[] {
 
             let fillerArray: Character[] = [];
+
+            if (this.characters.length > 1) {
     
-            for (let i: number = 0; i <= this.characters.length; i++) {
+                for (let i: number = 0; i <= this.characters.length; i++) {
     
-                if (this.characters[i].name != _userInput) {
+                    if (this.characters[i].name != _userInput) {
                     fillerArray.push(this.characters[i]);
                                     
-                    }
-            }
+                        }
+                }
     
-            this.characters = [];
+                this.characters = [];
     
-            for (let j: number = 0; j <= fillerArray.length; j++) {
+                for (let j: number = 0; j <= fillerArray.length; j++) {
                 this.characters.push(fillerArray[j]);
-            }
+                }
+            }  
+            else {
+
+                this.characters = [];
+
+            } 
     
             return this.characters;
         }

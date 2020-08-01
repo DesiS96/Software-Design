@@ -221,6 +221,12 @@ namespace Abschlussarbeit {
 
     //Game
 
+    export function selfmadePrompt(_windowText: string, _userInput: string) {
+
+        _userInput = window.prompt(_windowText); 
+
+    }
+
     export let commands: string = "commands: attack(a), showCommands(c), drop(d), move(m), showInventory(i), take(t)";
 
     //PlayerCharacter
@@ -268,17 +274,6 @@ namespace Abschlussarbeit {
         
     //Rooms
     export let roomArray: Room[] = [];
-    roomArray[0] = new Room([], [mineWorker], [passageE1, passageE2], 1, "You are at the entrance of the mine.");
-    roomArray[1] = new Room([potion1], [], [passageR21, passageR22], 2, "Another dark Room. Aside from the one through which I entered i only see one other.");
-    roomArray[2] = new Room([], [adventurer], [passageR31], 3, "This seems like a dead-end.");
-    roomArray[3] = new Room([], [], [passageR41, passageR42], 4, "Nothing of interest here.");
-    roomArray[4] = new Room([], [worker, bokoblin], [passageR51, passageR52], 5, "");
-    roomArray[5] = new Room([potion2], [], [passageR61, passageR62], 6, "");
-    roomArray[6] = new Room([], [skultulla], [passageR71, passageR72], 7, "");
-    roomArray[7] = new Room([], [link], [passageR81], 8, "");
-    roomArray[8] = new Room([], [stalfols], [passageR91, passageR92], 9, "");
-    roomArray[9] = new Room([bombFlower], [skilledWorker], [passageR101, passageR102], 10, "There is a small river that seperates the room into two parts. On the other side i see a bombflower. It could be useful if i could reach it." );
-    roomArray[10] = new Room([], [], [passageR111], 7, "");
         
     console.log(roomArray);
 
@@ -290,12 +285,26 @@ namespace Abschlussarbeit {
 
     let userInput: string = window.prompt("Select either s to start the game or q to quit it:");
 
+    //let userInput: Promise<string> = selfmadePrompt("Select either s to start the game or q to quit it:");
+
     text.innerHTML = text.innerHTML + "<br>" + userInput;
 
     switch (userInput) {
 
         case "s": {
 
+            roomArray[0] = new Room([], [mineWorker], [passageE1, passageE2], 1, "You are at the entrance of the mine.");
+            roomArray[1] = new Room([potion1], [], [passageR21, passageR22], 2, "Another dark Room. Aside from the one through which I entered i only see one other.");
+            roomArray[2] = new Room([], [adventurer], [passageR31], 3, "This seems like a dead-end.");
+            roomArray[3] = new Room([], [], [passageR41, passageR42], 4, "Nothing of interest here.");
+            roomArray[4] = new Room([], [worker, bokoblin], [passageR51, passageR52], 5, "");
+            roomArray[5] = new Room([potion2], [], [passageR61, passageR62], 6, "");
+            roomArray[6] = new Room([], [skultulla], [passageR71, passageR72], 7, "");
+            roomArray[7] = new Room([], [link], [passageR81], 8, "");
+            roomArray[8] = new Room([], [stalfols], [passageR91, passageR92], 9, "");
+            roomArray[9] = new Room([bombFlower], [skilledWorker], [passageR101, passageR102], 10, "There is a small river that seperates the room into two parts. On the other side i see a bombflower. It could be useful if i could reach it." );
+            roomArray[10] = new Room([], [], [passageR111], 7, "");
+            
             startGame();
             break;
 
@@ -318,14 +327,35 @@ namespace Abschlussarbeit {
             console.log(characterArray);
         
             loadPassages(userInputPassages);
+            console.log(passageArray);
+
+            //for-Schleife um Räume zu befüllen
+
+            let charactersInRoom: Character[];
+            let numberOfSaveGameItems: Item[];
+            let numberOfSaveGamePassages: Passage[];
+
+            let numberOfRooms: string = window.prompt("How many Rooms are in your game?: ");
+            let lengthOfRoomArray: number = Number(numberOfRooms);
+
+            /*for (let i: number; i <= lengthOfRoomArray; i++) {
+
+                roomArray[i] = new Room([] ,[] ,[], i+1, "");
+
+                for (let j: number; j <= characterArray.length; i++) {
+
+                    if(characterArray[i].positionID = )
+
+                }
+
+
+            }*/
 
             break;
 
         }
 
         case "q": {
-
-
 
             text.innerHTML = text.innerHTML + "<br>" + "You've ended the game. <br> Hope to see you again soon!";
             break;

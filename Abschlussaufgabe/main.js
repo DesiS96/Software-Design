@@ -143,6 +143,10 @@ var Abschlussarbeit;
         roomArray2[i] = new Room([], charactersForRoom, passagesForRoom, i + 1, userInput);
     }*/
     //Game
+    function selfmadePrompt(_windowText, _userInput) {
+        _userInput = window.prompt(_windowText);
+    }
+    Abschlussarbeit.selfmadePrompt = selfmadePrompt;
     Abschlussarbeit.commands = "commands: attack(a), showCommands(c), drop(d), move(m), showInventory(i), take(t)";
     //PlayerCharacter
     Abschlussarbeit.zelda = new Abschlussarbeit.PlayerCharacter("Zelda", 20, 10, "player", 1, [], Abschlussarbeit.commands);
@@ -182,26 +186,27 @@ var Abschlussarbeit;
     Abschlussarbeit.passageR111 = new Abschlussarbeit.Passage(10, "e", "yes");
     //Rooms
     Abschlussarbeit.roomArray = [];
-    Abschlussarbeit.roomArray[0] = new Abschlussarbeit.Room([], [Abschlussarbeit.mineWorker], [Abschlussarbeit.passageE1, Abschlussarbeit.passageE2], 1, "You are at the entrance of the mine.");
-    Abschlussarbeit.roomArray[1] = new Abschlussarbeit.Room([Abschlussarbeit.potion1], [], [Abschlussarbeit.passageR21, Abschlussarbeit.passageR22], 2, "Another dark Room. Aside from the one through which I entered i only see one other.");
-    Abschlussarbeit.roomArray[2] = new Abschlussarbeit.Room([], [Abschlussarbeit.adventurer], [Abschlussarbeit.passageR31], 3, "This seems like a dead-end.");
-    Abschlussarbeit.roomArray[3] = new Abschlussarbeit.Room([], [], [Abschlussarbeit.passageR41, Abschlussarbeit.passageR42], 4, "Nothing of interest here.");
-    Abschlussarbeit.roomArray[4] = new Abschlussarbeit.Room([], [Abschlussarbeit.worker, Abschlussarbeit.bokoblin], [Abschlussarbeit.passageR51, Abschlussarbeit.passageR52], 5, "");
-    Abschlussarbeit.roomArray[5] = new Abschlussarbeit.Room([Abschlussarbeit.potion2], [], [Abschlussarbeit.passageR61, Abschlussarbeit.passageR62], 6, "");
-    Abschlussarbeit.roomArray[6] = new Abschlussarbeit.Room([], [Abschlussarbeit.skultulla], [Abschlussarbeit.passageR71, Abschlussarbeit.passageR72], 7, "");
-    Abschlussarbeit.roomArray[7] = new Abschlussarbeit.Room([], [Abschlussarbeit.link], [Abschlussarbeit.passageR81], 8, "");
-    Abschlussarbeit.roomArray[8] = new Abschlussarbeit.Room([], [Abschlussarbeit.stalfols], [Abschlussarbeit.passageR91, Abschlussarbeit.passageR92], 9, "");
-    Abschlussarbeit.roomArray[9] = new Abschlussarbeit.Room([Abschlussarbeit.bombFlower], [Abschlussarbeit.skilledWorker], [Abschlussarbeit.passageR101, Abschlussarbeit.passageR102], 10, "There is a small river that seperates the room into two parts. On the other side i see a bombflower. It could be useful if i could reach it.");
-    Abschlussarbeit.roomArray[10] = new Abschlussarbeit.Room([], [], [Abschlussarbeit.passageR111], 7, "");
     console.log(Abschlussarbeit.roomArray);
     Abschlussarbeit.text = document.createElement("div");
     document.body.appendChild(Abschlussarbeit.text);
     Abschlussarbeit.text.innerHTML = "Welcome to the game. What do you want to do?<br>>start game (s)<br>>quit game (q)";
     //inputfield
     let userInput = window.prompt("Select either s to start the game or q to quit it:");
+    //let userInput: Promise<string> = selfmadePrompt("Select either s to start the game or q to quit it:");
     Abschlussarbeit.text.innerHTML = Abschlussarbeit.text.innerHTML + "<br>" + userInput;
     switch (userInput) {
         case "s": {
+            Abschlussarbeit.roomArray[0] = new Abschlussarbeit.Room([], [Abschlussarbeit.mineWorker], [Abschlussarbeit.passageE1, Abschlussarbeit.passageE2], 1, "You are at the entrance of the mine.");
+            Abschlussarbeit.roomArray[1] = new Abschlussarbeit.Room([Abschlussarbeit.potion1], [], [Abschlussarbeit.passageR21, Abschlussarbeit.passageR22], 2, "Another dark Room. Aside from the one through which I entered i only see one other.");
+            Abschlussarbeit.roomArray[2] = new Abschlussarbeit.Room([], [Abschlussarbeit.adventurer], [Abschlussarbeit.passageR31], 3, "This seems like a dead-end.");
+            Abschlussarbeit.roomArray[3] = new Abschlussarbeit.Room([], [], [Abschlussarbeit.passageR41, Abschlussarbeit.passageR42], 4, "Nothing of interest here.");
+            Abschlussarbeit.roomArray[4] = new Abschlussarbeit.Room([], [Abschlussarbeit.worker, Abschlussarbeit.bokoblin], [Abschlussarbeit.passageR51, Abschlussarbeit.passageR52], 5, "");
+            Abschlussarbeit.roomArray[5] = new Abschlussarbeit.Room([Abschlussarbeit.potion2], [], [Abschlussarbeit.passageR61, Abschlussarbeit.passageR62], 6, "");
+            Abschlussarbeit.roomArray[6] = new Abschlussarbeit.Room([], [Abschlussarbeit.skultulla], [Abschlussarbeit.passageR71, Abschlussarbeit.passageR72], 7, "");
+            Abschlussarbeit.roomArray[7] = new Abschlussarbeit.Room([], [Abschlussarbeit.link], [Abschlussarbeit.passageR81], 8, "");
+            Abschlussarbeit.roomArray[8] = new Abschlussarbeit.Room([], [Abschlussarbeit.stalfols], [Abschlussarbeit.passageR91, Abschlussarbeit.passageR92], 9, "");
+            Abschlussarbeit.roomArray[9] = new Abschlussarbeit.Room([Abschlussarbeit.bombFlower], [Abschlussarbeit.skilledWorker], [Abschlussarbeit.passageR101, Abschlussarbeit.passageR102], 10, "There is a small river that seperates the room into two parts. On the other side i see a bombflower. It could be useful if i could reach it.");
+            Abschlussarbeit.roomArray[10] = new Abschlussarbeit.Room([], [], [Abschlussarbeit.passageR111], 7, "");
             Abschlussarbeit.startGame();
             break;
         }
@@ -216,6 +221,25 @@ var Abschlussarbeit;
             loadNPCs(userInputCharacters);
             console.log(characterArray);
             loadPassages(userInputPassages);
+            console.log(passageArray);
+            //for-Schleife um Räume zu befüllen
+            let charactersInRoom;
+            let numberOfSaveGameItems;
+            let numberOfSaveGamePassages;
+            let numberOfRooms = window.prompt("How many Rooms are in your game?: ");
+            let lengthOfRoomArray = Number(numberOfRooms);
+            /*for (let i: number; i <= lengthOfRoomArray; i++) {
+
+                roomArray[i] = new Room([] ,[] ,[], i+1, "");
+
+                for (let j: number; j <= characterArray.length; i++) {
+
+                    if(characterArray[i].positionID = )
+
+                }
+
+
+            }*/
             break;
         }
         case "q": {
